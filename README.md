@@ -1,4 +1,4 @@
-<h1 align="center"> TRABALHO FINAL POO </h1>
+<h1 align="center"> TRABALHO FINAL DE POO </h1>
 
 <p align="center">
   <img src="http://img.shields.io/static/v1?label=last%20commit&message=december&color=information&style=plastic"/>
