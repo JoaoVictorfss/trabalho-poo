@@ -1,5 +1,8 @@
+package View;
 
-public class Endereco {
+import java.io.Serializable;
+
+public class Endereco implements Serializable{
 	private String rua;
 	private int numero;
 	private int cep;

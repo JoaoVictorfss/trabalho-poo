@@ -1,3 +1,5 @@
+package View;
+
 import java.util.Date;
 
 public class ContaSalario extends Conta {

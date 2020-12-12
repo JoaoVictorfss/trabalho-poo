@@ -1,8 +1,10 @@
+package View;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Conta {
+public class Conta implements Serializable{
 	private int nroConta;
 	private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 	private byte status;

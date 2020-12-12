@@ -1,2 +1,6 @@
 .settings 
-bin
+.bin
+*.class
+/.metadata/
+.classpath
+.project

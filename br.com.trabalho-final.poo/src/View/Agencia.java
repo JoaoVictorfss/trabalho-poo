@@ -1,6 +1,9 @@
+package View;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Agencia {
+public class Agencia implements Serializable{
 	private int nroAgencia;
 	private String nome;
 	private Endereco endereco;

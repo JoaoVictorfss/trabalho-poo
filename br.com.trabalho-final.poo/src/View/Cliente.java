@@ -1,7 +1,9 @@
+package View;
+
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Cliente extends Pessoa {
+public class Cliente extends Pessoa{
 
 	private String escolaridade;
 	private ArrayList<Conta> contas = new ArrayList<Conta>();
@@ -54,5 +56,4 @@ public class Cliente extends Pessoa {
 	public void setAgencia(Agencia agencia) {
 		this.agencia = agencia;
 	}
-
 }

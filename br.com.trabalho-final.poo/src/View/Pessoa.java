@@ -1,7 +1,10 @@
+package View;
+
+import java.io.Serializable;
 import java.util.Date;
 import java.util.InputMismatchException;
 
-public class Pessoa {
+public class Pessoa implements Serializable{
 	private String nome;
 	private String cpf;
 	private Endereco endereco;

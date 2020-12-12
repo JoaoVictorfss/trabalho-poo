@@ -1,7 +1,12 @@
+package View;
+
+import Infra.Persist;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
 
 public class Teste {
 	public static void mostraDadosGerente(Gerente gerente) {
@@ -51,7 +56,6 @@ public class Teste {
 
 		Endereco enderecoJoao = new Endereco("Rua Maria", 200, 3817000, "MG", "Perdizes", "Brasil");
 		Endereco enderecoAgencia = new Endereco("Centro", 400, 3817000, "MG", "Perdizes", "Brasil");
-
 		// Testa gerente
 		Funcionario.salBase = 3000;
 		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
@@ -64,13 +68,13 @@ public class Teste {
 	    Teste.mostraDadosGerente(gerente);
 	   
 		Agencia one = new Agencia(12, enderecoAgencia, gerente);
-        
+
 		//Testa cliente
-		 Cliente joao = new Cliente("Joao", one, "60792520076", enderecoJoao,
-		 "casado", "cursando superior", new Date() ); 
-		 Cliente maria = new Cliente("maria",
-		 one, "69582822058", enderecoJoao, "casada", "Doutorado", new Date());
+		 Cliente joao = new Cliente("Joao", one, "60792520076", enderecoJoao, "casado", "cursando superior", new Date() );
+
+		Cliente maria = new Cliente("maria", one, "69582822058", enderecoJoao, "casada", "Doutorado", new Date());
 		 Teste.mostraDadosCliente(maria);
+		 
 		 
 		 //Testa conta
 		 ContaPoupanca contaCasal = new ContaPoupanca(0, 11, one,joao,'A');
@@ -82,9 +86,11 @@ public class Teste {
 		 contaCasal.saque(1000, new Date(), one, 2);
 		 Teste.mostraDadosConta(contaCasal);
 		 
+		 
 		 //Testa Agência
 		 one.setConta(contaCasal); 
 		 BB.setAgencia(one);
+		 
 		 
 		 ArrayList<Conta> contas = one.getContas();
 		 contas.forEach(item -> System.out.println("\nNúmeros das contas cadastradas na agência: " + item.getNroConta()));
