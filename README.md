@@ -16,8 +16,7 @@
 
 
 ## Descrição do Projeto :star:
-<p align="justify">Trabalho final da disciplina Promação Orientada a Objetos - AARE UFU 2020. Aplicação dos conceitos de Orientação a Objetos e Java, gerando 
-  programa que abstrai uma instituição financeira, com clientes, endereço, funcionários, contas, agências, juntamente com os atributos e operações dos mesmos.
+<p align="justify">Trabalho final da disciplina Programação Orientada a Objetos - AARE UFU 2020. Aplicação dos conceitos de Orientação a Objetos e Java, sendo o objetivo final a criação de um programa que abstrai uma instituição financeira, com clientes, endereço, funcionários, contas, agências, juntamente com os atributos e operações dos mesmos.
 </p>
 
 
