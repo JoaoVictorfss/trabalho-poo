@@ -1,4 +1,4 @@
-package Infra;
+package repositorio;
 
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
