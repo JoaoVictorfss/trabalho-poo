@@ -24,7 +24,7 @@
   - Java
   - Swing
 
-> Clone o projeto com: git clone https://github.com/JoaoVictorfss/trabalho-poo
+> Clone o projeto com: git clone https://github.com/JoaoVictorfss/trabalho-poo.git
   ## Licença 
   The [MIT License]() (MIT)
 
