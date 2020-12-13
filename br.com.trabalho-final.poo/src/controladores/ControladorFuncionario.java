@@ -6,7 +6,7 @@ import modelos.Funcionario;
 import repositorio.Persist;
 
 public class ControladorFuncionario {
-	private ArrayList<Funcionario> Funcionarios = new ArrayList<Funcionario>();
+	private ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>();
 	private final String arquivo = "funcionarios.bin";
 
 	private void mostrarDados(Funcionario funcionario) {
@@ -25,10 +25,10 @@ public class ControladorFuncionario {
 		Funcionario existente = this.buscar(f.getCpf());
 
 		if (existente == null) {
-			this.Funcionarios.add(f);// Adiciona o Funcionario
+			this.funcionarios.add(f);// Adiciona o Funcionario
 
 			System.out.println("Sucesso. Funcionário cadastrado com sucesso!");
-			System.out.println("A quantidade total de Funcionarios agora eh: " + this.Funcionarios.size());
+			System.out.println("A quantidade total de Funcionarios agora eh: " + this.funcionarios.size());
 		}
 
 		else {
@@ -37,17 +37,17 @@ public class ControladorFuncionario {
 	}
 
 	public void listar() {
-		if (Funcionarios.isEmpty()) {
+		if (funcionarios.isEmpty()) {
 			System.out.println("Sem registros!");
 		} else {
-			Funcionarios.forEach(f -> this.mostrarDados(f));
+			funcionarios.forEach(f -> this.mostrarDados(f));
 		}
 	}
 
 	public Funcionario buscar(String cpf) {
 		Funcionario funcionario = null;
 
-		for (Funcionario f : this.Funcionarios) {
+		for (Funcionario f : this.funcionarios) {
 			if (f.getCpf().equals(cpf)) {
 				funcionario = f;
 				break;
@@ -61,7 +61,7 @@ public class ControladorFuncionario {
 		Funcionario f = this.buscar(cpf);
 
 		if (f != null) {
-			this.Funcionarios.remove(f);
+			this.funcionarios.remove(f);
 			return true;
 		} else {
 			return false;
@@ -71,8 +71,8 @@ public class ControladorFuncionario {
 	public void gravarFuncionarios() {
 		boolean salvo = true;
 
-		if (!this.Funcionarios.isEmpty()) {
-			for (Funcionario f : this.Funcionarios) {
+		if (!this.funcionarios.isEmpty()) {
+			for (Funcionario f : this.funcionarios) {
 				salvo = salvo && Persist.gravar(f, this.arquivo);
 			}
 
