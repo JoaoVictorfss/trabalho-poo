@@ -4,14 +4,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-abstract class Conta extends Transacoes implements Serializable {
+abstract class Conta implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int nroConta;
 	private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 	private byte status;
 	private Agencia agencia;
-	private Date dataAbertura;
 	private double saldoAtual;
+	private Date dataAbertura;
 	private int totalCliente;
 
 	public Conta() {
@@ -85,6 +85,31 @@ abstract class Conta extends Transacoes implements Serializable {
 			this.status = 3;
 		else
 			this.status = 2;
+	}
+
+	public boolean saque(double valor, Date dataTrans, Agencia agencia, int idTrans) {
+		if (valor <= saldoAtual && valor > 0) {
+			saldoAtual -= valor;
+			return true;
+		} else
+			throw new IllegalArgumentException("Valor inválido para saque!");
+	}
+
+	public boolean deposito(double valor, Date dataTrans, Agencia agencia, int idTrans) {
+		if (valor > 0) {
+			saldoAtual += valor;
+			return true;
+		} else {
+			throw new IllegalArgumentException("Valor do depósito não pode ser um valor negativo!");
+		}
+	}
+
+	public boolean transferencia(double valor, Date dataTrans, Agencia agencia, int idTrans) {
+		if (valor <= saldoAtual && valor > 0) {
+			saldoAtual -= valor;
+			return true;
+		} else
+			throw new IllegalArgumentException("Valor inválido para transferência!");
 	}
 
 	public Agencia getAgencia() {
