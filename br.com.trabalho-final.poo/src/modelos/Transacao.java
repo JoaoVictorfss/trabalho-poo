@@ -2,7 +2,7 @@ package modelos;
 
 import java.util.Date;
 
-public class Transacoes {
+public class Transacao {
     private static int id;
     private Date dataTransacao;
     private String tipoTransacao;
@@ -10,21 +10,21 @@ public class Transacoes {
     private Agencia agencia;
     private Conta contaDestino;
 
-    public Transacoes(Date dataTransacao, String tipoTransacao, double valorTransacao, Agencia agencia) {
+    public Transacao(Date dataTransacao, String tipoTransacao, double valorTransacao, Agencia agencia) {
         this.dataTransacao = dataTransacao;
         this.tipoTransacao = tipoTransacao;
         this.valorTransacao = valorTransacao;
         this.agencia = agencia;
-        Transacoes.id++;
+        Transacao.id++;
     }
 
-    public Transacoes(Date dataTransacao, String tipoTransacao, double valorTransacao, Agencia agencia, Conta contaDestino) {
+    public Transacao(Date dataTransacao, String tipoTransacao, double valorTransacao, Agencia agencia, Conta contaDestino) {
         this.dataTransacao = dataTransacao;
         this.tipoTransacao = tipoTransacao;
         this.valorTransacao = valorTransacao;
         this.agencia = agencia;
         this.contaDestino = contaDestino;
-        Transacoes.id++;
+        Transacao.id++;
     }
 
     public int getId() {

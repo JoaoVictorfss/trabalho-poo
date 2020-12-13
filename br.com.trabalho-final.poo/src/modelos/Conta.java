@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-abstract class Conta implements Serializable {
+public abstract class Conta implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int nroConta;
 	private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
@@ -90,13 +90,16 @@ abstract class Conta implements Serializable {
 	public boolean saque(double valor) {
 		if (valor <= saldoAtual && valor > 0) {
 			saldoAtual -= valor;
-			Transacoes transacao = new Transacoes(new Date(), "saque", valor, this.agencia);
-			System.out.println("data: " + transacao.getDataTransacao());
-			System.out.println("id: " + transacao.getId());
-			System.out.println("valor: " + transacao.getValorTransacao());
-			System.out.println("tipo: " + transacao.getTipoTransacao());
+	
+			Transacao transacao = new Transacao(new Date(), "saque", valor, this.agencia);
+			System.out.println("______________________________________");
+			System.out.println("Extrato");
+			System.out.println("Data da transação: " + transacao.getDataTransacao());
+			System.out.println("Id: " + transacao.getId());
+			System.out.println("Valor: " + transacao.getValorTransacao());
+			System.out.println("Tipo: " + transacao.getTipoTransacao());
 			System.out.println("Saldo Atual: " + this.saldoAtual);
-
+			System.out.println("______________________________________");
 			return true;
 		} else
 			throw new IllegalArgumentException("Valor inválido para saque!");
@@ -105,12 +108,15 @@ abstract class Conta implements Serializable {
 	public boolean deposito(double valor) {
 		if (valor > 0) {
 			saldoAtual += valor;
-			Transacoes transacao = new Transacoes(new Date(), "deposito", valor, this.agencia);
-			System.out.println("data: " + transacao.getDataTransacao());
-			System.out.println("id: " + transacao.getId());
-			System.out.println("valor: " + transacao.getValorTransacao());
-			System.out.println("tipo: " + transacao.getTipoTransacao());
+			Transacao transacao = new Transacao(new Date(), "deposito", valor, this.agencia);
+			System.out.println("______________________________________");
+			System.out.println("Extrato");
+			System.out.println("Data da transação: " + transacao.getDataTransacao());
+			System.out.println("Id: " + transacao.getId());
+			System.out.println("Valor: " + transacao.getValorTransacao());
+			System.out.println("Tipo: " + transacao.getTipoTransacao());
 			System.out.println("Saldo Atual: " + this.saldoAtual);
+			System.out.println("______________________________________");
 			return true;
 		} else {
 			throw new IllegalArgumentException("Valor do depósito não pode ser um valor negativo!");
@@ -120,12 +126,15 @@ abstract class Conta implements Serializable {
 	public boolean transferencia(double valor, Conta contaDestino) {
 		if (valor <= saldoAtual && valor > 0) {
 			saldoAtual -= valor;
-			Transacoes transacao = new Transacoes(new Date(), "transferencia", valor, this.agencia);
-			System.out.println("data: " + transacao.getDataTransacao());
-			System.out.println("id: " + transacao.getId());
-			System.out.println("valor: " + transacao.getValorTransacao());
-			System.out.println("tipo: " + transacao.getTipoTransacao());
+			Transacao transacao = new Transacao(new Date(), "transferencia", valor, this.agencia);
+			System.out.println("______________________________________");
+			System.out.println("Extrato");
+			System.out.println("Data da transação: " + transacao.getDataTransacao());
+			System.out.println("Id: " + transacao.getId());
+			System.out.println("Valor: " + transacao.getValorTransacao());
+			System.out.println("Tipo: " + transacao.getTipoTransacao());
 			System.out.println("Saldo Atual: " + this.saldoAtual);
+			System.out.println("______________________________________");
 			return true;
 		} else
 			throw new IllegalArgumentException("Valor inválido para transferência!");
