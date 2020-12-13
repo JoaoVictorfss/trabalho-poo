@@ -84,19 +84,19 @@ public class Teste {
 		maria.setConta(contaCasal);
 		joao.setConta(contaCasal);
 		contaCasal.setRendimento(0.8);
-		contaCasal.deposito(2000, new Date(), one, 1);
-		contaCasal.saque(1000, new Date(), one, 2);
+		contaCasal.deposito(2000);
+		contaCasal.saque(1000);
 
 		one.setConta(contaCasal);
-
-		ControladorCliente dadosClientes = new ControladorCliente();
-		ControladorAgencia dadosAgencias = new ControladorAgencia();
-
-		dadosAgencias.cadastrar(one);
-		dadosAgencias.listar();
-		dadosAgencias.excluir(12);
-		dadosAgencias.listar();
-		dadosAgencias.gravarAgencias();
+//
+//		ControladorCliente dadosClientes = new ControladorCliente();
+//		ControladorAgencia dadosAgencias = new ControladorAgencia();
+//
+//		dadosAgencias.cadastrar(one);
+//		dadosAgencias.listar();
+//		dadosAgencias.excluir(12);
+//		dadosAgencias.listar();
+//		dadosAgencias.gravarAgencias();
 		/*
 		 * dadosClientes.cadastrar(joao); dadosClientes.cadastrar(maria);
 		 * dadosClientes.cadastrar(maria);

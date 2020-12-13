@@ -87,26 +87,45 @@ abstract class Conta implements Serializable {
 			this.status = 2;
 	}
 
-	public boolean saque(double valor, Date dataTrans, Agencia agencia, int idTrans) {
+	public boolean saque(double valor) {
 		if (valor <= saldoAtual && valor > 0) {
 			saldoAtual -= valor;
+			Transacoes transacao = new Transacoes(new Date(), "saque", valor, this.agencia);
+			System.out.println("data: " + transacao.getDataTransacao());
+			System.out.println("id: " + transacao.getId());
+			System.out.println("valor: " + transacao.getValorTransacao());
+			System.out.println("tipo: " + transacao.getTipoTransacao());
+			System.out.println("Saldo Atual: " + this.saldoAtual);
+
 			return true;
 		} else
 			throw new IllegalArgumentException("Valor inválido para saque!");
 	}
 
-	public boolean deposito(double valor, Date dataTrans, Agencia agencia, int idTrans) {
+	public boolean deposito(double valor) {
 		if (valor > 0) {
 			saldoAtual += valor;
+			Transacoes transacao = new Transacoes(new Date(), "deposito", valor, this.agencia);
+			System.out.println("data: " + transacao.getDataTransacao());
+			System.out.println("id: " + transacao.getId());
+			System.out.println("valor: " + transacao.getValorTransacao());
+			System.out.println("tipo: " + transacao.getTipoTransacao());
+			System.out.println("Saldo Atual: " + this.saldoAtual);
 			return true;
 		} else {
 			throw new IllegalArgumentException("Valor do depósito não pode ser um valor negativo!");
 		}
 	}
 
-	public boolean transferencia(double valor, Date dataTrans, Agencia agencia, int idTrans) {
+	public boolean transferencia(double valor, Conta contaDestino) {
 		if (valor <= saldoAtual && valor > 0) {
 			saldoAtual -= valor;
+			Transacoes transacao = new Transacoes(new Date(), "transferencia", valor, this.agencia);
+			System.out.println("data: " + transacao.getDataTransacao());
+			System.out.println("id: " + transacao.getId());
+			System.out.println("valor: " + transacao.getValorTransacao());
+			System.out.println("tipo: " + transacao.getTipoTransacao());
+			System.out.println("Saldo Atual: " + this.saldoAtual);
 			return true;
 		} else
 			throw new IllegalArgumentException("Valor inválido para transferência!");
