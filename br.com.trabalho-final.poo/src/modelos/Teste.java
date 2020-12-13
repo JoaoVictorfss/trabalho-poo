@@ -52,8 +52,6 @@ public class Teste {
 	}
 
 	public static void main(String[] args) throws ParseException {
-		Instituicao BB = new Instituicao();
-
 		Endereco enderecoJoao = new Endereco("Rua Maria", 200, 3817000, "MG", "Perdizes", "Brasil");
 		Endereco enderecoAgencia = new Endereco("Centro", 400, 3817000, "MG", "Perdizes", "Brasil");
 		// Testa gerente
@@ -87,9 +85,7 @@ public class Teste {
 		 Teste.mostraDadosConta(contaCasal);
 		 
 		 //Testa Agência
-		 one.setConta(contaCasal); 
-		 BB.setAgencia(one);
-		 
+		 one.setConta(contaCasal);
 		 
 		 ArrayList<Conta> contas = one.getContas();
 		 contas.forEach(item -> System.out.println("\nNúmeros das contas cadastradas na agência: " + item.getNroConta()));

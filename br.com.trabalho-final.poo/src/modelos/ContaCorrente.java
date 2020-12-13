@@ -11,7 +11,12 @@ public class ContaCorrente extends Conta {
 		this.limiteChequeEspecial = 0;
 		this.taxaAministrativa = 0;
 	}
-	
+
+	@Override
+	public double calculaTarifa() {
+		return 10.00 + this.taxaAministrativa;
+	}
+
 	public ContaCorrente(double limiteChequeEspecial, double taxaAministrativa, int nroConta, Agencia agencia,
 			Cliente cliente, char status) {
 		super(nroConta, agencia, cliente, status, new Date());

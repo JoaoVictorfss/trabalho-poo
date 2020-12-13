@@ -10,7 +10,12 @@ public class ContaPoupanca extends Conta{
 			this.rendimento = 0;
 		}
 
-		public ContaPoupanca(double rendimento, int nroConta, Agencia agencia,
+	@Override
+	public double calculaTarifa() {
+		return 0;
+	}
+
+	public ContaPoupanca(double rendimento, int nroConta, Agencia agencia,
 				Cliente cliente, char status) {
 			super(nroConta, agencia, cliente, status, new Date());
 			this.setRendimento(rendimento);

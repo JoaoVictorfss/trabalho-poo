@@ -10,6 +10,11 @@ public class ContaSalario extends Conta {
 		this.salMinimo = 0;
 	}
 
+	@Override
+	public double calculaTarifa() {
+		return 0;
+	}
+
 	public ContaSalario(Agencia agencia, double salMinimo) {
 		super(agencia);
 		this.setSalMinimo(salMinimo);
