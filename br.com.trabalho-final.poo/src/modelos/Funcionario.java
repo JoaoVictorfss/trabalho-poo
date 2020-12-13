@@ -7,7 +7,7 @@ public class Funcionario extends Pessoa {
 	private Date DataAd;
 	private char sexo;
 	private String cargo;
-	static double salBase;
+	public static double salBase;
 
 	public Funcionario(String nome, String cpf, Endereco endereco, String estadoCivil, Date dataNasc, Date dataAd,
 			char sexo, String cargo) {

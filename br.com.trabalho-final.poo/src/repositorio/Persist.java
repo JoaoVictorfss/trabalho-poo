@@ -6,7 +6,6 @@ import java.io.ObjectOutputStream;
 /*
  *@desc Inclusão de dados em um arquivo binário
  */
-@SuppressWarnings("serial")
 public class Persist{
 	private static FileOutputStream arquivo = null;
 	private static ObjectOutputStream  objGravar = null;

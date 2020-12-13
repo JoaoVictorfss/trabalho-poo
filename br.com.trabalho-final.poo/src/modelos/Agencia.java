@@ -22,6 +22,13 @@ public class Agencia implements Serializable {
 		clientes.forEach(item -> this.clientes.add(item));
 		contas.forEach(item -> this.contas.add(item));
 	}
+	
+	public Agencia(String nome, int nroAgencia, Endereco endereco, Gerente gerente) {
+		this.setNome(nome);
+		this.setNroAgencia(nroAgencia);
+		this.setEndereco(endereco);
+		this.setGerente(gerente);
+	}
 
 	public Agencia(int nroAgencia, Endereco endereco, Gerente gerente) {
 		this.setNroAgencia(nroAgencia);

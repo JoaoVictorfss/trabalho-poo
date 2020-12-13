@@ -35,11 +35,11 @@ public class Gerente extends Funcionario {
 			this.nomeCurso = "Nao possui";
 	}
 
-	static double getBonificacao() {
+	public static double getBonificacao() {
 		return bonificacao;
 	}
 
-	static void setBonificacao(double bonificacao) {
+	public static void setBonificacao(double bonificacao) {
 		if (bonificacao >= 0)
 			Gerente.bonificacao = bonificacao;
 		else
