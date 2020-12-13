@@ -3,6 +3,7 @@ package modelos;
 import java.util.Date;
 
 public class Gerente extends Funcionario {
+	private static final long serialVersionUID = 1L;
 	private boolean possuiCurso;
 	private String nomeCurso;
 	private static double bonificacao;
@@ -39,16 +40,18 @@ public class Gerente extends Funcionario {
 	}
 
 	static void setBonificacao(double bonificacao) {
-		if(bonificacao >= 0)Gerente.bonificacao = bonificacao;
-		else Gerente.bonificacao = 0;
-	} 
-	
+		if (bonificacao >= 0)
+			Gerente.bonificacao = bonificacao;
+		else
+			Gerente.bonificacao = 0;
+	}
+
 	public double calcSal() {
 		@SuppressWarnings("deprecation")
 		final int anoAtual = new Date().getYear();
-	    @SuppressWarnings("deprecation")
+		@SuppressWarnings("deprecation")
 		final int anoEntrada = this.getDataAd().getYear();
-	    final int anos = anoAtual - anoEntrada;
-		return Gerente.salBase + Gerente.getBonificacao()*anos;
+		final int anos = anoAtual - anoEntrada;
+		return Gerente.salBase + Gerente.getBonificacao() * anos;
 	}
 }

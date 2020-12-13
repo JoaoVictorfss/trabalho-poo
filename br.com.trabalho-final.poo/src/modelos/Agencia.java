@@ -3,7 +3,8 @@ package modelos;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Agencia implements Serializable{
+public class Agencia implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private int nroAgencia;
 	private String nome;
 	private Endereco endereco;

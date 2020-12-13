@@ -3,8 +3,8 @@ package modelos;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Cliente extends Pessoa{
-
+public class Cliente extends Pessoa {
+	private static final long serialVersionUID = 1L;
 	private String escolaridade;
 	private ArrayList<Conta> contas = new ArrayList<Conta>();
 	private Agencia agencia;

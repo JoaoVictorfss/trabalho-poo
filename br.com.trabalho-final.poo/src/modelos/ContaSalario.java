@@ -3,6 +3,7 @@ package modelos;
 import java.util.Date;
 
 public class ContaSalario extends Conta {
+	private static final long serialVersionUID = 1L;
 	private double salMinimo;
 
 	public ContaSalario() {
@@ -20,8 +21,7 @@ public class ContaSalario extends Conta {
 		this.setSalMinimo(salMinimo);
 	}
 
-	public ContaSalario(int nroConta, Agencia agencia, Cliente cliente, char status,
-			double salMinimo) {
+	public ContaSalario(int nroConta, Agencia agencia, Cliente cliente, char status, double salMinimo) {
 		super(nroConta, agencia, cliente, status, new Date());
 		this.setSalMinimo(salMinimo);
 	}

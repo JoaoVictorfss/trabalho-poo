@@ -66,8 +66,9 @@ public class Teste {
 	    Teste.mostraDadosGerente(gerente);
 	   
 		Agencia one = new Agencia(12, enderecoAgencia, gerente);
-
-		//Testa cliente
+           
+	     System.out.println( Persist.gravar(one, "agencias.bin"));
+		 //Testa cliente
 		 Cliente joao = new Cliente("Joao", one, "60792520076", enderecoJoao, "casado", "cursando superior", new Date() );
 
 		Cliente maria = new Cliente("maria", one, "69582822058", enderecoJoao, "casada", "Doutorado", new Date());

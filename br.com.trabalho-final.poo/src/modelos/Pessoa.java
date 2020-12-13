@@ -4,7 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.InputMismatchException;
 
-public class Pessoa implements Serializable{
+public class Pessoa implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private String nome;
 	private String cpf;
 	private Endereco endereco;

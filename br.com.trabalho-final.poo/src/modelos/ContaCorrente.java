@@ -3,6 +3,7 @@ package modelos;
 import java.util.Date;
 
 public class ContaCorrente extends Conta {
+	private static final long serialVersionUID = 1L;
 	private double limiteChequeEspecial;
 	private double taxaAministrativa;
 
@@ -23,7 +24,7 @@ public class ContaCorrente extends Conta {
 		this.setLimiteChequeEspecial(limiteChequeEspecial);
 		this.setTaxaAministrativa(taxaAministrativa);
 	}
-	
+
 	public ContaCorrente(double limiteChequeEspecial, double taxaAministrativa, Agencia agencia) {
 		super(agencia);
 		this.setLimiteChequeEspecial(limiteChequeEspecial);

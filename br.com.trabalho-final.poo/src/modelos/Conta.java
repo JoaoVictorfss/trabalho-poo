@@ -4,7 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-abstract class Conta implements Serializable{
+abstract class Conta implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private int nroConta;
 	private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 	private byte status;
@@ -63,7 +64,8 @@ abstract class Conta implements Serializable{
 
 	public boolean setCliente(Cliente cliente) {
 		final boolean clienteCriado = this.clientes.add(cliente);
-		if(clienteCriado) this.totalCliente ++;
+		if (clienteCriado)
+			this.totalCliente++;
 		return clienteCriado;
 	}
 
@@ -117,7 +119,7 @@ abstract class Conta implements Serializable{
 		} else
 			return false;
 	}
-	
+
 	public int getTotalCliente() {
 		return this.totalCliente;
 	}
