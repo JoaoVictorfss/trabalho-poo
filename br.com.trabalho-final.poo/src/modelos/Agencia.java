@@ -2,7 +2,7 @@ package modelos;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-
+//aprendendo a não ser ruim
 public class Agencia implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int nroAgencia;
