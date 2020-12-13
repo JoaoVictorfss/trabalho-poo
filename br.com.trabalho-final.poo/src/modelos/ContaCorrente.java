@@ -5,30 +5,31 @@ import java.util.Date;
 public class ContaCorrente extends Conta {
 	private static final long serialVersionUID = 1L;
 	private double limiteChequeEspecial;
-	private double taxaAministrativa;
+	private double taxaAdministrativa;
+	private String categoria;
 
 	public ContaCorrente() {
 		super();
 		this.limiteChequeEspecial = 0;
-		this.taxaAministrativa = 0;
+		this.taxaAdministrativa = 0;
 	}
 
 	@Override
 	public double calculaTarifa() {
-		return 10.00 + this.taxaAministrativa;
+		return 10.00 + this.taxaAdministrativa;
 	}
 
-	public ContaCorrente(double limiteChequeEspecial, double taxaAministrativa, int nroConta, Agencia agencia,
+	public ContaCorrente(double limiteChequeEspecial, double taxaAdministrativa, int nroConta, Agencia agencia,
 			Cliente cliente, char status) {
 		super(nroConta, agencia, cliente, status, new Date());
 		this.setLimiteChequeEspecial(limiteChequeEspecial);
-		this.setTaxaAministrativa(taxaAministrativa);
+		this.setTaxaAdministrativa(taxaAdministrativa);
 	}
 
-	public ContaCorrente(double limiteChequeEspecial, double taxaAministrativa, Agencia agencia) {
+	public ContaCorrente(double limiteChequeEspecial, double taxaAdministrativa, Agencia agencia) {
 		super(agencia);
 		this.setLimiteChequeEspecial(limiteChequeEspecial);
-		this.setTaxaAministrativa(taxaAministrativa);
+		this.setTaxaAdministrativa(taxaAdministrativa);
 	}
 
 	public double getLimiteChequeEspecial() {
@@ -42,15 +43,23 @@ public class ContaCorrente extends Conta {
 			this.limiteChequeEspecial = 0;
 	}
 
-	public double getTaxaAministrativa() {
-		return taxaAministrativa;
+	public double getTaxaAdministrativa() {
+		return taxaAdministrativa;
 	}
 
-	public void setTaxaAministrativa(double taxaAministrativa) {
-		if (taxaAministrativa > 0)
-			this.taxaAministrativa = taxaAministrativa;
+	public void setTaxaAdministrativa(double taxaAdministrativa) {
+		if (taxaAdministrativa > 0)
+			this.taxaAdministrativa = taxaAdministrativa;
 		else
-			this.taxaAministrativa = 0;
+			this.taxaAdministrativa = 0;
+	}
+
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
 
 }
