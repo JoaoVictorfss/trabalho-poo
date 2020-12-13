@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-abstract class Conta implements Serializable {
+abstract class Conta extends Transacoes implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int nroConta;
 	private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
@@ -93,31 +93,6 @@ abstract class Conta implements Serializable {
 
 	public void setAgencia(Agencia agencia) {
 		this.agencia = agencia;
-	}
-
-	// transações
-	public boolean saque(double valor, Date dataTrans, Agencia agencia, int idTrans) {
-		if (valor <= this.saldoAtual && valor > 0) {
-			this.saldoAtual -= valor;
-			return true;
-		} else
-			return false;// -1 como valor de erro
-	}
-
-	public boolean deposito(double valor, Date dataTrans, Agencia agencia, int idTrans) {
-		if (valor > 0) {
-			this.saldoAtual += valor;
-			return true;
-		} else
-			return false;
-	}
-
-	public boolean transferencia(double valor, Date dataTrans, Agencia agencia, int idTrans) {
-		if (valor <= this.saldoAtual && valor > 0) {
-			this.saldoAtual -= valor;
-			return true;
-		} else
-			return false;
 	}
 
 	public int getTotalCliente() {
