@@ -12,21 +12,18 @@ public class ControladorAgencia {
 	private void mostrarDados(Agencia a) {
 
 		System.out.println("______________________________________");
-		System.out.println("\nDados do Agencia\n");
+		System.out.println("\nDados da Agencia\n");
 		System.out.println("Nome: " + a.getNome());
 		System.out.println("Número: " + a.getNroAgencia());
 		System.out.println("Nome do gerente: " + a.getGerente().getNome());
-		System.out.println("\n**************************************");
-		System.out.println("Endereço: \n");
+		System.out.print("Endereço: ");
 		System.out.print(a.getEndereco().getCep() + ", ");
 		System.out.print("rua: " + a.getEndereco().getRua() + ", ");
 		System.out.print("número: " + a.getEndereco().getNumero() + " - ");
 		System.out.print(a.getEndereco().getUf() + ", ");
 		System.out.println(a.getEndereco().getCidade() + ".");
 		if (!a.getClientes().isEmpty()) {
-			System.out.println("\n**************************************");
-
-			System.out.println("Clientes: \n");
+			System.out.println("\nClientes: ");
 			a.getClientes().forEach(c -> System.out.println(c.getNome()));
 		}
 		System.out.println("______________________________________");
