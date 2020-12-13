@@ -1,4 +1,4 @@
-package view;
+package modelos;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -85,7 +85,6 @@ public class Teste {
 		 contaCasal.deposito(2000, new Date(), one, 1);
 		 contaCasal.saque(1000, new Date(), one, 2);
 		 Teste.mostraDadosConta(contaCasal);
-		 
 		 
 		 //Testa Agência
 		 one.setConta(contaCasal); 

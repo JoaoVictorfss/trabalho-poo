@@ -2,13 +2,12 @@ package repositorio;
 
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 
 /*
  *@desc Inclusão de dados em um arquivo binário
  */
 @SuppressWarnings("serial")
-public class Persist implements Serializable{
+public class Persist{
 	private static FileOutputStream arquivo = null;
 	private static ObjectOutputStream  objGravar = null;
 	

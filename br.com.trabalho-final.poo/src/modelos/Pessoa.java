@@ -1,4 +1,4 @@
-package view;
+package modelos;
 
 import java.io.Serializable;
 import java.util.Date;
