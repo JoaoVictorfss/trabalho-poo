@@ -5,6 +5,7 @@ import java.util.Date;
 public class ContaPoupanca extends Conta {
 	private static final long serialVersionUID = 1L;
 	private double rendimento;
+	private double tarifaConta;
 
 	//constructor
 	public ContaPoupanca() {
@@ -34,10 +35,19 @@ public class ContaPoupanca extends Conta {
 			rendimento = 0;
 	}
 	
-	//Cálculo de tarifa
+	//Calculo de tarifa
 	@Override
 	public double calculaTarifa() {
-		return 0;
+		return this.setTarifaConta(10.0);
+	}
+
+	public double getTarifaConta() {
+		return tarifaConta;
+	}
+
+	public double setTarifaConta(double tarifaConta) {
+		this.tarifaConta = tarifaConta;
+		return tarifaConta;
 	}
 
 }

@@ -10,6 +10,7 @@ import controladores.ControladorEndereco;
 import controladores.ControladorFuncionario;
 import modelos.Agencia;
 import modelos.Cliente;
+import modelos.ContaCorrente;
 import modelos.ContaPoupanca;
 import modelos.Endereco;
 import modelos.Funcionario;
@@ -34,13 +35,12 @@ public class Teste {
 
 		Cliente joao = new Cliente("Joao", one, "60792520076", enderecoJoao, "casado", "cursando superior", new Date());
 		Cliente maria = new Cliente("maria", one, "69582822058", enderecoJoao, "casada", "Doutorado", new Date());
-
+		
 		one.setCliente(joao);
 		one.setCliente(maria);
-
+		
 		ContaPoupanca contaCasal = new ContaPoupanca(0, 11, one, joao, 'A');
 		contaCasal.setCliente(maria);
-
 		maria.setConta(contaCasal);
 		joao.setConta(contaCasal);
 
