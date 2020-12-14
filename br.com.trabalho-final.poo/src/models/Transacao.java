@@ -1,4 +1,4 @@
-package modelos;
+package models;
 
 import java.util.Date;
 
@@ -11,7 +11,6 @@ public class Transacao {
     private String tipoTransacao;
     private double valorTransacao;
     private Agencia agencia;
-    private Conta contaDestino;
 
     //constructor
     public Transacao(Date dataTransacao, String tipoTransacao, double valorTransacao, Agencia agencia) {
@@ -22,14 +21,6 @@ public class Transacao {
         Transacao.id++;
     }
 
-    public Transacao(Date dataTransacao, String tipoTransacao, double valorTransacao, Agencia agencia, Conta contaDestino) {
-        this.dataTransacao = dataTransacao;
-        this.tipoTransacao = tipoTransacao;
-        this.valorTransacao = valorTransacao;
-        this.agencia = agencia;
-        this.contaDestino = contaDestino;
-        Transacao.id++;
-    }
 
     //getters e setters
     public int getId() {
@@ -47,5 +38,9 @@ public class Transacao {
     public double getValorTransacao() {
         return valorTransacao;
     }
+
+	public Agencia getAgencia() {
+		return agencia;
+	}
 
 }

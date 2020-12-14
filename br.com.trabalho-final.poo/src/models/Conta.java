@@ -1,4 +1,4 @@
-package modelos;
+package models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -86,7 +86,7 @@ public abstract class Conta implements Serializable {
 		else
 			this.status = 2;
 	}
-	
+
 	public Agencia getAgencia() {
 		return agencia;
 	}
@@ -99,32 +99,15 @@ public abstract class Conta implements Serializable {
 		return this.totalCliente;
 	}
 
-	//Operações bancárias
+	// Operações bancárias
 	public boolean saque(double valor, Date data) {
 		if (valor <= saldoAtual && valor > 0) {
 			saldoAtual -= valor;
 			Transacao transacao = new Transacao(data, "saque", valor, this.agencia);
-			
-			System.out.println("______________________________________");
-			System.out.println("Extrato");
-			System.out.println("Data da transação: " + transacao.getDataTransacao());
-			System.out.println("Id: " + transacao.getId());
-			System.out.println("Valor: " + transacao.getValorTransacao());
-			System.out.println("Tipo: " + transacao.getTipoTransacao());
-			System.out.println("Saldo Atual: " + this.saldoAtual);
-			System.out.println("______________________________________");
-			return true;
-		} else
-			throw new IllegalArgumentException("Valor inválido para saque!");
-	}
 
-	public boolean deposito(double valor, Date data) {
-		if (valor > 0) {
-			saldoAtual += valor;			
-			Transacao transacao = new Transacao(data, "deposito", valor, this.agencia);
-			
 			System.out.println("______________________________________");
 			System.out.println("Extrato");
+			System.out.println("Agência: " + this.getAgencia().getNroAgencia());
 			System.out.println("Data da transação: " + transacao.getDataTransacao());
 			System.out.println("Id: " + transacao.getId());
 			System.out.println("Valor: " + transacao.getValorTransacao());
@@ -133,17 +116,19 @@ public abstract class Conta implements Serializable {
 			System.out.println("______________________________________");
 			return true;
 		} else {
-			throw new IllegalArgumentException("Valor do depósito não pode ser um valor negativo!");
+			System.out.println("Valor inválido para saque!");
+			return false;
 		}
 	}
 
-	public boolean transferencia(double valor, Conta contaDestino, Date data) {
-		if (valor <= saldoAtual && valor > 0) {
-			saldoAtual -= valor;		
-			Transacao transacao = new Transacao(data, "transferencia", valor, this.agencia);
-			
+	public boolean deposito(double valor, Date data) {
+		if (valor > 0) {
+			saldoAtual += valor;
+			Transacao transacao = new Transacao(data, "deposito", valor, this.agencia);
+
 			System.out.println("______________________________________");
 			System.out.println("Extrato");
+			System.out.println("Agência: " + transacao.getAgencia().getNroAgencia());
 			System.out.println("Data da transação: " + transacao.getDataTransacao());
 			System.out.println("Id: " + transacao.getId());
 			System.out.println("Valor: " + transacao.getValorTransacao());
@@ -151,11 +136,35 @@ public abstract class Conta implements Serializable {
 			System.out.println("Saldo Atual: " + this.saldoAtual);
 			System.out.println("______________________________________");
 			return true;
-		} else
-			throw new IllegalArgumentException("Valor inválido para transferência!");
+		} else {
+			System.out.println("Valor do depósito não pode ser um valor negativo!");
+			return false;
+		}
 	}
 
-    //Métado abstrato para cálculo de tarifa
+	public boolean transferencia(double valor, Conta contaDestino, Date data) {
+		if (valor <= saldoAtual && valor > 0) {
+			saldoAtual -= valor;
+			Transacao transacao = new Transacao(data, "transferencia", valor, this.agencia);
+            
+			System.out.println("______________________________________");
+			System.out.println("Extrato");
+			System.out.println("Agência: " + transacao.getAgencia().getNroAgencia());
+			System.out.println("Data da transação: " + transacao.getDataTransacao());
+			System.out.println("Id: " + transacao.getId());
+			System.out.println("Valor: " + transacao.getValorTransacao());
+			System.out.println("Tipo: " + transacao.getTipoTransacao());
+			System.out.println("Conta de destino: " + contaDestino.getNroConta());
+			System.out.println("Saldo Atual: " + this.saldoAtual);
+			System.out.println("______________________________________");
+			return true;
+		} else {
+			System.out.println("Valor inválido para transferência!");
+			return false;
+		}
+	}
+
+	// Métado abstrato para cálculo de tarifa
 	public abstract double calculaTarifa();
 
 }

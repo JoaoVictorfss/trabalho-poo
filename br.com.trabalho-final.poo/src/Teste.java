@@ -3,17 +3,17 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import controladores.ControladorAgencia;
-import controladores.ControladorCliente;
-import controladores.ControladorConta;
-import controladores.ControladorEndereco;
-import controladores.ControladorFuncionario;
-import modelos.Agencia;
-import modelos.Cliente;
-import modelos.ContaPoupanca;
-import modelos.Endereco;
-import modelos.Funcionario;
-import modelos.Gerente;
+import controllers.ControladorAgencia;
+import controllers.ControladorCliente;
+import controllers.ControladorConta;
+import controllers.ControladorEndereco;
+import controllers.ControladorFuncionario;
+import models.Agencia;
+import models.Cliente;
+import models.ContaPoupanca;
+import models.Endereco;
+import models.Funcionario;
+import models.Gerente;
 
 public class Teste {
 	public static void main(String[] args) throws ParseException {

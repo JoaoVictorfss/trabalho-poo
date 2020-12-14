@@ -1,9 +1,9 @@
-package controladores;
+package controllers;
 
 import java.util.ArrayList;
 
-import modelos.Funcionario;
-import repositorio.Persist;
+import models.Funcionario;
+import persist.Persist;
 
 /*
  *   @desc classe rensposável por controlar os dados dos funcionários,

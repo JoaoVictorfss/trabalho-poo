@@ -1,9 +1,9 @@
-package controladores;
+package controllers;
 
 import java.util.ArrayList;
 
-import modelos.Endereco;
-import repositorio.Persist;
+import models.Endereco;
+import persist.Persist;
 
 /*
  *   @desc classe rensposável por controlar os dados dos endereços,

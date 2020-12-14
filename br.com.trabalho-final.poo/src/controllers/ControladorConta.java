@@ -1,9 +1,9 @@
-package controladores;
+package controllers;
 
 import java.util.ArrayList;
 
-import modelos.Conta;
-import repositorio.Persist;
+import models.Conta;
+import persist.Persist;
 
 /*
  * @desc classe rensposável por controlar os dados das contas,

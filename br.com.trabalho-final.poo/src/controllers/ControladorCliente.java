@@ -1,9 +1,9 @@
-package controladores;
+package controllers;
 
 import java.util.ArrayList;
 
-import modelos.Cliente;
-import repositorio.Persist;
+import models.Cliente;
+import persist.Persist;
 
 /*
  *   @desc classe rensposável por controlar os dados dos clientes,

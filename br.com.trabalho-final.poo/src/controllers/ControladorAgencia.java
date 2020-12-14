@@ -1,9 +1,9 @@
-package controladores;
+package controllers;
 
 import java.util.ArrayList;
 
-import modelos.Agencia;
-import repositorio.Persist;
+import models.Agencia;
+import persist.Persist;
 
 /*
  * @desc classe rensposável por controlar os dados das agências,
