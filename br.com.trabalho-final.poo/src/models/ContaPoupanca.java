@@ -5,24 +5,28 @@ import java.util.Date;
 public class ContaPoupanca extends Conta {
 	private static final long serialVersionUID = 1L;
 	private double rendimento;
+	private double tarifaConta;
 
-	//constructor
+	// constructor
 	public ContaPoupanca() {
 		super();
 		this.rendimento = 0;
+		this.tarifaConta = 0;
 	}
 
-	public ContaPoupanca(double rendimento, int nroConta, Agencia agencia, Cliente cliente, char status) {
+	public ContaPoupanca(double rendimento, int nroConta, Agencia agencia, Cliente cliente, char status, double tarifaConta) {
 		super(nroConta, agencia, cliente, status, new Date());
 		this.setRendimento(rendimento);
+		this.setTarifaConta(tarifaConta);
 	}
 
-	public ContaPoupanca(Agencia agencia, double rendimento) {
+	public ContaPoupanca(Agencia agencia, double rendimento, double tarifaConta) {
 		super(agencia);
 		this.setRendimento(rendimento);
+		this.setTarifaConta(tarifaConta);
 	}
 
-	//getters e setters
+	// getters e setters
 	public double getRendimento() {
 		return rendimento;
 	}
@@ -33,11 +37,21 @@ public class ContaPoupanca extends Conta {
 		else
 			rendimento = 0;
 	}
-	
-	//Cálculo de tarifa
+
+	public double getTarifaConta() {
+		return tarifaConta;
+	}
+
+	public void setTarifaConta(double tarifaConta) {
+		if (tarifaConta > 0) {
+			this.tarifaConta = tarifaConta;
+		}
+	}
+
+	// Calculo de tarifa
 	@Override
 	public double calculaTarifa() {
-		return 0;
+		return this.tarifaConta;
 	}
 
 }

@@ -5,27 +5,26 @@ import java.util.Date;
 public class ContaCorrente extends Conta {
 	private static final long serialVersionUID = 1L;
 	private double limiteChequeEspecial;
-	private double taxaAdministrativa;
+	private double tarifaConta;
 	private String categoria;
 
 	//constructor
 	public ContaCorrente() {
 		super();
 		this.limiteChequeEspecial = 0;
-		this.taxaAdministrativa = 0;
+		this.tarifaConta = 0;
 	}
 
-	public ContaCorrente(double limiteChequeEspecial, double taxaAdministrativa, int nroConta, Agencia agencia,
-			Cliente cliente, char status) {
+	public ContaCorrente( String categoria, int nroConta, Agencia agencia, Cliente cliente, char status, double limiteChequeEspecial) {
 		super(nroConta, agencia, cliente, status, new Date());
 		this.setLimiteChequeEspecial(limiteChequeEspecial);
-		this.setTaxaAdministrativa(taxaAdministrativa);
+		this.setCategoria(categoria);
 	}
 
-	public ContaCorrente(double limiteChequeEspecial, double taxaAdministrativa, Agencia agencia) {
+	public ContaCorrente(double limiteChequeEspecial, String categoria, Agencia agencia) {
 		super(agencia);
 		this.setLimiteChequeEspecial(limiteChequeEspecial);
-		this.setTaxaAdministrativa(taxaAdministrativa);
+		this.setCategoria(categoria);
 	}
 
 	//getters e setters
@@ -40,15 +39,15 @@ public class ContaCorrente extends Conta {
 			this.limiteChequeEspecial = 0;
 	}
 
-	public double getTaxaAdministrativa() {
-		return taxaAdministrativa;
+	public double getTarifaConta() {
+		return tarifaConta;
 	}
 
-	public void setTaxaAdministrativa(double taxaAdministrativa) {
-		if (taxaAdministrativa > 0)
-			this.taxaAdministrativa = taxaAdministrativa;
+	public void setTarifaConta(double tarifaConta) {
+		if (tarifaConta > 0)
+			this.tarifaConta = tarifaConta;
 		else
-			this.taxaAdministrativa = 0;
+			this.tarifaConta = 0;
 	}
 
 	public String getCategoria() {
@@ -62,7 +61,12 @@ public class ContaCorrente extends Conta {
 	//Cálculo de tarifa
 	@Override
 	public double calculaTarifa() {
-		return 10.00 + this.taxaAdministrativa;
+		if("Standard".equalsIgnoreCase(this.categoria)) {
+			return this.tarifaConta = 12.00; //tarifa conta corrente standard
+		}
+		else if("Premium".equalsIgnoreCase(this.categoria)) {
+			return this.tarifaConta = 16.00 ; //tarifa conta corrente premium
+		}else return 0;
 	}
 
 }

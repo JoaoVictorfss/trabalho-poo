@@ -5,6 +5,7 @@ import java.util.Date;
 public class ContaSalario extends Conta {
 	private static final long serialVersionUID = 1L;
 	private double salMinimo;
+	private double tarifaConta;
 
 	//Constructor
 	public ContaSalario() {
@@ -15,6 +16,7 @@ public class ContaSalario extends Conta {
 	public ContaSalario(Agencia agencia, double salMinimo) {
 		super(agencia);
 		this.setSalMinimo(salMinimo);
+		setTarifaConta(salMinimo);
 	}
 
 	public ContaSalario(int nroConta, Agencia agencia, Cliente cliente, char status, double salMinimo) {
@@ -38,6 +40,14 @@ public class ContaSalario extends Conta {
 	@Override
 	public double calculaTarifa() {
 		return 0;
+	}
+
+	public double getTarifaConta() {
+		return tarifaConta;
+	}
+
+	public void setTarifaConta(double salario) {
+		this.tarifaConta = salario/1000;
 	}
 
 }
