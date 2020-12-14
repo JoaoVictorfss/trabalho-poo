@@ -10,7 +10,7 @@ import persist.Persist;
  *         usando uma lista para adicionar, excluir, listar e por fim
  *	       guardar em um arquivo binário os dados dentro da mesma.
  */
-public class ControladorEndereco {
+public class ControladorEndereco implements controller{
 	private ArrayList<Endereco> enderecos = new ArrayList<Endereco>();
 	private final String arquivo = "enderecos.bin";
 
@@ -75,6 +75,10 @@ public class ControladorEndereco {
 		} else {
 			return false;
 		}
+	}
+	
+	public int qtdTotal() {
+		return this.enderecos.size();
 	}
 
 	//Salva os endereços em um arquivo binário

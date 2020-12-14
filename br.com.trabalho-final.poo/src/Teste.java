@@ -1,4 +1,3 @@
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -15,6 +14,31 @@ import models.ContaPoupanca;
 import models.Endereco;
 import models.Funcionario;
 import models.Gerente;
+
+
+/*
+ * @desc Utilização da pasta "models" para armazenar as classes que representam os objetos da instituição 
+ *       financeira.
+ * 
+ * @desc Utilização da pasta "controllers" armazenar as classes reponsáveis pela manipulação dos dados do 
+ *       sistema, sendo que há um controller para cada classe que representa um objeto da instituição financeira. 
+ *       Esses controllers são responsáveis pelo cadastro, exclusão, listagem, busca e por salvar os dados referentes 
+ *       a cada classe em seu respectivo arquivo binário.
+ *       
+ *@desc Foi criado a interface que faz obrigatório a implentação do requisito de devolver a quantidade de dados 
+ *      cadastrados em sua respectiva lista de dados, dentro do controller. Essa interface está na pasta de
+ *      controllers.
+ *      
+ *@desc Utilização da pasta "persist" para guardar a classe que tem como objetivo escrever os dados das listas 
+ *      dentro dos controllers em um arquivo binário.
+ *      
+ * @author João Victor Fernandes de Souza Silva
+ * @author Luiz André da Silva Carvalho
+ * @author Brunno Fabrício Moraes Viegas
+ * 
+ * @date 14/12/2020
+ * 
+ */
 
 public class Teste {
 	public static void main(String[] args) throws ParseException {

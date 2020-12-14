@@ -10,7 +10,7 @@ import persist.Persist;
  *         usando uma lista para adicionar, excluir, listar e por fim
  *	       guardar em um arquivo binário os dados dentro da mesma.
  */
-public class ControladorCliente {
+public class ControladorCliente implements controller{
 	private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 	private final String arquivo = "clientes.bin";
 
@@ -76,7 +76,11 @@ public class ControladorCliente {
 			return false;
 		}
 	}
-
+	
+	public int qtdTotal() {
+		return this.clientes.size();
+	}
+	
 	//Salva os clientes em um arquivo binário
 	public void gravarClientes() {
 		boolean salvo = true;

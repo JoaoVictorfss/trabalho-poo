@@ -10,7 +10,7 @@ import persist.Persist;
  *       usando uma lista para adicionar, excluir, listar e por fim
  *       guardar em um arquivo binário os dados dentro da mesma.
  */
-public class ControladorConta {
+public class ControladorConta implements controller{
 	private ArrayList<Conta> contas= new ArrayList<Conta>();
 	private final String arquivo = "contas.bin";
 
@@ -38,6 +38,7 @@ public class ControladorConta {
 		else {
 			System.out.println("Erro. Conta duplicado");
 		}
+		
 	}
 
 	//Lista contas cadastrados
@@ -73,6 +74,10 @@ public class ControladorConta {
 		} else {
 			return false;
 		}
+	}
+	
+	public int qtdTotal() {
+		return this.contas.size();
 	}
 
 	//Salva as contas em um arquivo binário

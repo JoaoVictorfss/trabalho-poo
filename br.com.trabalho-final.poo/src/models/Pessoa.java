@@ -25,7 +25,7 @@ public abstract class Pessoa implements Serializable {
 		this.setDataNasc(dataNasc);
 	}
 
-	// Validação de cpf obtido no site
+	// Validação de cpf 
 	private boolean cpfValido(String CPF) {
 		if (CPF.equals("00000000000") || CPF.equals("11111111111") || CPF.equals("22222222222")
 				|| CPF.equals("33333333333") || CPF.equals("44444444444") || CPF.equals("55555555555")
@@ -115,9 +115,8 @@ public abstract class Pessoa implements Serializable {
 	}
 
 	public void setEstadoCivil(String estadoCivil) {
-		estadoCivil = estadoCivil.toLowerCase();
-		if (!(estadoCivil.equals("solteiro") || estadoCivil.equals("casado") || estadoCivil.equals("separado")
-				|| estadoCivil.equals("vi�vo")))
+		if (!(estadoCivil.equalsIgnoreCase("solteiro") || estadoCivil.equalsIgnoreCase("casado") || estadoCivil.equalsIgnoreCase("separado")
+				|| estadoCivil.equalsIgnoreCase("viuvo")))
 			this.estadoCivil = "solteiro";
 		else
 			this.estadoCivil = estadoCivil;

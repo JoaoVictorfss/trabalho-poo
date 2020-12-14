@@ -10,7 +10,7 @@ import persist.Persist;
  *       usando uma lista para adicionar, excluir, listar e por fim
  *       guardar em um arquivo binário os dados dentro da mesma.
  */
-public class ControladorAgencia {
+public class ControladorAgencia implements controller {
 	private ArrayList<Agencia> agencias = new ArrayList<Agencia>();
 	private final String arquivo = "agencias.bin";
 
@@ -73,6 +73,7 @@ public class ControladorAgencia {
 
 		return agencia;
 	}
+	
 
 	//Exclui agência pelo número, retorna true se a agência existir e false caso contrário
 	public boolean excluir(int nro) {
@@ -84,6 +85,10 @@ public class ControladorAgencia {
 		} else {
 			return false;
 		}
+	}
+	
+	public int qtdTotal() {
+		return this.agencias.size();
 	}
 
 	//Salva as agências no arquivo binário

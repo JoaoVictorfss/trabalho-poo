@@ -8,14 +8,15 @@ public class ContaCorrente extends Conta {
 	private double tarifaConta;
 	private String categoria;
 
-	//constructor
+	// constructor
 	public ContaCorrente() {
 		super();
 		this.limiteChequeEspecial = 0;
 		this.tarifaConta = 0;
 	}
 
-	public ContaCorrente( String categoria, int nroConta, Agencia agencia, Cliente cliente, char status, double limiteChequeEspecial) {
+	public ContaCorrente(String categoria, int nroConta, Agencia agencia, Cliente cliente, char status,
+			double limiteChequeEspecial) {
 		super(nroConta, agencia, cliente, status, new Date());
 		this.setLimiteChequeEspecial(limiteChequeEspecial);
 		this.setCategoria(categoria);
@@ -27,7 +28,7 @@ public class ContaCorrente extends Conta {
 		this.setCategoria(categoria);
 	}
 
-	//getters e setters
+	// getters e setters
 	public double getLimiteChequeEspecial() {
 		return limiteChequeEspecial;
 	}
@@ -55,18 +56,21 @@ public class ContaCorrente extends Conta {
 	}
 
 	public void setCategoria(String categoria) {
-		this.categoria = categoria;
+		if ("Standard".equalsIgnoreCase(categoria) || "Premium".equalsIgnoreCase(categoria)) {
+			this.categoria = categoria;
+		} else
+			this.categoria = "NA";
 	}
-	
-	//Cálculo de tarifa
+
+	// Cálculo de tarifa
 	@Override
 	public double calculaTarifa() {
-		if("Standard".equalsIgnoreCase(this.categoria)) {
-			return this.tarifaConta = 12.00; //tarifa conta corrente standard
-		}
-		else if("Premium".equalsIgnoreCase(this.categoria)) {
-			return this.tarifaConta = 16.00 ; //tarifa conta corrente premium
-		}else return 0;
+		if ("Standard".equalsIgnoreCase(this.categoria)) {
+			return this.tarifaConta = 12.00; // tarifa conta corrente standard
+		} else if ("Premium".equalsIgnoreCase(this.categoria)) {
+			return this.tarifaConta = 16.00; // tarifa conta corrente premium
+		} else
+			return 0;
 	}
 
 }

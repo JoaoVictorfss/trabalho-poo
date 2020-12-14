@@ -10,7 +10,7 @@ import persist.Persist;
  *         usando uma lista para adicionar, excluir, listar e por fim
  *	       guardar em um arquivo binário os dados dentro da mesma.
  */
-public class ControladorFuncionario {
+public class ControladorFuncionario implements controller{
 	private ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>();
 	private final String arquivo = "funcionarios.bin";
 
@@ -76,6 +76,10 @@ public class ControladorFuncionario {
 			return false;
 		}
 	}
+	
+	public int qtdTotal() {
+		return this.funcionarios.size();
+	}
 
 	//Salva os endereços em um arquivo binário
 	public void gravarFuncionarios() {
@@ -92,6 +96,6 @@ public class ControladorFuncionario {
 				System.out.println("Erro. Ocorreu um erro ao salvar os funcionarios, tente novamente!");
 		} else
 			System.out.println("Erro. Sem registros para salvar!");
-
 	}
+	
 }
