@@ -6,14 +6,10 @@ public class ContaPoupanca extends Conta {
 	private static final long serialVersionUID = 1L;
 	private double rendimento;
 
+	//constructor
 	public ContaPoupanca() {
 		super();
 		this.rendimento = 0;
-	}
-
-	@Override
-	public double calculaTarifa() {
-		return 0;
 	}
 
 	public ContaPoupanca(double rendimento, int nroConta, Agencia agencia, Cliente cliente, char status) {
@@ -26,6 +22,7 @@ public class ContaPoupanca extends Conta {
 		this.setRendimento(rendimento);
 	}
 
+	//getters e setters
 	public double getRendimento() {
 		return rendimento;
 	}
@@ -35,6 +32,12 @@ public class ContaPoupanca extends Conta {
 			this.rendimento = rendimento;
 		else
 			rendimento = 0;
+	}
+	
+	//Cálculo de tarifa
+	@Override
+	public double calculaTarifa() {
+		return 0;
 	}
 
 }

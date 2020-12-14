@@ -31,6 +31,7 @@ public class Cliente extends Pessoa {
 		this.setAgencia(agencia);
 	}
 
+	//getters e setters
 	public String getEscolaridade() {
 		return escolaridade;
 	}

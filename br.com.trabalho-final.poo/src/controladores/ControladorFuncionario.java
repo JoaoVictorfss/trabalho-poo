@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import modelos.Funcionario;
 import repositorio.Persist;
 
+/*
+ *   @desc classe rensposável por controlar os dados dos funcionários,
+ *         usando uma lista para adicionar, excluir, listar e por fim
+ *	       guardar em um arquivo binário os dados dentro da mesma.
+ */
 public class ControladorFuncionario {
 	private ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>();
 	private final String arquivo = "funcionarios.bin";
@@ -21,11 +26,12 @@ public class ControladorFuncionario {
 		System.out.println("______________________________________");
 	}
 	
+	//Cadastra funcionário na lista, não aceita funcionários duplicados
 	public void cadastrar(Funcionario f) {
 		Funcionario existente = this.buscar(f.getCpf());
 
 		if (existente == null) {
-			this.funcionarios.add(f);// Adiciona o Funcionario
+			this.funcionarios.add(f);
 
 			System.out.println("Sucesso. Funcionário cadastrado com sucesso!");
 			System.out.println("A quantidade total de Funcionarios agora eh: " + this.funcionarios.size());
@@ -36,6 +42,7 @@ public class ControladorFuncionario {
 		}
 	}
 
+	//Lista endereços cadastrados
 	public void listar() {
 		if (funcionarios.isEmpty()) {
 			System.out.println("Sem registros!");
@@ -44,6 +51,7 @@ public class ControladorFuncionario {
 		}
 	}
 
+	//Busca endereço pelo cep, retorna um endereço caso encontrado ou null caso contrário
 	public Funcionario buscar(String cpf) {
 		Funcionario funcionario = null;
 
@@ -56,7 +64,8 @@ public class ControladorFuncionario {
 
 		return funcionario;
 	}
-
+	
+	//Exclui um endereço pelo cep, retorna false se o endereço não existir
 	public boolean excluir(String cpf) {
 		Funcionario f = this.buscar(cpf);
 
@@ -68,6 +77,7 @@ public class ControladorFuncionario {
 		}
 	}
 
+	//Salva os endereços em um arquivo binário
 	public void gravarFuncionarios() {
 		boolean salvo = true;
 

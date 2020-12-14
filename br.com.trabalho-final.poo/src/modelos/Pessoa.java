@@ -12,6 +12,7 @@ public class Pessoa implements Serializable {
 	private String estadoCivil;
 	private Date dataNasc;
 
+	//constructor
 	public Pessoa() {
 		this(null, null, null, null, null);
 	}
@@ -25,7 +26,6 @@ public class Pessoa implements Serializable {
 	}
 
 	// Validação de cpf obtido no site
-	// https://www.devmedia.com.br/validando-o-cpf-em-uma-aplicacao-java/22097
 	private boolean cpfValido(String CPF) {
 		if (CPF.equals("00000000000") || CPF.equals("11111111111") || CPF.equals("22222222222")
 				|| CPF.equals("33333333333") || CPF.equals("44444444444") || CPF.equals("55555555555")
@@ -74,7 +74,7 @@ public class Pessoa implements Serializable {
 		}
 	}
 
-	// getters and setters
+	// getters e setters
 	public String getNome() {
 		return nome;
 	}

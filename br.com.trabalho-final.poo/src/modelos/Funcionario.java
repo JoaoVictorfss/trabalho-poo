@@ -9,6 +9,7 @@ public class Funcionario extends Pessoa {
 	private String cargo;
 	public static double salBase;
 
+	//constructor
 	public Funcionario(String nome, String cpf, Endereco endereco, String estadoCivil, Date dataNasc, Date dataAd,
 			char sexo, String cargo) {
 		super(nome, cpf, endereco, estadoCivil, dataNasc);
@@ -17,6 +18,7 @@ public class Funcionario extends Pessoa {
 		this.setCargo(cargo);
 	}
 
+	//getters e setters
 	public Date getDataAd() {
 		return DataAd;
 	}
@@ -47,6 +49,7 @@ public class Funcionario extends Pessoa {
 		this.cargo = cargo;
 	}
 
+	//Cálculo de salário
 	public double calcSal() {
 		return Funcionario.salBase;
 	}

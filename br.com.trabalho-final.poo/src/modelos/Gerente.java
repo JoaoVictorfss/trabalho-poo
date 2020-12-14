@@ -16,6 +16,7 @@ public class Gerente extends Funcionario {
 		this.setNomeCurso(nomeCurso);
 	}
 
+	//getters e setters
 	public boolean getPossuiCurso() {
 		return possuiCurso;
 	}
@@ -45,7 +46,8 @@ public class Gerente extends Funcionario {
 		else
 			Gerente.bonificacao = 0;
 	}
-
+	
+    //Cálculo de salário
 	public double calcSal() {
 		@SuppressWarnings("deprecation")
 		final int anoAtual = new Date().getYear();

@@ -8,15 +8,11 @@ public class ContaCorrente extends Conta {
 	private double taxaAdministrativa;
 	private String categoria;
 
+	//constructor
 	public ContaCorrente() {
 		super();
 		this.limiteChequeEspecial = 0;
 		this.taxaAdministrativa = 0;
-	}
-
-	@Override
-	public double calculaTarifa() {
-		return 10.00 + this.taxaAdministrativa;
 	}
 
 	public ContaCorrente(double limiteChequeEspecial, double taxaAdministrativa, int nroConta, Agencia agencia,
@@ -32,6 +28,7 @@ public class ContaCorrente extends Conta {
 		this.setTaxaAdministrativa(taxaAdministrativa);
 	}
 
+	//getters e setters
 	public double getLimiteChequeEspecial() {
 		return limiteChequeEspecial;
 	}
@@ -60,6 +57,12 @@ public class ContaCorrente extends Conta {
 
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
+	}
+	
+	//Cálculo de tarifa
+	@Override
+	public double calculaTarifa() {
+		return 10.00 + this.taxaAdministrativa;
 	}
 
 }

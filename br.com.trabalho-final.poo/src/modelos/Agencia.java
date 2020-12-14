@@ -2,7 +2,7 @@ package modelos;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-//aprendendo a não ser ruim
+
 public class Agencia implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int nroAgencia;
@@ -36,7 +36,7 @@ public class Agencia implements Serializable {
 		this.setGerente(gerente);
 	}
 
-	// getters and setters
+	// getters e setters
 	public int getNroAgencia() {
 		return nroAgencia;
 	}

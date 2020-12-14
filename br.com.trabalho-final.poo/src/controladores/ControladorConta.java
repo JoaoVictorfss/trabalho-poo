@@ -3,9 +3,13 @@ package controladores;
 import java.util.ArrayList;
 
 import modelos.Conta;
-
 import repositorio.Persist;
 
+/*
+ * @desc classe rensposável por controlar os dados das contas,
+ *       usando uma lista para adicionar, excluir, listar e por fim
+ *       guardar em um arquivo binário os dados dentro da mesma.
+ */
 public class ControladorConta {
 	private ArrayList<Conta> contas= new ArrayList<Conta>();
 	private final String arquivo = "contas.bin";
@@ -21,15 +25,14 @@ public class ControladorConta {
 		System.out.println("______________________________________");
 	}
 	
+	//Cadastra conta na lista, não aceita contas duplicadas
 	public void cadastrar(Conta c) {
 		Conta existente = this.buscar(c.getNroConta());
 
 		if (existente == null) {
-			this.contas.add(c);// Adiciona o Conta
-			System.out.println("______________________________________");
-			System.out.println("Sucesso.Conta cadastrado com sucesso!");
+			this.contas.add(c);
+			System.out.println("Sucesso.Conta cadastrada com sucesso!");
 			System.out.println("A quantidade total de contas agora eh: " + this.contas.size());
-			System.out.println("______________________________________");
 		}
 
 		else {
@@ -37,6 +40,7 @@ public class ControladorConta {
 		}
 	}
 
+	//Lista contas cadastrados
 	public void listar() {
 		if (contas.isEmpty()) {
 			System.out.println("Sem registros!");
@@ -45,6 +49,7 @@ public class ControladorConta {
 		}
 	}
 
+	//Busca conta pelo número, retorna uma conta caso encontrada ou null caso contrário
 	public Conta buscar(int nro) {
 		Conta Conta = null;
 
@@ -58,6 +63,7 @@ public class ControladorConta {
 		return Conta;
 	}
 
+	//Exclui uma conta pelo número, retorna false se a conta não existir
 	public boolean excluir(int nro) {
 		Conta c = this.buscar(nro);
 
@@ -69,6 +75,7 @@ public class ControladorConta {
 		}
 	}
 
+	//Salva as contas em um arquivo binário
 	public void gravarcontas() {
 		boolean salvo = true;
 

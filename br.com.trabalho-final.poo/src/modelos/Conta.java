@@ -14,6 +14,7 @@ public abstract class Conta implements Serializable {
 	private Date dataAbertura;
 	private int totalCliente;
 
+	// constructor
 	public Conta() {
 		this(0, null, null, 'I', new Date());
 	}
@@ -22,7 +23,6 @@ public abstract class Conta implements Serializable {
 		this(0, agencia, null, 'I', new Date());
 	}
 
-	// constructor
 	public Conta(int nroConta, Agencia agencia, Cliente cliente, char status, Date dataAbertura) {
 		this.setNroConta(nroConta);
 		this.setCliente(cliente);
@@ -86,12 +86,25 @@ public abstract class Conta implements Serializable {
 		else
 			this.status = 2;
 	}
+	
+	public Agencia getAgencia() {
+		return agencia;
+	}
 
-	public boolean saque(double valor) {
+	public void setAgencia(Agencia agencia) {
+		this.agencia = agencia;
+	}
+
+	public int getTotalCliente() {
+		return this.totalCliente;
+	}
+
+	//Operações bancárias
+	public boolean saque(double valor, Date data) {
 		if (valor <= saldoAtual && valor > 0) {
 			saldoAtual -= valor;
-	
-			Transacao transacao = new Transacao(new Date(), "saque", valor, this.agencia);
+			Transacao transacao = new Transacao(data, "saque", valor, this.agencia);
+			
 			System.out.println("______________________________________");
 			System.out.println("Extrato");
 			System.out.println("Data da transação: " + transacao.getDataTransacao());
@@ -105,10 +118,11 @@ public abstract class Conta implements Serializable {
 			throw new IllegalArgumentException("Valor inválido para saque!");
 	}
 
-	public boolean deposito(double valor) {
+	public boolean deposito(double valor, Date data) {
 		if (valor > 0) {
-			saldoAtual += valor;
-			Transacao transacao = new Transacao(new Date(), "deposito", valor, this.agencia);
+			saldoAtual += valor;			
+			Transacao transacao = new Transacao(data, "deposito", valor, this.agencia);
+			
 			System.out.println("______________________________________");
 			System.out.println("Extrato");
 			System.out.println("Data da transação: " + transacao.getDataTransacao());
@@ -123,10 +137,11 @@ public abstract class Conta implements Serializable {
 		}
 	}
 
-	public boolean transferencia(double valor, Conta contaDestino) {
+	public boolean transferencia(double valor, Conta contaDestino, Date data) {
 		if (valor <= saldoAtual && valor > 0) {
-			saldoAtual -= valor;
-			Transacao transacao = new Transacao(new Date(), "transferencia", valor, this.agencia);
+			saldoAtual -= valor;		
+			Transacao transacao = new Transacao(data, "transferencia", valor, this.agencia);
+			
 			System.out.println("______________________________________");
 			System.out.println("Extrato");
 			System.out.println("Data da transação: " + transacao.getDataTransacao());
@@ -140,18 +155,7 @@ public abstract class Conta implements Serializable {
 			throw new IllegalArgumentException("Valor inválido para transferência!");
 	}
 
-	public Agencia getAgencia() {
-		return agencia;
-	}
-
-	public void setAgencia(Agencia agencia) {
-		this.agencia = agencia;
-	}
-
-	public int getTotalCliente() {
-		return this.totalCliente;
-	}
-
+    //Métado abstrato para cálculo de tarifa
 	public abstract double calculaTarifa();
 
 }

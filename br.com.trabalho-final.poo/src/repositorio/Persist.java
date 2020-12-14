@@ -4,7 +4,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 
 /*
- *@desc Inclusão de dados em um arquivo binário
+ *@desc Classe responsável pela inclusão de dados em um arquivo binário
  */
 public class Persist{
 	private static FileOutputStream arquivo = null;
@@ -15,7 +15,7 @@ public class Persist{
 			//Gera o arquivo para amazenar os objetos
 			arquivo = new FileOutputStream(nomeArquivo);
 
-			//insere os dados no arquivo
+			//Insere os dados no arquivo
 			objGravar = new ObjectOutputStream(arquivo);	
 			objGravar.writeObject(obj);
 

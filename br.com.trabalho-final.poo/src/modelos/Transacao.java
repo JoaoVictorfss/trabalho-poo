@@ -2,6 +2,9 @@ package modelos;
 
 import java.util.Date;
 
+/*
+ * @desc Classe utilizada na classe Conta para fazer uma operação bancária
+ */
 public class Transacao {
     private static int id;
     private Date dataTransacao;
@@ -10,6 +13,7 @@ public class Transacao {
     private Agencia agencia;
     private Conta contaDestino;
 
+    //constructor
     public Transacao(Date dataTransacao, String tipoTransacao, double valorTransacao, Agencia agencia) {
         this.dataTransacao = dataTransacao;
         this.tipoTransacao = tipoTransacao;
@@ -27,6 +31,7 @@ public class Transacao {
         Transacao.id++;
     }
 
+    //getters e setters
     public int getId() {
         return id;
     }

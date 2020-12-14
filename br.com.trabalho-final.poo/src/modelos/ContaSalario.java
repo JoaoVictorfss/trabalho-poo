@@ -6,14 +6,10 @@ public class ContaSalario extends Conta {
 	private static final long serialVersionUID = 1L;
 	private double salMinimo;
 
+	//Constructor
 	public ContaSalario() {
 		super();
 		this.salMinimo = 0;
-	}
-
-	@Override
-	public double calculaTarifa() {
-		return 0;
 	}
 
 	public ContaSalario(Agencia agencia, double salMinimo) {
@@ -26,6 +22,7 @@ public class ContaSalario extends Conta {
 		this.setSalMinimo(salMinimo);
 	}
 
+	//getters e setters
 	public double getSalMinimo() {
 		return salMinimo;
 	}
@@ -35,6 +32,12 @@ public class ContaSalario extends Conta {
 			this.salMinimo = salMinimo;
 		else
 			this.salMinimo = 0;
+	}
+	
+	//Cálculo de tarifa
+	@Override
+	public double calculaTarifa() {
+		return 0;
 	}
 
 }

@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import modelos.Cliente;
 import repositorio.Persist;
 
+/*
+ *   @desc classe rensposável por controlar os dados dos clientes,
+ *         usando uma lista para adicionar, excluir, listar e por fim
+ *	       guardar em um arquivo binário os dados dentro da mesma.
+ */
 public class ControladorCliente {
 	private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 	private final String arquivo = "clientes.bin";
@@ -21,11 +26,12 @@ public class ControladorCliente {
 		System.out.println("______________________________________");
 	}
 
+	//Cadastra cliente na lista, não aceita clientes duplicados
 	public void cadastrar(Cliente c) {
 		Cliente existente = this.buscar(c.getCpf());
 
 		if (existente == null) {
-			this.clientes.add(c);// Adiciona o cliente
+			this.clientes.add(c);
 
 			System.out.println("Sucesso.Cliente cadastrado com sucesso!");
 			System.out.println("A quantidade total de clientes agora eh: " + this.clientes.size());
@@ -36,6 +42,7 @@ public class ControladorCliente {
 		}
 	}
 
+	//Lista clientes cadastrados
 	public void listar() {
 		if (clientes.isEmpty()) {
 			System.out.println("Sem registros!");
@@ -44,6 +51,7 @@ public class ControladorCliente {
 		}
 	}
 
+	//Busca cliente pelo cpf, retorna um cliente caso encontrado ou null caso contrário
 	public Cliente buscar(String cpf) {
 		Cliente cliente = null;
 
@@ -57,6 +65,7 @@ public class ControladorCliente {
 		return cliente;
 	}
 
+	//Exclui um cliente pelo cpf, retorna false se o cliente não existir
 	public boolean excluir(String cpf) {
 		Cliente c = this.buscar(cpf);
 
@@ -68,6 +77,7 @@ public class ControladorCliente {
 		}
 	}
 
+	//Salva os clientes em um arquivo binário
 	public void gravarClientes() {
 		boolean salvo = true;
 

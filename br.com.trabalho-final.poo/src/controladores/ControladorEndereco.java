@@ -2,10 +2,14 @@ package controladores;
 
 import java.util.ArrayList;
 
-import modelos.Agencia;
 import modelos.Endereco;
 import repositorio.Persist;
 
+/*
+ *   @desc classe rensposável por controlar os dados dos endereços,
+ *         usando uma lista para adicionar, excluir, listar e por fim
+ *	       guardar em um arquivo binário os dados dentro da mesma.
+ */
 public class ControladorEndereco {
 	private ArrayList<Endereco> enderecos = new ArrayList<Endereco>();
 	private final String arquivo = "enderecos.bin";
@@ -22,7 +26,7 @@ public class ControladorEndereco {
 		System.out.println("______________________________________\n");
 	}
 	
-
+	//Cadastra endereço na lista, não aceita endereços duplicados
 	public void cadastrar(Endereco c) {
 		Endereco existente = this.buscar(c.getCep());
 
@@ -34,10 +38,11 @@ public class ControladorEndereco {
 		}
 
 		else {
-			System.out.println("Erro. Endereco duplicado");
+			System.out.println("Erro. Endereço duplicado");
 		}
 	}
 
+	//Lista endereços cadastrados
 	public void listar() {
 		if (enderecos.isEmpty()) {
 			System.out.println("Sem registros!");
@@ -46,6 +51,7 @@ public class ControladorEndereco {
 		}
 	}
 
+	//Busca endereço pelo cep, retorna um endereço caso encontrado ou null caso contrário
 	public Endereco buscar(int cep) {
 		Endereco endereco = null;
 
@@ -59,6 +65,7 @@ public class ControladorEndereco {
 		return endereco;
 	}
 
+	//Exclui um cliente pelo cep, retorna false se o cliente não existir
 	public boolean excluir(int cep) {
 		Endereco c = this.buscar(cep);
 
@@ -70,6 +77,7 @@ public class ControladorEndereco {
 		}
 	}
 
+	//Salva os endereços em um arquivo binário
 	public void gravarEnderecos() {
 		boolean salvo = true;
 

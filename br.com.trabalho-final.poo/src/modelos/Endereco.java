@@ -11,7 +11,7 @@ public class Endereco implements Serializable {
 	private String cidade;
 	private String pais;
 
-//constructor
+    //constructor
 	public Endereco(String rua, int numero, int cep, String uf, String cidade, String pais) {
 		this.setRua(rua);
 		this.setNumero(numero);
@@ -20,7 +20,8 @@ public class Endereco implements Serializable {
 		this.setCidade(cidade);
 		this.setPais(pais);
 	}
-
+	
+	//getters e setters
 	public String getRua() {
 		return rua;
 	}
