@@ -1,4 +1,4 @@
-package views;
+package views.cliente;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 
 public class PainelCliente extends JPanel{
 	private final JLabel titulo;
-
+  
     public PainelCliente() {
 		setBackground(new Color(192,192,192));
 
