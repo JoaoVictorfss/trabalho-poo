@@ -1,13 +1,15 @@
-package views;
+package views.cliente;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 
 import javax.swing.JFrame;
 
-public class TelaCliente extends JFrame{
+import views.Menu;
 
-	public TelaCliente(){
+public class TelaPrincipalCliente extends JFrame{
+
+	public TelaPrincipalCliente(){
 		organizarLayout();
 		
 		setTitle("Clientes");
@@ -37,6 +39,6 @@ public class TelaCliente extends JFrame{
 	}
 	
 	public static void main(String[] args) {
-		new TelaCliente();
+		new TelaPrincipalCliente();
 	}
 }
