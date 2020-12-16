@@ -73,8 +73,9 @@ public class Teste {
 		System.out.println(mario.calculaTarifa());
 
 		contaCasal.setRendimento(0.8);
-		contaCasal.deposito(2000, new Date());
-		contaCasal.saque(1000, new Date());
+		contaCasal.deposito(2000);
+		contaCasal.saque(1000);
+		contaCasal.printTransacoes();
 
 		one.setConta(contaCasal);
 

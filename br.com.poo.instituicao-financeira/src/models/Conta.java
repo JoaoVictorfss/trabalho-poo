@@ -8,13 +8,13 @@ public abstract class Conta implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int nroConta;
 	private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+	private ArrayList<Transacao> transacoes = new ArrayList<Transacao>();
 	private byte status;
 	private Agencia agencia;
 	private double saldoAtual;
 	private Date dataAbertura;
 	private int totalCliente;
 
-	// constructor
 	public Conta() {
 		this(0, null, null, 'I', new Date());
 	}
@@ -23,6 +23,7 @@ public abstract class Conta implements Serializable {
 		this(0, agencia, null, 'I', new Date());
 	}
 
+	// constructor
 	public Conta(int nroConta, Agencia agencia, Cliente cliente, char status, Date dataAbertura) {
 		this.setNroConta(nroConta);
 		this.setCliente(cliente);
@@ -87,6 +88,39 @@ public abstract class Conta implements Serializable {
 			this.status = 2;
 	}
 
+	public boolean saque(double valor) {
+		if (valor <= saldoAtual && valor > 0) {
+			saldoAtual -= valor;
+			transacoes.add(new Transacao(new Date(), "saque", valor, this.agencia));
+			return true;
+		} else
+			throw new IllegalArgumentException("Valor inválido para saque!");
+	}
+
+	public boolean deposito(double valor) {
+		if (valor > 0) {
+			saldoAtual += valor;
+			transacoes.add(new Transacao(new Date(), "deposito", valor, this.agencia));
+			return true;
+		} else {
+			throw new IllegalArgumentException("Valor do depósito não pode ser um valor negativo!");
+		}
+	}
+
+	public boolean transferencia(double valor, Conta contaDestino) {
+		if (valor <= saldoAtual && valor > 0) {
+			saldoAtual -= valor;
+			transacoes.add(new Transacao(new Date(), "transferencia", valor, this.agencia, contaDestino));
+			return true;
+		} else
+			throw new IllegalArgumentException("Valor inválido para transferência!");
+	}
+
+	public void printTransacoes(){
+		transacoes.forEach((n) -> System.out.println(n.toString()));
+		System.out.println("Saldo Atual : " + getSaldoAtual());
+	}
+
 	public Agencia getAgencia() {
 		return agencia;
 	}
@@ -99,72 +133,6 @@ public abstract class Conta implements Serializable {
 		return this.totalCliente;
 	}
 
-	// Operações bancárias
-	public boolean saque(double valor, Date data) {
-		if (valor <= saldoAtual && valor > 0) {
-			saldoAtual -= valor;
-			Transacao transacao = new Transacao(data, "saque", valor, this.agencia);
-
-			System.out.println("______________________________________");
-			System.out.println("Extrato");
-			System.out.println("Agência: " + this.getAgencia().getNroAgencia());
-			System.out.println("Data da transação: " + transacao.getDataTransacao());
-			System.out.println("Id: " + transacao.getId());
-			System.out.println("Valor: " + transacao.getValorTransacao());
-			System.out.println("Tipo: " + transacao.getTipoTransacao());
-			System.out.println("Saldo Atual: " + this.saldoAtual);
-			System.out.println("______________________________________");
-			return true;
-		} else {
-			System.out.println("Valor inválido para saque!");
-			return false;
-		}
-	}
-
-	public boolean deposito(double valor, Date data) {
-		if (valor > 0) {
-			saldoAtual += valor;
-			Transacao transacao = new Transacao(data, "deposito", valor, this.agencia);
-
-			System.out.println("______________________________________");
-			System.out.println("Extrato");
-			System.out.println("Agência: " + transacao.getAgencia().getNroAgencia());
-			System.out.println("Data da transação: " + transacao.getDataTransacao());
-			System.out.println("Id: " + transacao.getId());
-			System.out.println("Valor: " + transacao.getValorTransacao());
-			System.out.println("Tipo: " + transacao.getTipoTransacao());
-			System.out.println("Saldo Atual: " + this.saldoAtual);
-			System.out.println("______________________________________");
-			return true;
-		} else {
-			System.out.println("Valor do depósito não pode ser um valor negativo!");
-			return false;
-		}
-	}
-
-	public boolean transferencia(double valor, Conta contaDestino, Date data) {
-		if (valor <= saldoAtual && valor > 0) {
-			saldoAtual -= valor;
-			Transacao transacao = new Transacao(data, "transferencia", valor, this.agencia);
-            
-			System.out.println("______________________________________");
-			System.out.println("Extrato");
-			System.out.println("Agência: " + transacao.getAgencia().getNroAgencia());
-			System.out.println("Data da transação: " + transacao.getDataTransacao());
-			System.out.println("Id: " + transacao.getId());
-			System.out.println("Valor: " + transacao.getValorTransacao());
-			System.out.println("Tipo: " + transacao.getTipoTransacao());
-			System.out.println("Conta de destino: " + contaDestino.getNroConta());
-			System.out.println("Saldo Atual: " + this.saldoAtual);
-			System.out.println("______________________________________");
-			return true;
-		} else {
-			System.out.println("Valor inválido para transferência!");
-			return false;
-		}
-	}
-
-	// Métado abstrato para cálculo de tarifa
 	public abstract double calculaTarifa();
 
 }
