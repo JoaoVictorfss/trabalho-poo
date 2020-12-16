@@ -1,4 +1,4 @@
-package views.cliente;
+package views;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -7,13 +7,13 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class PainelCliente extends JPanel{
-	private final JLabel titulo;
+public class Painel extends JPanel{
+	private final JLabel titulo;	
   
-    public PainelCliente() {
+    public Painel(String desc) {
 		setBackground(new Color(192,192,192));
 
-    	titulo = new JLabel("Gerenciador de clientes");
+    	titulo = new JLabel(desc);
     	
 		titulo.setForeground(Color.black);//cor da font
 

@@ -1,18 +1,16 @@
 package views.cliente;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 
-import javax.swing.JFrame;
-
-import views.Menu;
 import views.Painel;
 
-public class TelaPrincipalCliente extends JFrame{
-	public TelaPrincipalCliente(){
+
+public class TelaCadastroCliente extends javax.swing.JFrame {
+	
+	public TelaCadastroCliente (){
 		organizarLayout();
 		
-		setTitle("Clientes");
+		setTitle("Cadastro de Clientes");
 				
 		//Tamanho da tela
 		setSize(500, 600);
@@ -28,16 +26,14 @@ public class TelaPrincipalCliente extends JFrame{
 	}
 	
 	private void organizarLayout() {
-		setLayout(new BorderLayout());
-		
-		Painel painelCliente = new Painel("Gerenciador de clientes");
+		Painel painelCliente = new Painel("Cadastro de cliente");
 		add(painelCliente, BorderLayout.NORTH);
 		
-	    Menu menu = new Menu();
-		add(menu, BorderLayout.CENTER);
-	}
+	}  	
 	
 	public static void main(String[] args) {
-		new TelaPrincipalCliente();
+		new TelaCadastroCliente();
 	}
 }
+
+            
