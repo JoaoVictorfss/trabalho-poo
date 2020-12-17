@@ -47,7 +47,7 @@ public class FormContaSalario extends JPanel {
         add(salario);
         add(campoSalario);
 
-        Botao botao = new Botao("Cadatrar");
+        Botao botao = new Botao("Cadastrar");
         botao.setPreferredSize(new Dimension(140, 40));
         botao.setBackground(Color.BLUE);
 
