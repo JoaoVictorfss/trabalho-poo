@@ -11,7 +11,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 		setTitle("Cadastro de Clientes");
 
 		// Tamanho da tela
-		setSize(500, 620);
+		setSize(550, 760);
 
 		// Aplicação abre no centro da tela
 		setLocationRelativeTo(null);
