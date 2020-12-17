@@ -1,17 +1,16 @@
-package views.funcionario;
-
+package views.conta;
 import java.awt.BorderLayout;
 
 import views.Painel;
 
-public class PainelFuncionario extends javax.swing.JFrame {
-    public PainelFuncionario() {
+public class TelaCadastroConta extends javax.swing.JFrame {
+    public TelaCadastroConta() {
         organizarLayout();
 
-        setTitle("Cadastro de Funcionário");
+        setTitle("Cadastro de Conta");
 
         // Tamanho da tela
-        setSize(550, 720);
+        setSize(550, 550);
 
         // Aplicação abre no centro da tela
         setLocationRelativeTo(null);
@@ -24,15 +23,14 @@ public class PainelFuncionario extends javax.swing.JFrame {
     }
 
     void organizarLayout() {
-        Painel painelFuncionario = new Painel("Cadastro de funcionários");
-        add(painelFuncionario, BorderLayout.NORTH);
+        Painel painelConta = new Painel("Cadastro de Conta");
+        add(painelConta, BorderLayout.NORTH);
 
-        FormFuncionario form = new FormFuncionario();
+        FormContaSalario form = new FormContaSalario();
         add(form);
-
     }
 
     public static void main(String[] args) {
-        new PainelFuncionario();
+        new TelaCadastroConta();
     }
 }
