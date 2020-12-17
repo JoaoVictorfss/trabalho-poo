@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 
-import javax.swing.*;
+import javax.swing;
 
 import views.Botao;
 
@@ -16,7 +16,6 @@ public class FormGerente extends JPanel {
         setLayout(new FlowLayout(FlowLayout.LEFT, 20, 40));
 
         JTextField campoNome = new JTextField();
-        ;
         JLabel nome = adicionarLabel("Nome:");
         campoNome.setPreferredSize(new Dimension(170, 30));
         add(nome);
