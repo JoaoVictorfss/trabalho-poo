@@ -1,21 +1,18 @@
-package views.gerente;
-
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-
-import javax.swing;
+package views.funcionario;
 
 import views.Botao;
 
-public class FormGerente extends JPanel {
+import javax.swing.*;
+import java.awt.*;
 
-    public FormGerente() {
+public class FormFuncionario extends JPanel {
+
+    public FormFuncionario() {
         setBackground(new Color(220, 220, 220));
         setLayout(new FlowLayout(FlowLayout.LEFT, 20, 40));
 
         JTextField campoNome = new JTextField();
+        ;
         JLabel nome = adicionarLabel("Nome:");
         campoNome.setPreferredSize(new Dimension(170, 30));
         add(nome);
@@ -87,29 +84,17 @@ public class FormGerente extends JPanel {
         add(dataAd);
         add(campoDataAd);
 
-        JCheckBox possuiCurso = new JCheckBox();
-        possuiCurso.setPreferredSize(new Dimension(20, 20));
-        JLabel curso = adicionarLabel("Possui Curso:");
-        add(curso);
-        add(possuiCurso);
-
-        JTextField nomeCurso = new JTextField();
-        nomeCurso.setPreferredSize(new Dimension(160, 30));
-        JLabel cursoNome = adicionarLabel("Nome do Curso:");
-        add(cursoNome);
-        add(nomeCurso);
+        JTextField campoCargo = new JTextField();
+        campoCargo.setPreferredSize(new Dimension(160, 30));
+        JLabel cargo = adicionarLabel("Cargo:");
+        add(cargo);
+        add(campoCargo);
 
         JTextField salario = new JTextField();
-        salario.setPreferredSize(new Dimension(90, 30));
+        salario.setPreferredSize(new Dimension(140, 30));
         JLabel salBase = adicionarLabel("Salário:");
         add(salBase);
         add(salario);
-
-        JTextField bonificacao = new JTextField();
-        bonificacao.setPreferredSize(new Dimension(90, 30));
-        JLabel bonus = adicionarLabel("Bonificação:");
-        add(bonus);
-        add(bonificacao);
 
         Botao botao = new Botao("Cadastrar");
         botao.setPreferredSize(new Dimension(140, 40));

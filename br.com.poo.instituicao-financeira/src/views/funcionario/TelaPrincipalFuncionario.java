@@ -1,17 +1,17 @@
-package views.agencia;
+package views.funcionario;
+import java.awt.BorderLayout;
+import java.awt.Color;
+    
+import javax.swing.JFrame;
+    
+import views.Menu;
+import views.Painel;
 
-    import java.awt.BorderLayout;
-    import java.awt.Color;
-    
-    import javax.swing.JFrame;
-    
-    import views.Menu;
-    import views.Painel;
-public class TelaPrincipalAgencia extends JFrame {
-    public TelaPrincipalAgencia(){
+public class TelaPrincipalFuncionario extends JFrame {
+    public TelaPrincipalFuncionario(){
         organizarLayout();
         
-        setTitle("Agencias");
+        setTitle("Funcionarios");
                 
         //Tamanho da tela
         setSize(500, 600);
@@ -29,14 +29,14 @@ public class TelaPrincipalAgencia extends JFrame {
     private void organizarLayout() {
         setLayout(new BorderLayout());
         
-        Painel painelAgencia = new Painel("Gerenciador de agencias");
-        add(painelAgencia, BorderLayout.NORTH);
+        Painel painelFuncionario= new Painel("Gerenciador de funcionarios");
+        add(painelFuncionario, BorderLayout.NORTH);
         
-        Menu menu = new Menu("Salvar agencia(s)");
+        Menu menu = new Menu("Salvar funcionario(s)");
         add(menu, BorderLayout.CENTER);
     }
     
     public static void main(String[] args) {
-        new TelaPrincipalAgencia();
+        new TelaPrincipalFuncionario();
     }
 }

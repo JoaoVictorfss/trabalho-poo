@@ -2,10 +2,9 @@ package views.gerente;
 import java.awt.BorderLayout;
 
 import views.Painel;
-import views.cliente.FormCliente;
 
-public class PainelGerente extends javax.swing.JFrame {
-    public PainelGerente() {
+public class TelaCadastroGerente extends javax.swing.JFrame {
+    public TelaCadastroGerente() {
         organizarLayout();
 
         setTitle("Cadastro de Gerente");
@@ -34,6 +33,6 @@ public class PainelGerente extends javax.swing.JFrame {
     }
 
     public static void main(String[] args) {
-        new views.gerente.PainelGerente();
+        new TelaCadastroGerente();
     }
 }

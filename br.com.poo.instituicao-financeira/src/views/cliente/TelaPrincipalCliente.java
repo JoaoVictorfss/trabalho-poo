@@ -33,7 +33,7 @@ public class TelaPrincipalCliente extends JFrame{
 		Painel painelCliente = new Painel("Gerenciador de clientes");
 		add(painelCliente, BorderLayout.NORTH);
 		
-	    Menu menu = new Menu();
+	    Menu menu = new Menu("Salvar cliente(s)");
 		add(menu, BorderLayout.CENTER);
 	}
 	
