@@ -11,7 +11,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 		setTitle("Cadastro de Clientes");
 
 		// Tamanho da tela
-		setSize(500, 600);
+		setSize(500, 620);
 
 		// Aplicação abre no centro da tela
 		setLocationRelativeTo(null);
@@ -27,9 +27,9 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 	void organizarLayout() {
 		Painel painelCliente = new Painel("Cadastro de cliente");
 		add(painelCliente, BorderLayout.NORTH);
-		
-FormCliente form = new FormCliente();
-add(form);
+
+		FormCliente form = new FormCliente();
+		add(form);
 
 	}
 
