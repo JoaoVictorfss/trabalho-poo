@@ -62,15 +62,14 @@ public class ControladorCliente implements controller {
 		return cliente;
 	}
 
-	// Exclui um cliente pelo cpf, retorna false se o cliente não existir
-	public boolean excluir(String cpf) {
+	// Exclui um cliente pelo cpf
+	public void excluir(String cpf) {
 		Cliente c = this.buscar(cpf);
 
 		if (c != null) {
 			this.clientes.remove(c);
-			return true;
 		} else {
-			return false;
+			throw new RuntimeException("Cliente inexistente");
 		}
 	}
 

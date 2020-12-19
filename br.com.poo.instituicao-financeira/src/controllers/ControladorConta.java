@@ -63,15 +63,14 @@ public class ControladorConta implements controller {
 		return Conta;
 	}
 
-	// Exclui uma conta pelo número, retorna false se a conta não existir
-	public boolean excluir(int nro) {
+	// Exclui uma conta pelo número
+	public void excluir(int nro) {
 		Conta c = this.buscar(nro);
 
 		if (c != null) {
 			this.contas.remove(c);
-			return true;
 		} else {
-			return false;
+			throw new RuntimeException("Conta inexistente");
 		}
 	}
 

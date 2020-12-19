@@ -16,4 +16,9 @@ public class MemoriaCliente {
 		dadosClientes.listar();
 	}
 	
+	public void exluirCliente(String cpf) {
+		dadosClientes.excluir(cpf);
+		dadosClientes.listar();
+	}
+	
 }

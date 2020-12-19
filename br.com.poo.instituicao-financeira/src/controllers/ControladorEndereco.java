@@ -63,15 +63,14 @@ public class ControladorEndereco implements controller {
 		return endereco;
 	}
 
-	// Exclui um cliente pelo cep, retorna false se o cliente não existir
-	public boolean excluir(String cep) {
+	// Exclui um cliente pelo cep
+	public void excluir(String cep) {
 		Endereco c = this.buscar(cep);
 
 		if (c != null) {
 			this.enderecos.remove(c);
-			return true;
 		} else {
-			return false;
+			throw new RuntimeException("Endereço inexistente");
 		}
 	}
 

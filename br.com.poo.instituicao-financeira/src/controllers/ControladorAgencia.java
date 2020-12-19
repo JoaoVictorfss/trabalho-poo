@@ -72,16 +72,14 @@ public class ControladorAgencia implements controller {
 		return agencia;
 	}
 
-	// Exclui agência pelo número, retorna true se a agência existir e false caso
-	// contrário
-	public boolean excluir(int nro) {
+	// Exclui agência pelo número
+	public void excluir(int nro) {
 		Agencia c = this.buscar(nro);
 
 		if (c != null) {
 			this.agencias.remove(c);
-			return true;
 		} else {
-			return false;
+			throw new RuntimeException("Agência inexistente");
 		}
 	}
 

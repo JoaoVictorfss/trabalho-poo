@@ -64,14 +64,13 @@ public class ControladorFuncionario implements controller {
 	}
 
 	// Exclui um endereço pelo cep, retorna false se o endereço não existir
-	public boolean excluir(String cpf) {
+	public void excluir(String cpf) {
 		Funcionario f = this.buscar(cpf);
 
 		if (f != null) {
 			this.funcionarios.remove(f);
-			return true;
 		} else {
-			return false;
+			throw new RuntimeException("Funcionário inexistente");
 		}
 	}
 

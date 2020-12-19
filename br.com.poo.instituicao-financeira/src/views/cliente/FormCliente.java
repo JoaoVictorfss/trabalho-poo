@@ -29,7 +29,7 @@ public class FormCliente extends JPanel {
 	private String endCidade;
 	private String endRua;
 	private int endNumero;
-	private int endNroConta;
+	private int nroConta;
 	private String escolaridade;
 	private String estadoCiv;
 
@@ -139,7 +139,7 @@ public class FormCliente extends JPanel {
 			if (naoVazio(campoNumero.getText()))
 				this.endNumero = transformaNumero(campoNumero.getText());
 			if (naoVazio(campoNroConta.getText()))
-				this.endNumero = transformaNumero(campoNroConta.getText());
+				this.nroConta = transformaNumero(campoNroConta.getText());
 			if (naoVazio(campoEscolaridade.getText()))
 				this.escolaridade = campoEscolaridade.getText();
 			if (naoVazio(campoEstadoCiv.getText()))
