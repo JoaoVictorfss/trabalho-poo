@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import models.Cliente;
+import views.templates.Alerta;
 import views.templates.Botao;
 
 import java.util.Date;
@@ -168,16 +169,10 @@ public class FormAtualizaCliente extends JPanel {
 			cliente.getEndereco().setNumero(this.endNumero);
             
 			MemoriaCliente.getInstancia().listar();
-			this.mostrarAlerta("Sucesso. Dados Atualizados!");
+			new Alerta("Sucesso. Dados Atualizados!");
 		} catch (RuntimeException e) {
-			this.mostrarAlerta("Erro." + e.getMessage());
+			new Alerta("Erro." + e.getMessage());
 		}
-	}
-
-	private void mostrarAlerta(String mensagem) {
-		SwingUtilities.invokeLater(() -> {
-			JOptionPane.showMessageDialog(this, mensagem);
-		});
 	}
 
 	// Verifica se o campo não está Vazio
@@ -203,7 +198,7 @@ public class FormAtualizaCliente extends JPanel {
 			this.valido = this.valido && true;
 		} catch (ParseException e) {
 			this.valido = false;
-			this.mostrarAlerta("Erro ao converter de string para data. Verifique se o campo está no formato válido!");
+			new Alerta("Erro ao converter de string para data. Verifique se o campo está no formato válido!");
 		}
 	}
 
@@ -216,7 +211,7 @@ public class FormAtualizaCliente extends JPanel {
 			return numeroConvertido;
 		} catch (NumberFormatException e) {
 			this.valido = false;
-			this.mostrarAlerta("Erro ao converter de string para número. Verifique o campo preenchido!");
+			new Alerta("Erro ao converter de string para número. Verifique o campo preenchido!");
 			return -1;
 		}
 	}

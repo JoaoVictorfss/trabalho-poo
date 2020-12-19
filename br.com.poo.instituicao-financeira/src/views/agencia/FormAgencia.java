@@ -11,6 +11,7 @@ import javax.swing.*;
 import controllers.ControladorFuncionario;
 import models.*;
 import views.cliente.MemoriaCliente;
+import views.templates.Alerta;
 import views.templates.Botao;
 
 public class FormAgencia extends JPanel {
@@ -125,13 +126,14 @@ public class FormAgencia extends JPanel {
             return numeroConvertido;
         } catch (NumberFormatException e) {
             this.valido = false;
-            this.mostrarAlerta("Erro ao converter de string para número. Verifique o campo preenchido!");
+            new Alerta("Erro ao converter de string para número. Verifique o campo preenchido!");
             return -1;
         }
     }
 
 
-    private void cadastraAgencia() {
+    @SuppressWarnings("unused")
+	private void cadastraAgencia() {
         try {
             Endereco enderecoAgencia = new Endereco(endRua, endNumero, endCep, endUf, endCidade, endPais);
             Agencia agencia = null;
@@ -139,26 +141,20 @@ public class FormAgencia extends JPanel {
             ControladorFuncionario dadosGerente = new ControladorFuncionario();
             gerente = dadosGerente.buscar(cpfGerente);
             if (gerente == null) {
-                this.mostrarAlerta("Gerente inexistente!");
+            	 new Alerta("Gerente inexistente!");
             }
 
             agencia = new Agencia(nome, nroAgencia, enderecoAgencia, gerente);
 
             if (agencia == null) {
-                this.mostrarAlerta("Erro. Dados incorretos! Verique todos e tente novamente");
+               new Alerta("Erro. Dados incorretos! Verique todos e tente novamente");
             } else {
                 MemoriaAgencia.getInstancia().adicionarAgencia(agencia);
-                this.mostrarAlerta("Sucesso. Dados cadastrados!");
+                new Alerta("Sucesso. Dados cadastrados!");
             }
         } catch (RuntimeException e) {
-            this.mostrarAlerta("Erro." + e.getMessage());
+        	 new Alerta("Erro." + e.getMessage());
         }
-    }
-
-    private void mostrarAlerta(String mensagem) {
-        SwingUtilities.invokeLater(() -> {
-            JOptionPane.showMessageDialog(this, mensagem);
-        });
     }
 
     // Verifica se o campo está naoVazio

@@ -14,7 +14,6 @@ public class MemoriaCliente {
 
 	public void adicionarCliente(Cliente c) {
 		dadosClientes.cadastrar(c);
-		dadosClientes.listar();
 	}
 
 	public void exluirCliente(String cpf) {
@@ -25,6 +24,9 @@ public class MemoriaCliente {
 		return dadosClientes.buscar(cpf);
 	}
 	
+	public void salvar() {
+		this.dadosClientes.gravarClientes();
+	}
 	public void listar() {
 		dadosClientes.listar();
 	}

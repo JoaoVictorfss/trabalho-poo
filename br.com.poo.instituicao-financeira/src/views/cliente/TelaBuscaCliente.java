@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import models.Cliente;
+import views.templates.Alerta;
 import views.templates.Botao;
 
 public class TelaBuscaCliente extends JPanel {
@@ -46,10 +47,10 @@ public class TelaBuscaCliente extends JPanel {
 					else if (verificaCliente(c))
 						new MostraCliente(c);
 				} catch (RuntimeException e) {
-					this.mostrarAlerta("Erro." + e.getMessage());
+					new Alerta("Erro." + e.getMessage());
 				}
 			} else {
-				this.mostrarAlerta("Erro. O campo é obrigatório.");
+				new Alerta("Erro. O campo é obrigatório.");
 			}
 		});
 
@@ -59,15 +60,8 @@ public class TelaBuscaCliente extends JPanel {
 		if (c != null) {
 			return true;
 		} else {
-			this.mostrarAlerta("Erro. Cliente inexistente");
+			new Alerta("Erro. Cliente inexistente");
 			return false;
 		}
 	}
-
-	private void mostrarAlerta(String mensagem) {
-		SwingUtilities.invokeLater(() -> {
-			JOptionPane.showMessageDialog(this, mensagem);
-		});
-	}
-
 }

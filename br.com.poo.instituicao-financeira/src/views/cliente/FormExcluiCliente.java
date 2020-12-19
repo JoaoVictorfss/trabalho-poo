@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import views.templates.Alerta;
 import views.templates.Botao;
 
 public class FormExcluiCliente extends JPanel {
@@ -38,21 +39,14 @@ public class FormExcluiCliente extends JPanel {
 			if (!campoCpf.getText().isEmpty()) {
 				try {
 					MemoriaCliente.getInstancia().exluirCliente(campoCpf.getText());
-					this.mostrarAlerta("Sucesso. Cliente excluído!");
+					new Alerta("Sucesso. Cliente excluído!");
 				} catch (RuntimeException e) {
-					this.mostrarAlerta("Erro." + e.getMessage());
+					new Alerta("Erro." + e.getMessage());
 				}
 			} else {
-				this.mostrarAlerta("Erro. O campo é obrigatório.");
+				new Alerta("Erro. O campo é obrigatório.");
 			}
 		});
 
 	}
-
-	private void mostrarAlerta(String mensagem) {
-		SwingUtilities.invokeLater(() -> {
-			JOptionPane.showMessageDialog(this, mensagem);
-		});
-	}
-
 }

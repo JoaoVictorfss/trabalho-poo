@@ -7,14 +7,14 @@ import java.awt.FlowLayout;
 
 import javax.swing.JPanel;
 
+import views.cliente.MemoriaCliente;
 import views.cliente.TelaCadastroCliente;
 import views.cliente.TelaConsultaCliente;
 import views.cliente.TelaExcluiCliente;
 import views.cliente.TelaPrincipalAtualizaCliente;
 
 public class Menu extends JPanel{
-    
-	public Menu(String tipoOperacao, String tela) {	
+    	public Menu(String tipoOperacao, String tela) {	
 		setBackground(Color.GRAY);
 		setLayout(new FlowLayout(FlowLayout.CENTER, 20, 40));//20 como valor na vertical e 40 na horizontal
 		
@@ -42,7 +42,16 @@ public class Menu extends JPanel{
 		});
 		add(excluir);
 		
-		adicionarBotao(tipoOperacao);
+		Botao op = adicionarBotao(tipoOperacao);
+		op.addActionListener(event -> {
+			try {
+				if(tela.equalsIgnoreCase("cliente")) MemoriaCliente.getInstancia().salvar();
+				new Alerta("Sucesso. Cliente(s) salvo(s)");
+			} catch (RuntimeException e) {
+				new Alerta("Erro." + e.getMessage());
+			}
+		});
+		add(op);
 	}
 	
 	//Função que organiza o botão na tela, posicionando e adicionando o evento

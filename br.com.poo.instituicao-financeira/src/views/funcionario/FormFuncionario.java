@@ -5,6 +5,7 @@ import javax.swing.*;
 import models.Endereco;
 import models.Gerente;
 import views.templates.Botao;
+import views.templates.Alerta;
 
 import java.awt.*;
 import java.text.ParseException;
@@ -191,7 +192,7 @@ public class FormFuncionario extends JPanel {
             this.valido = this.valido && true;
         } catch (ParseException e) {
             this.valido = false;
-            this.mostrarAlerta("Erro ao converter de string para data. Verifique se o campo está no formato válido!");
+            new Alerta("Erro ao converter de string para data. Verifique se o campo está no formato válido!");
         }
     }
 
@@ -213,7 +214,7 @@ public class FormFuncionario extends JPanel {
             return numeroConvertido;
         } catch (NumberFormatException e) {
             this.valido = false;
-            this.mostrarAlerta("Erro ao converter de string para número. Verifique o campo preenchido!");
+            new Alerta("Erro ao converter de string para número. Verifique o campo preenchido!");
             return -1;
         }
     }
@@ -230,7 +231,8 @@ public class FormFuncionario extends JPanel {
         }
     }
 
-    private void cadastraFuncionario() {
+    @SuppressWarnings("unused")
+	private void cadastraFuncionario() {
         try {
             Endereco enderecoFuncionario = new Endereco(endRua, endNumero, endCep, endUf, endCidade, endPais);
             Gerente gerente = null;
@@ -240,20 +242,14 @@ public class FormFuncionario extends JPanel {
             gerente = new Gerente(nomeFuncionario, cpfFuncionario, enderecoFuncionario, estadoCiv, dataNasc, dataAd, sexo, possuiCurso, nomeCurso);
 
             if (gerente == null) {
-                this.mostrarAlerta("Erro. Dados incorretos! Verique todos e tente novamente");
+            	 new Alerta("Erro. Dados incorretos! Verique todos e tente novamente");
             } else {
                 MemoriaFuncionario.getInstancia().adicionarFuncionario(gerente);
-                this.mostrarAlerta("Sucesso. Dados cadastrados!");
+                new Alerta("Sucesso. Dados cadastrados!");
             }
         } catch (RuntimeException e) {
-            this.mostrarAlerta("Erro." + e.getMessage());
+        	 new Alerta("Erro." + e.getMessage());
         }
-    }
-
-    private void mostrarAlerta(String mensagem) {
-        SwingUtilities.invokeLater(() -> {
-            JOptionPane.showMessageDialog(this, mensagem);
-        });
     }
 
     private JLabel adicionarLabel(String labelText) {

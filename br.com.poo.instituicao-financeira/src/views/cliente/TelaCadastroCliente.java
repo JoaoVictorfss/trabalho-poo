@@ -27,6 +27,5 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
 		FormCliente form = new FormCliente();
 		add(form);
-
 	}
 }
