@@ -32,13 +32,10 @@ public class ControladorCliente implements controller{
 
 		if (existente == null) {
 			this.clientes.add(c);
-
-			System.out.println("Sucesso.Cliente cadastrado com sucesso!");
-			System.out.println("A quantidade total de clientes agora eh: " + this.clientes.size());
 		}
 
-		else {
-			System.out.println("Erro. Cliente duplicado");
+		else {	
+			throw new RuntimeException("Cliente duplicado");
 		}
 	}
 
@@ -93,9 +90,8 @@ public class ControladorCliente implements controller{
 			if (salvo)
 				System.out.println("Sucesso. Clientes salvos com sucesso!");
 			else
-				System.out.println("Erro. Ocorreu um erro ao salvar os clientes, tente novamente!");
+				throw new RuntimeException("Erro. Ocorreu um erro ao salvar os clientes, tente novamente!");
 		} else
-			System.out.println("Erro. Sem registros para salvar!");
-
+			throw new RuntimeException("Erro. Sem registros para salvar!");
 	}
 }
