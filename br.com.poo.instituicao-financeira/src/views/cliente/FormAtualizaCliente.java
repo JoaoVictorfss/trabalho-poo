@@ -19,27 +19,30 @@ import views.templates.Botao;
 
 import java.util.Date;
 
-public class FormCliente extends JPanel {
+public class FormAtualizaCliente extends JPanel {
+	private Cliente cliente;
 	private String nomeCliente;
-	private String cpfCliente;
 	private Date dataNasc;
+	private String escolaridade;
+	private String estadoCiv;
+	private String cpfCliente;
+
 	private String endPais;
 	private String endUf;
 	private String endCep;
 	private String endCidade;
 	private String endRua;
 	private int endNumero;
-	private int nroConta;
-	private String escolaridade;
-	private String estadoCiv;
 
 	private boolean valido = true;
 
-	public FormCliente() {
+	public FormAtualizaCliente(Cliente c) {
+        this.cliente = c;
+        
 		setBackground(new Color(220, 220, 220));
 		setLayout(new FlowLayout(FlowLayout.LEFT, 20, 40));
 
-		JTextField campoNome = new JTextField("joao");
+		JTextField campoNome = new JTextField(cliente.getNome());
 		JLabel nome = adicionarLabel("Nome:");
 		campoNome.setPreferredSize(new Dimension(170, 30));
 		add(nome);
@@ -51,67 +54,62 @@ public class FormCliente extends JPanel {
 		add(cpf);
 		add(campoCpf);
 
-		JTextField campoDataNasc = new JTextField("1999/06/23");
+		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+		JTextField campoDataNasc = new JTextField(formato.format(cliente.getDataNasc()));
 		campoDataNasc.setPreferredSize(new Dimension(110, 30));
 		JLabel dataNasc = adicionarLabel("Nascimento:");
 		add(dataNasc);
 		add(campoDataNasc);
 
-		JTextField campoPais = new JTextField("Brasil");
+		JTextField campoPais = new JTextField(cliente.getEndereco().getPais());
 		campoPais.setPreferredSize(new Dimension(140, 30));
 		JLabel pais = adicionarLabel("País:");
 		add(pais);
 		add(campoPais);
 
-		JTextField campoUf = new JTextField("MG");
+		JTextField campoUf = new JTextField(cliente.getEndereco().getUf());
 		campoUf.setPreferredSize(new Dimension(150, 30));
 		JLabel uf = adicionarLabel("Estado:");
 		add(uf);
 		add(campoUf);
 
-		JTextField campoCep = new JTextField("111111-000");
+		JTextField campoCep = new JTextField(cliente.getEndereco().getCep());
 		campoCep.setPreferredSize(new Dimension(150, 30));
 		JLabel cep = adicionarLabel("CEP:");
 		add(cep);
 		add(campoCep);
 
-		JTextField campoCidade = new JTextField("Uberlândia");
+		JTextField campoCidade = new JTextField(cliente.getEndereco().getCidade());
 		campoCidade.setPreferredSize(new Dimension(150, 30));
 		JLabel cidade = adicionarLabel("Cidade:");
 		add(cidade);
 		add(campoCidade);
 
-		JTextField campoRua = new JTextField("Av Afonso Pena");
+		JTextField campoRua = new JTextField(cliente.getEndereco().getRua());
 		campoRua.setPreferredSize(new Dimension(150, 30));
 		JLabel rua = adicionarLabel("Rua:");
 		add(rua);
 		add(campoRua);
 
-		JTextField campoNumero = new JTextField("10");
+		JTextField campoNumero = new JTextField(Integer.toString(cliente.getEndereco().getNumero()));
 		campoNumero.setPreferredSize(new Dimension(150, 30));
 		JLabel numero = adicionarLabel("Número:");
 		add(numero);
 		add(campoNumero);
 
-		JTextField campoNroConta = new JTextField("10");
-		campoNroConta.setPreferredSize(new Dimension(90, 30));
-		JLabel conta = adicionarLabel("Nro Conta:");
-		add(conta);
-		add(campoNroConta);
-
-		JTextField campoEscolaridade = new JTextField("cursando");
+		JTextField campoEscolaridade = new JTextField(cliente.getEscolaridade());
 		campoEscolaridade.setPreferredSize(new Dimension(90, 30));
 		JLabel escolaridade = adicionarLabel("Escolaridade:");
 		add(escolaridade);
 		add(campoEscolaridade);
 
-		JTextField campoEstadoCiv = new JTextField("solteiro");
+		JTextField campoEstadoCiv = new JTextField(cliente.getEstadoCivil());
 		campoEstadoCiv.setPreferredSize(new Dimension(60, 30));
 		JLabel civil = adicionarLabel("Estado Civil:");
 		add(civil);
 		add(campoEstadoCiv);
 
-		Botao botao = new Botao("Cadastrar");
+		Botao botao = new Botao("Atualizar");
 		botao.setPreferredSize(new Dimension(140, 40));
 		botao.setBackground(Color.BLUE);
 
@@ -119,7 +117,6 @@ public class FormCliente extends JPanel {
 
 		// Escuta o evento de click do botão cadastrar
 		botao.addActionListener(event -> {
-
 			if (naoVazio(campoNome.getText()))
 				this.nomeCliente = campoNome.getText();
 			if (naoVazio(campoCpf.getText()))
@@ -138,15 +135,12 @@ public class FormCliente extends JPanel {
 				this.endRua = campoRua.getText();
 			if (naoVazio(campoNumero.getText()))
 				this.endNumero = transformaNumero(campoNumero.getText());
-			if (naoVazio(campoNroConta.getText()))
-				this.nroConta = transformaNumero(campoNroConta.getText());
 			if (naoVazio(campoEscolaridade.getText()))
 				this.escolaridade = campoEscolaridade.getText();
 			if (naoVazio(campoEstadoCiv.getText()))
 				this.estadoCiv = campoEstadoCiv.getText();
-
 			if (this.valido) {
-				cadastraCliente();
+				atualizarCliente();
 			}
 		});
 	}
@@ -158,26 +152,14 @@ public class FormCliente extends JPanel {
 		return label;
 	}
 
-	private boolean verificaConta() {
-		return false;
-	}
-
 	@SuppressWarnings("unused")
-	private void cadastraCliente() {
+	private void atualizarCliente() {
 		try {
-			Endereco enderecoCliente = new Endereco(endRua, endNumero, endCep, endUf, endCidade, endPais);
-			Cliente cliente = null;
+			MemoriaCliente.getInstancia().atualizarCliente(this.nomeCliente, this.cpfCliente, this.estadoCiv,
+					this.escolaridade, this.dataNasc, this.endPais, this.endUf, this.endCep, this.endCidade,
+					this.endRua, this.endNumero, this.cliente);
 
-			// Verificar se a conta existe pelo número e adicionar
-
-			cliente = new Cliente(nomeCliente, cpfCliente, enderecoCliente, estadoCiv, escolaridade, dataNasc);
-
-			if (cliente == null) {
-				this.mostrarAlerta("Erro. Dados incorretos! Verique todos e tente novamente");
-			} else {
-				MemoriaCliente.getInstancia().adicionarCliente(cliente);
-				this.mostrarAlerta("Sucesso. Dados cadastrados!");
-			}
+			this.mostrarAlerta("Sucesso. Dados Atualizados!");
 		} catch (RuntimeException e) {
 			this.mostrarAlerta("Erro." + e.getMessage());
 		}
@@ -189,7 +171,7 @@ public class FormCliente extends JPanel {
 		});
 	}
 
-	// Verifica se o campo está naoVazio
+	// Verifica se o campo não está Vazio
 	private boolean naoVazio(String campo) {
 		if (!campo.isEmpty()) {
 			this.valido = this.valido && true;

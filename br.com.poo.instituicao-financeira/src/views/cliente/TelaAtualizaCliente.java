@@ -2,13 +2,18 @@ package views.cliente;
 
 import java.awt.BorderLayout;
 
+import models.Cliente;
 import views.templates.Painel;
 
-public class TelaCadastroCliente extends javax.swing.JFrame {
-	public TelaCadastroCliente() {
+public class TelaAtualizaCliente extends javax.swing.JFrame {
+	private Cliente c;
+
+	public TelaAtualizaCliente(Cliente cliente) {
+		this.c = cliente;
+		
 		organizarLayout();
 
-		setTitle("Cadastro de Clientes");
+		setTitle("Atualização de Clientes");
 
 		// Tamanho da tela
 		setSize(550, 760);
@@ -25,11 +30,10 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 	}
 
 	void organizarLayout() {
-		Painel painelCliente = new Painel("Cadastro de Clientes");
+		Painel painelCliente = new Painel("Atualização de Cliente");
 		add(painelCliente, BorderLayout.NORTH);
 
-		FormCliente form = new FormCliente();
+		FormAtualizaCliente form = new FormAtualizaCliente(this.c);
 		add(form);
-
 	}
 }

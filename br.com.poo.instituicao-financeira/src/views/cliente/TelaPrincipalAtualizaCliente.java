@@ -1,17 +1,17 @@
 package views.cliente;
 
 import java.awt.BorderLayout;
-
 import views.templates.Painel;
 
-public class TelaCadastroCliente extends javax.swing.JFrame {
-	public TelaCadastroCliente() {
+public class TelaPrincipalAtualizaCliente extends javax.swing.JFrame {
+
+	public TelaPrincipalAtualizaCliente() {
 		organizarLayout();
 
-		setTitle("Cadastro de Clientes");
+		setTitle("Atualização de Cliente");
 
 		// Tamanho da tela
-		setSize(550, 760);
+		setSize(400, 270);
 
 		// Aplicação abre no centro da tela
 		setLocationRelativeTo(null);
@@ -25,11 +25,11 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 	}
 
 	void organizarLayout() {
-		Painel painelCliente = new Painel("Cadastro de Clientes");
+		Painel painelCliente = new Painel("Atualização de Cliente");
 		add(painelCliente, BorderLayout.NORTH);
 
-		FormCliente form = new FormCliente();
+		TelaBuscaCliente form = new TelaBuscaCliente();
 		add(form);
-
 	}
+
 }

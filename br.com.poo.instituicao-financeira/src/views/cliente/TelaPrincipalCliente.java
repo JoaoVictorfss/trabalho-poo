@@ -8,36 +8,33 @@ import javax.swing.JFrame;
 import views.templates.Menu;
 import views.templates.Painel;
 
-public class TelaPrincipalCliente extends JFrame{
-	public TelaPrincipalCliente(){
+public class TelaPrincipalCliente extends JFrame {
+	public TelaPrincipalCliente() {
 		organizarLayout();
-		
+
 		setTitle("Clientes");
-				
-		//Tamanho da tela
+
+		// Tamanho da tela
 		setSize(500, 600);
-				
-		//Aplicação abre no centro da tela
+
+		// Aplicação abre no centro da tela
 		setLocationRelativeTo(null);
-		
-		//Para finalizar a aplicação
+
+		// Para finalizar a aplicação
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		
-		//Fica Visível
+
+		// Fica Visível
 		setVisible(true);
 	}
-	
+
 	private void organizarLayout() {
 		setLayout(new BorderLayout());
-		
+
 		Painel painelCliente = new Painel("Gerenciador de clientes");
 		add(painelCliente, BorderLayout.NORTH);
-		
-	    Menu menu = new Menu("Salvar cliente(s)");
+
+		Menu menu = new Menu("Salvar cliente(s)");
 		add(menu, BorderLayout.CENTER);
 	}
-	
-	public static void main(String[] args) {
-		new TelaPrincipalCliente();
-	}
+
 }
