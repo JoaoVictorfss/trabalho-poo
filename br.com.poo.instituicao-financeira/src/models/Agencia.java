@@ -45,7 +45,7 @@ public class Agencia implements Serializable {
 		if (nroAgencia >= 0)
 			this.nroAgencia = nroAgencia;
 		else
-			nroAgencia = 0;
+			throw new RuntimeException("Número de agência inválido!");
 	}
 
 	public String getNome() {

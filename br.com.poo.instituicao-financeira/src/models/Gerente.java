@@ -44,7 +44,7 @@ public class Gerente extends Funcionario {
 		if (bonificacao >= 0)
 			Gerente.bonificacao = bonificacao;
 		else
-			Gerente.bonificacao = 0;
+			throw new RuntimeException("Valor de bonificação é inválido");
 	}
 	
     //Cálculo de salário

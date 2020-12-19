@@ -10,7 +10,7 @@ import persist.Persist;
  *         usando uma lista para adicionar, excluir, listar e por fim
  *	       guardar em um arquivo binário os dados dentro da mesma.
  */
-public class ControladorFuncionario implements controller{
+public class ControladorFuncionario implements controller {
 	private ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>();
 	private final String arquivo = "funcionarios.bin";
 
@@ -25,24 +25,21 @@ public class ControladorFuncionario implements controller{
 		System.out.println("Cargo: " + funcionario.getCargo());
 		System.out.println("______________________________________");
 	}
-	
-	//Cadastra funcionário na lista, não aceita funcionários duplicados
+
+	// Cadastra funcionário na lista, não aceita funcionários duplicados
 	public void cadastrar(Funcionario f) {
 		Funcionario existente = this.buscar(f.getCpf());
 
 		if (existente == null) {
 			this.funcionarios.add(f);
-
-			System.out.println("Sucesso. Funcionário cadastrado com sucesso!");
-			System.out.println("A quantidade total de Funcionarios agora eh: " + this.funcionarios.size());
 		}
 
 		else {
-			System.out.println("Erro. Funcionário duplicado");
+			throw new RuntimeException("Erro. Funcionário duplicado");
 		}
 	}
 
-	//Lista endereços cadastrados
+	// Lista endereços cadastrados
 	public void listar() {
 		if (funcionarios.isEmpty()) {
 			System.out.println("Sem registros!");
@@ -51,7 +48,8 @@ public class ControladorFuncionario implements controller{
 		}
 	}
 
-	//Busca endereço pelo cep, retorna um endereço caso encontrado ou null caso contrário
+	// Busca endereço pelo cep, retorna um endereço caso encontrado ou null caso
+	// contrário
 	public Funcionario buscar(String cpf) {
 		Funcionario funcionario = null;
 
@@ -64,8 +62,8 @@ public class ControladorFuncionario implements controller{
 
 		return funcionario;
 	}
-	
-	//Exclui um endereço pelo cep, retorna false se o endereço não existir
+
+	// Exclui um endereço pelo cep, retorna false se o endereço não existir
 	public boolean excluir(String cpf) {
 		Funcionario f = this.buscar(cpf);
 
@@ -76,12 +74,12 @@ public class ControladorFuncionario implements controller{
 			return false;
 		}
 	}
-	
+
 	public int qtdTotal() {
 		return this.funcionarios.size();
 	}
 
-	//Salva os endereços em um arquivo binário
+	// Salva os endereços em um arquivo binário
 	public void gravarFuncionarios() {
 		boolean salvo = true;
 
@@ -97,5 +95,5 @@ public class ControladorFuncionario implements controller{
 		} else
 			System.out.println("Erro. Sem registros para salvar!");
 	}
-	
+
 }

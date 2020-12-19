@@ -38,7 +38,7 @@ public class Funcionario extends Pessoa {
 		if (sexo == 'M' || sexo == 'F' || sexo == 'f' || sexo == 'm')
 			this.sexo = sexo;
 		else
-			this.sexo = 'N';
+			throw new RuntimeException("Sexo informado é inválido. Tente com M ou F.");
 	}
 
 	public String getCargo() {

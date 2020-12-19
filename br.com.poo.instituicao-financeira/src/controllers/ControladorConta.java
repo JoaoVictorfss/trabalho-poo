@@ -10,8 +10,8 @@ import persist.Persist;
  *       usando uma lista para adicionar, excluir, listar e por fim
  *       guardar em um arquivo binário os dados dentro da mesma.
  */
-public class ControladorConta implements controller{
-	private ArrayList<Conta> contas= new ArrayList<Conta>();
+public class ControladorConta implements controller {
+	private ArrayList<Conta> contas = new ArrayList<Conta>();
 	private final String arquivo = "contas.bin";
 
 	private void mostrarDados(Conta conta) {
@@ -24,24 +24,22 @@ public class ControladorConta implements controller{
 		System.out.println("Data de abertura: " + conta.getDataAbertura());
 		System.out.println("______________________________________");
 	}
-	
-	//Cadastra conta na lista, não aceita contas duplicadas
+
+	// Cadastra conta na lista, não aceita contas duplicadas
 	public void cadastrar(Conta c) {
 		Conta existente = this.buscar(c.getNroConta());
 
 		if (existente == null) {
 			this.contas.add(c);
-			System.out.println("Sucesso.Conta cadastrada com sucesso!");
-			System.out.println("A quantidade total de contas agora eh: " + this.contas.size());
 		}
 
 		else {
-			System.out.println("Erro. Conta duplicado");
+			throw new RuntimeException("Erro. Conta duplicado");
 		}
-		
+
 	}
 
-	//Lista contas cadastrados
+	// Lista contas cadastrados
 	public void listar() {
 		if (contas.isEmpty()) {
 			System.out.println("Sem registros!");
@@ -50,7 +48,8 @@ public class ControladorConta implements controller{
 		}
 	}
 
-	//Busca conta pelo número, retorna uma conta caso encontrada ou null caso contrário
+	// Busca conta pelo número, retorna uma conta caso encontrada ou null caso
+	// contrário
 	public Conta buscar(int nro) {
 		Conta Conta = null;
 
@@ -64,7 +63,7 @@ public class ControladorConta implements controller{
 		return Conta;
 	}
 
-	//Exclui uma conta pelo número, retorna false se a conta não existir
+	// Exclui uma conta pelo número, retorna false se a conta não existir
 	public boolean excluir(int nro) {
 		Conta c = this.buscar(nro);
 
@@ -75,12 +74,12 @@ public class ControladorConta implements controller{
 			return false;
 		}
 	}
-	
+
 	public int qtdTotal() {
 		return this.contas.size();
 	}
 
-	//Salva as contas em um arquivo binário
+	// Salva as contas em um arquivo binário
 	public void gravarcontas() {
 		boolean salvo = true;
 

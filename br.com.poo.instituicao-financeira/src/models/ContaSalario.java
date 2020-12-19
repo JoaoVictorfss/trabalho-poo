@@ -33,7 +33,7 @@ public class ContaSalario extends Conta {
 		if (salMinimo > 0)
 			this.salMinimo = salMinimo;
 		else
-			this.salMinimo = 0;
+			throw new RuntimeException("Salário mínimo informado é inválido");
 	}
 	
 	//Cálculo de tarifa

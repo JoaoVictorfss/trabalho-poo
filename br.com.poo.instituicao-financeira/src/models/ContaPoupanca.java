@@ -35,7 +35,7 @@ public class ContaPoupanca extends Conta {
 		if (rendimento >= 0)
 			this.rendimento = rendimento;
 		else
-			rendimento = 0;
+			throw new RuntimeException("Rendimento informado é invalido");
 	}
 
 	public double getTarifaConta() {

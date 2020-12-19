@@ -38,7 +38,7 @@ public class Endereco implements Serializable {
 		if (numero >= 0)
 			this.numero = numero;
 		else
-			this.numero = 0;
+			throw new RuntimeException("Número residencial informado é inválido");
 	}
 
 	public String getCep() {

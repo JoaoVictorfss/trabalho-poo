@@ -117,9 +117,8 @@ public abstract class Pessoa implements Serializable {
 	public void setEstadoCivil(String estadoCivil) {
 		if (!(estadoCivil.equalsIgnoreCase("solteiro") || estadoCivil.equalsIgnoreCase("casado") || estadoCivil.equalsIgnoreCase("separado")
 				|| estadoCivil.equalsIgnoreCase("viuvo")))
-			this.estadoCivil = "solteiro";
-		else
-			this.estadoCivil = estadoCivil;
+			throw new RuntimeException("Estado civil inválido. Valores aceitos: 'solteiro', 'casado', 'separado' e 'viuvo'.");
+		else this.estadoCivil = estadoCivil;
 	}
 
 }

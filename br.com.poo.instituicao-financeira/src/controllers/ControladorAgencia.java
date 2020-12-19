@@ -35,23 +35,20 @@ public class ControladorAgencia implements controller {
 
 	}
 
-	//Cadastra agência na lista, não aceita agências duplicadas
+	// Cadastra agência na lista, não aceita agências duplicadas
 	public void cadastrar(Agencia a) {
 		Agencia existente = this.buscar(a.getNroAgencia());
 
 		if (existente == null) {
 			this.agencias.add(a);
-
-			System.out.println("Sucesso. Agência cadastrada com sucesso!");
-			System.out.println("A quantidade total de agências agora eh: " + this.agencias.size());
 		}
 
 		else {
-			System.out.println("Erro. Agência duplicada");
+			throw new RuntimeException("Erro. Agência duplicada");
 		}
 	}
 
-	//Lista agências cadastradas
+	// Lista agências cadastradas
 	public void listar() {
 		if (agencias.isEmpty()) {
 			System.out.println("Sem registros!");
@@ -60,7 +57,8 @@ public class ControladorAgencia implements controller {
 		}
 	}
 
-	//Busca agência pelo número da agência, retorna uma agência caso encontrada e null caso contrário
+	// Busca agência pelo número da agência, retorna uma agência caso encontrada e
+	// null caso contrário
 	public Agencia buscar(int nroAgencia) {
 		Agencia agencia = null;
 
@@ -73,9 +71,9 @@ public class ControladorAgencia implements controller {
 
 		return agencia;
 	}
-	
 
-	//Exclui agência pelo número, retorna true se a agência existir e false caso contrário
+	// Exclui agência pelo número, retorna true se a agência existir e false caso
+	// contrário
 	public boolean excluir(int nro) {
 		Agencia c = this.buscar(nro);
 
@@ -86,27 +84,27 @@ public class ControladorAgencia implements controller {
 			return false;
 		}
 	}
-	
+
 	public int qtdTotal() {
 		return this.agencias.size();
 	}
 
-	//Salva as agências no arquivo binário
+	// Salva as agências no arquivo binário
 	public void gravarAgencias() {
 		boolean salvo = true;
-		
-        if(!this.agencias.isEmpty()) {
-        	for (Agencia a : this.agencias) {
-    			salvo = salvo && Persist.gravar(a, this.arquivo);
-    		}
 
-    		if (salvo)
-    			System.out.println("Sucesso. Agências salvas com sucesso!");
-    		else
-    			System.out.println("Erro. Ocorreu um erro ao salvar as agências, tente novamente!");
-        }else {
+		if (!this.agencias.isEmpty()) {
+			for (Agencia a : this.agencias) {
+				salvo = salvo && Persist.gravar(a, this.arquivo);
+			}
+
+			if (salvo)
+				System.out.println("Sucesso. Agências salvas com sucesso!");
+			else
+				System.out.println("Erro. Ocorreu um erro ao salvar as agências, tente novamente!");
+		} else {
 			System.out.println("Erro. Sem registros para salvar!");
-        }
-		
+		}
+
 	}
 }

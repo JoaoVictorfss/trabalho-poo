@@ -10,7 +10,7 @@ import persist.Persist;
  *         usando uma lista para adicionar, excluir, listar e por fim
  *	       guardar em um arquivo binário os dados dentro da mesma.
  */
-public class ControladorCliente implements controller{
+public class ControladorCliente implements controller {
 	private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 	private final String arquivo = "clientes.bin";
 
@@ -22,24 +22,23 @@ public class ControladorCliente implements controller{
 		System.out.println("Estado Civil: " + cliente.getEstadoCivil());
 		System.out.println("Data de Nascimento: " + cliente.getDataNasc());
 		System.out.println("Escolaridade: " + cliente.getEscolaridade());
-		//System.out.println("Agência de número: " + cliente.getAgencia().getNroAgencia());
+		// System.out.println("Agência de número: " +
+		// cliente.getAgencia().getNroAgencia());
 		System.out.println("______________________________________");
 	}
 
-	//Cadastra cliente na lista, não aceita clientes duplicados
+	// Cadastra cliente na lista, não aceita clientes duplicados
 	public void cadastrar(Cliente c) {
 		Cliente existente = this.buscar(c.getCpf());
 
 		if (existente == null) {
 			this.clientes.add(c);
-		}
-
-		else {	
-			throw new RuntimeException("Cliente duplicado");
+		} else {
+			throw new RuntimeException("Erro. Cliente duplicado");
 		}
 	}
 
-	//Lista clientes cadastrados
+	// Lista clientes cadastrados
 	public void listar() {
 		if (clientes.isEmpty()) {
 			System.out.println("Sem registros!");
@@ -48,7 +47,8 @@ public class ControladorCliente implements controller{
 		}
 	}
 
-	//Busca cliente pelo cpf, retorna um cliente caso encontrado ou null caso contrário
+	// Busca cliente pelo cpf, retorna um cliente caso encontrado ou null caso
+	// contrário
 	public Cliente buscar(String cpf) {
 		Cliente cliente = null;
 
@@ -62,7 +62,7 @@ public class ControladorCliente implements controller{
 		return cliente;
 	}
 
-	//Exclui um cliente pelo cpf, retorna false se o cliente não existir
+	// Exclui um cliente pelo cpf, retorna false se o cliente não existir
 	public boolean excluir(String cpf) {
 		Cliente c = this.buscar(cpf);
 
@@ -73,12 +73,12 @@ public class ControladorCliente implements controller{
 			return false;
 		}
 	}
-	
+
 	public int qtdTotal() {
 		return this.clientes.size();
 	}
-	
-	//Salva os clientes em um arquivo binário
+
+	// Salva os clientes em um arquivo binário
 	public void gravarClientes() {
 		boolean salvo = true;
 

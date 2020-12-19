@@ -94,7 +94,7 @@ public abstract class Conta implements Serializable {
 			transacoes.add(new Transacao(new Date(), "saque", valor, this.agencia));
 			return true;
 		} else
-			throw new IllegalArgumentException("Valor inválido para saque!");
+			throw new RuntimeException("Valor inválido para saque!");
 	}
 
 	public boolean deposito(double valor) {
@@ -103,7 +103,7 @@ public abstract class Conta implements Serializable {
 			transacoes.add(new Transacao(new Date(), "deposito", valor, this.agencia));
 			return true;
 		} else {
-			throw new IllegalArgumentException("Valor do depósito não pode ser um valor negativo!");
+			throw new RuntimeException("Valor do depósito não pode ser um valor negativo!");
 		}
 	}
 
@@ -113,7 +113,7 @@ public abstract class Conta implements Serializable {
 			transacoes.add(new Transacao(new Date(), "transferencia", valor, this.agencia, contaDestino));
 			return true;
 		} else
-			throw new IllegalArgumentException("Valor inválido para transferência!");
+			throw new RuntimeException("Valor inválido para transferência!");
 	}
 
 	public void printTransacoes(){
