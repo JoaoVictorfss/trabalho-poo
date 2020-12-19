@@ -31,5 +31,4 @@ public class TelaPrincipalAtualizaCliente extends javax.swing.JFrame {
 		TelaBuscaCliente form = new TelaBuscaCliente();
 		add(form);
 	}
-
 }

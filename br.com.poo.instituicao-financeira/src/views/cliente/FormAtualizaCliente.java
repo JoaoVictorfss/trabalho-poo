@@ -14,7 +14,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import models.Cliente;
-import models.Endereco;
 import views.templates.Botao;
 
 import java.util.Date;
@@ -154,11 +153,21 @@ public class FormAtualizaCliente extends JPanel {
 
 	@SuppressWarnings("unused")
 	private void atualizarCliente() {
-		try {
-			MemoriaCliente.getInstancia().atualizarCliente(this.nomeCliente, this.cpfCliente, this.estadoCiv,
-					this.escolaridade, this.dataNasc, this.endPais, this.endUf, this.endCep, this.endCidade,
-					this.endRua, this.endNumero, this.cliente);
+		try {			
+			cliente.setNome(this.nomeCliente);
+			cliente.setCpf(this.cpfCliente);
+			cliente.setDataNasc(this.dataNasc);
+			cliente.setEscolaridade(this.escolaridade);
+			cliente.setEstadoCivil(this.estadoCiv);
 
+			cliente.getEndereco().setPais(this.endPais);
+			cliente.getEndereco().setUf(this.endUf);
+			cliente.getEndereco().setCep(this.endCep);
+			cliente.getEndereco().setCidade(this.endCidade);
+			cliente.getEndereco().setRua(this.endRua);
+			cliente.getEndereco().setNumero(this.endNumero);
+            
+			MemoriaCliente.getInstancia().listar();
 			this.mostrarAlerta("Sucesso. Dados Atualizados!");
 		} catch (RuntimeException e) {
 			this.mostrarAlerta("Erro." + e.getMessage());
@@ -175,6 +184,7 @@ public class FormAtualizaCliente extends JPanel {
 	private boolean naoVazio(String campo) {
 		if (!campo.isEmpty()) {
 			this.valido = this.valido && true;
+			
 			return true;
 		} else {
 			this.valido = false;
