@@ -120,29 +120,29 @@ public class FormCliente extends JPanel {
 		// Escuta o evento de click do botão cadastrar
 		botao.addActionListener(event -> {
 
-			if (vazio(campoNome.getText()))
+			if (naoVazio(campoNome.getText()))
 				this.nomeCliente = campoNome.getText();
-			if (vazio(campoCpf.getText()))
+			if (naoVazio(campoCpf.getText()))
 				this.cpfCliente = campoCpf.getText();
-			if (vazio(campoDataNasc.getText()))
+			if (naoVazio(campoDataNasc.getText()))
 				transformaData(campoDataNasc.getText());
-			if (vazio(campoPais.getText()))
+			if (naoVazio(campoPais.getText()))
 				this.endPais = campoPais.getText();
-			if (vazio(campoUf.getText()))
+			if (naoVazio(campoUf.getText()))
 				this.endUf = campoUf.getText();
-			if (vazio(campoCep.getText()))
+			if (naoVazio(campoCep.getText()))
 				this.endCep = campoCep.getText();
-			if (vazio(campoCidade.getText()))
+			if (naoVazio(campoCidade.getText()))
 				this.endCidade = campoCidade.getText();
-			if (vazio(campoRua.getText()))
+			if (naoVazio(campoRua.getText()))
 				this.endRua = campoRua.getText();
-			if (vazio(campoNumero.getText()))
+			if (naoVazio(campoNumero.getText()))
 				this.endNumero = transformaNumero(campoNumero.getText());
-			if (vazio(campoNroConta.getText()))
+			if (naoVazio(campoNroConta.getText()))
 				this.endNumero = transformaNumero(campoNroConta.getText());
-			if (vazio(campoEscolaridade.getText()))
+			if (naoVazio(campoEscolaridade.getText()))
 				this.escolaridade = campoEscolaridade.getText();
-			if (vazio(campoEstadoCiv.getText()))
+			if (naoVazio(campoEstadoCiv.getText()))
 				this.estadoCiv = campoEstadoCiv.getText();
 			
 			if (this.valido) {
@@ -185,8 +185,8 @@ public class FormCliente extends JPanel {
 		});
 	}
 
-	// Verifica se o campo está vazio
-	private boolean vazio(String campo) {
+	// Verifica se o campo está naoVazio
+	private boolean naoVazio(String campo) {
 		if (!campo.isEmpty()) {
 			this.valido = this.valido && true;
 			return true;
