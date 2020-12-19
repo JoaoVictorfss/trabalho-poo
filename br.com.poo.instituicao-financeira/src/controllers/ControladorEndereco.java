@@ -52,11 +52,11 @@ public class ControladorEndereco implements controller{
 	}
 
 	//Busca endereço pelo cep, retorna um endereço caso encontrado ou null caso contrário
-	public Endereco buscar(int cep) {
+	public Endereco buscar(String cep) {
 		Endereco endereco = null;
 
 		for (Endereco c : this.enderecos) {
-			if (c.getCep() == cep) {
+			if (c.getCep().equals(cep)) {
 				endereco = c;
 				break;
 			}
@@ -66,7 +66,7 @@ public class ControladorEndereco implements controller{
 	}
 
 	//Exclui um cliente pelo cep, retorna false se o cliente não existir
-	public boolean excluir(int cep) {
+	public boolean excluir(String cep) {
 		Endereco c = this.buscar(cep);
 
 		if (c != null) {

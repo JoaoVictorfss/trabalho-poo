@@ -12,7 +12,6 @@ public class FormFuncionario extends JPanel {
         setLayout(new FlowLayout(FlowLayout.LEFT, 20, 40));
 
         JTextField campoNome = new JTextField();
-        ;
         JLabel nome = adicionarLabel("Nome:");
         campoNome.setPreferredSize(new Dimension(170, 30));
         add(nome);

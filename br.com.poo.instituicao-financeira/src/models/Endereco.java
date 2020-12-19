@@ -6,13 +6,13 @@ public class Endereco implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String rua;
 	private int numero;
-	private int cep;
+	private String cep;
 	private String uf;
 	private String cidade;
 	private String pais;
 
     //constructor
-	public Endereco(String rua, int numero, int cep, String uf, String cidade, String pais) {
+	public Endereco(String rua, int numero, String cep, String uf, String cidade, String pais) {
 		this.setRua(rua);
 		this.setNumero(numero);
 		this.setCep(cep);
@@ -41,11 +41,11 @@ public class Endereco implements Serializable {
 			this.numero = 0;
 	}
 
-	public int getCep() {
+	public String getCep() {
 		return cep;
 	}
 
-	public void setCep(int cep) {
+	public void setCep(String cep) {
 		this.cep = cep;
 	}
 

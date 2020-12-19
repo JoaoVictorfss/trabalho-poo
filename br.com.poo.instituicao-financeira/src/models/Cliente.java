@@ -16,6 +16,13 @@ public class Cliente extends Pessoa {
 		this.escolaridade = "";
 	}
 
+	public Cliente(String nome, String cpf, Endereco endereco, String estadoCivil, String escolaridade,
+			Date dataNasc) {
+		super(nome, cpf, endereco, estadoCivil, dataNasc);
+		this.setEscolaridade(escolaridade);
+		this.setAgencia(agencia);
+	}
+	
 	public Cliente(String nome, Agencia agencia, String cpf, Endereco endereco, String estadoCivil, String escolaridade,
 			Date dataNasc, Conta conta) {
 		super(nome, cpf, endereco, estadoCivil, dataNasc);

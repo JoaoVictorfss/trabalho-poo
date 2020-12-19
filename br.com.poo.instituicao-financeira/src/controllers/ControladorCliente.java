@@ -22,7 +22,7 @@ public class ControladorCliente implements controller{
 		System.out.println("Estado Civil: " + cliente.getEstadoCivil());
 		System.out.println("Data de Nascimento: " + cliente.getDataNasc());
 		System.out.println("Escolaridade: " + cliente.getEscolaridade());
-		System.out.println("Agência de número: " + cliente.getAgencia().getNroAgencia());
+		//System.out.println("Agência de número: " + cliente.getAgencia().getNroAgencia());
 		System.out.println("______________________________________");
 	}
 

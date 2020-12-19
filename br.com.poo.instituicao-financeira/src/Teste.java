@@ -42,9 +42,9 @@ import models.Gerente;
 
 public class Teste {
 	public static void main(String[] args) throws ParseException {
-		Endereco enderecoJoao = new Endereco("Rua Maria", 200, 3817001, "MG", "Perdizes", "Brasil");
-		Endereco enderecoAgencia = new Endereco("Centro", 400, 3817000, "MG", "Perdizes", "Brasil");
-		Endereco enderecoGerente = new Endereco("Rua Imidia", 89, 3817002, "MG", "Perdizes", "Brasil");
+		Endereco enderecoJoao = new Endereco("Rua Maria", 200, "3817001", "MG", "Perdizes", "Brasil");
+		Endereco enderecoAgencia = new Endereco("Centro", 400, "3817000", "MG", "Perdizes", "Brasil");
+		Endereco enderecoGerente = new Endereco("Rua Imidia", 89, "3817002", "MG", "Perdizes", "Brasil");
 
 		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 		Date dataNascGerente = formato.parse("10/11/1980");
@@ -112,7 +112,7 @@ public class Teste {
 		dadosEnderecos.cadastrar(enderecoAgencia);
 		dadosEnderecos.cadastrar(enderecoGerente);
 		dadosEnderecos.listar();
-		dadosEnderecos.excluir(3817000);
+		dadosEnderecos.excluir("3817000");
 		dadosEnderecos.listar();
 		dadosEnderecos.gravarEnderecos();
 
