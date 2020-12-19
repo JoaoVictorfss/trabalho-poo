@@ -91,7 +91,7 @@ public abstract class Pessoa implements Serializable {
 		if (this.cpfValido(cpf))
 			this.cpf = cpf;
 		else
-			this.cpf = "";
+			throw new RuntimeException("cpf inválido");
 	}
 
 	public Endereco getEndereco() {

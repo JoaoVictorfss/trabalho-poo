@@ -158,17 +158,21 @@ public class FormCliente extends JPanel {
 	
 	@SuppressWarnings("unused")
 	private void cadastraCliente() {
-		Endereco enderecoCliente = new Endereco(endRua, endNumero, endCep, endUf, endCidade, endPais);
-		Cliente cliente = null;	
-		
-		//Verificar se a conta existe pelo número e adicionar
-		 		
-		cliente = new Cliente(nomeCliente, cpfCliente, enderecoCliente, estadoCiv, escolaridade, dataNasc);
+		try {
+			Endereco enderecoCliente = new Endereco(endRua, endNumero, endCep, endUf, endCidade, endPais);
+			Cliente cliente = null;	
+			
+			//Verificar se a conta existe pelo número e adicionar
+			 		
+			cliente = new Cliente(nomeCliente, cpfCliente, enderecoCliente, estadoCiv, escolaridade, dataNasc);
 
-	    if(cliente == null) {
-	    	//mostrar alerta
-	    	System.out.println("Dados incorretos! Verique todos e tente novamente");
-	    }else MemoriaCliente.getInstancia().adicionarCliente(cliente);
+		    if(cliente == null) {
+		    	//mostrar alerta
+		    	System.out.println("Dados incorretos! Verique todos e tente novamente");
+		    }else MemoriaCliente.getInstancia().adicionarCliente(cliente);
+		}catch (RuntimeException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	//Verifica se o campo está vazio 
