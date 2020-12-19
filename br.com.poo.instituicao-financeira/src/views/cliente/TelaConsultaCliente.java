@@ -1,14 +1,14 @@
 package views.cliente;
 
 import java.awt.BorderLayout;
+
 import views.templates.Painel;
 
-public class TelaPrincipalAtualizaCliente extends javax.swing.JFrame {
-
-	public TelaPrincipalAtualizaCliente() {
+public class TelaConsultaCliente extends javax.swing.JFrame{
+	public TelaConsultaCliente () {
 		organizarLayout();
 
-		setTitle("Atualização de Cliente");
+		setTitle("Consultar Cliente");
 
 		// Tamanho da tela
 		setSize(400, 270);
@@ -22,10 +22,15 @@ public class TelaPrincipalAtualizaCliente extends javax.swing.JFrame {
 	}
 
 	void organizarLayout() {
-		Painel painelCliente = new Painel("Atualização de Cliente");
+		Painel painelCliente = new Painel("Cosultar Cliente");
 		add(painelCliente, BorderLayout.NORTH);
 
-		TelaBuscaCliente form = new TelaBuscaCliente(false);
+		TelaBuscaCliente form = new TelaBuscaCliente(true);
+		
 		add(form);
 	}
+
 }
+
+
+	

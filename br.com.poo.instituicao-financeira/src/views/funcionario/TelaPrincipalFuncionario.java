@@ -32,7 +32,7 @@ public class TelaPrincipalFuncionario extends JFrame {
         Painel painelFuncionario= new Painel("Gerenciador de funcionarios");
         add(painelFuncionario, BorderLayout.NORTH);
         
-        Menu menu = new Menu("Salvar funcionario(s)");
+        Menu menu = new Menu("Salvar funcionario(s)", "funcionario");
         add(menu, BorderLayout.CENTER);
     }
     

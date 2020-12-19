@@ -15,8 +15,11 @@ import models.Cliente;
 import views.templates.Botao;
 
 public class TelaBuscaCliente extends JPanel {
+	String label = "Atualizar";
 
-	public TelaBuscaCliente() {
+	public TelaBuscaCliente(boolean telaBusca) {
+		if(telaBusca) this.label = "Buscar";
+		
 		setBackground(new Color(220, 220, 220));
 		setLayout(new FlowLayout(FlowLayout.LEFT, 20, 40));
 
@@ -28,7 +31,7 @@ public class TelaBuscaCliente extends JPanel {
 		campoCpf.setPreferredSize(new Dimension(300, 30));
 		add(campoCpf);
 
-		Botao botao = new Botao("Atualizar");
+		Botao botao = new Botao(label);
 		botao.setPreferredSize(new Dimension(150, 30));
 		botao.setBackground(Color.BLUE);
 
@@ -38,11 +41,10 @@ public class TelaBuscaCliente extends JPanel {
 			if (!campoCpf.getText().isEmpty()) {
 				try {
 					Cliente c = MemoriaCliente.getInstancia().buscaCliente(campoCpf.getText());
-					if (c != null)
+					if (!telaBusca && verificaCliente(c))
 						new TelaAtualizaCliente(c);
-					else
-						this.mostrarAlerta("Erro. Cliente inexistente");
-
+					else if (verificaCliente(c))
+						new MostraCliente(c);
 				} catch (RuntimeException e) {
 					this.mostrarAlerta("Erro." + e.getMessage());
 				}
@@ -51,6 +53,15 @@ public class TelaBuscaCliente extends JPanel {
 			}
 		});
 
+	}
+
+	private boolean verificaCliente(Cliente c) {
+		if (c != null) {
+			return true;
+		} else {
+			this.mostrarAlerta("Erro. Cliente inexistente");
+			return false;
+		}
 	}
 
 	private void mostrarAlerta(String mensagem) {

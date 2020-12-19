@@ -7,23 +7,48 @@ import java.awt.FlowLayout;
 
 import javax.swing.JPanel;
 
+import views.cliente.TelaCadastroCliente;
+import views.cliente.TelaConsultaCliente;
+import views.cliente.TelaExcluiCliente;
+import views.cliente.TelaPrincipalAtualizaCliente;
+
 public class Menu extends JPanel{
     
-	public Menu(String tipoOperacao) {	
+	public Menu(String tipoOperacao, String tela) {	
 		setBackground(Color.GRAY);
 		setLayout(new FlowLayout(FlowLayout.CENTER, 20, 40));//20 como valor na vertical e 40 na horizontal
 		
-		adicionarBotao("Cadastrar");
-		adicionarBotao("Listar");
-		adicionarBotao("Atualizar");
-		adicionarBotao("Excluir");
+		Botao cadastrar = adicionarBotao("Cadastrar");
+		cadastrar.addActionListener(event -> {
+			if(tela.equalsIgnoreCase("cliente")) new TelaCadastroCliente();
+		});
+		add(cadastrar);
+		
+		Botao consultar = adicionarBotao("Consultar");
+		consultar.addActionListener(event -> {
+			if(tela.equalsIgnoreCase("cliente")) new TelaConsultaCliente();
+		});
+		add(consultar);
+		
+		Botao atualizar = adicionarBotao("Atualizar");
+		atualizar.addActionListener(event -> {
+			if(tela.equalsIgnoreCase("cliente")) new TelaPrincipalAtualizaCliente();
+		});
+		add(atualizar);
+		
+		Botao excluir = adicionarBotao("Excluir");
+		excluir.addActionListener(event -> {
+			if(tela.equalsIgnoreCase("cliente")) new TelaExcluiCliente();
+		});
+		add(excluir);
+		
 		adicionarBotao(tipoOperacao);
 	}
 	
 	//Função que organiza o botão na tela, posicionando e adicionando o evento
-	private void adicionarBotao(String texto) {
+	private Botao adicionarBotao(String texto) {
 		Botao botao = new Botao(texto);
 		botao.setPreferredSize(new Dimension(400, 50));
-		add(botao);
+		return botao;
 	}
 }

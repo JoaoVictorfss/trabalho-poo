@@ -5,6 +5,7 @@ import java.awt.Color;
 
 import javax.swing.JFrame;
 
+import views.agencia.TelaPrincipalAgencia;
 import views.templates.Menu;
 import views.templates.Painel;
 
@@ -33,8 +34,12 @@ public class TelaPrincipalCliente extends JFrame {
 		Painel painelCliente = new Painel("Gerenciador de clientes");
 		add(painelCliente, BorderLayout.NORTH);
 
-		Menu menu = new Menu("Salvar cliente(s)");
+		Menu menu = new Menu("Salvar cliente(s)", "cliente");
 		add(menu, BorderLayout.CENTER);
 	}
+	
+    public static void main(String[] args) {
+        new TelaPrincipalCliente();
+    }
 
 }

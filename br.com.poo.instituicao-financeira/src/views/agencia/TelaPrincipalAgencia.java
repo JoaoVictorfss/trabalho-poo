@@ -32,7 +32,7 @@ public class TelaPrincipalAgencia extends JFrame {
         Painel painelAgencia = new Painel("Gerenciador de agencias");
         add(painelAgencia, BorderLayout.NORTH);
         
-        Menu menu = new Menu("Salvar agencia(s)");
+        Menu menu = new Menu("Salvar agencia(s)", "agencia");
         add(menu, BorderLayout.CENTER);
     }
     

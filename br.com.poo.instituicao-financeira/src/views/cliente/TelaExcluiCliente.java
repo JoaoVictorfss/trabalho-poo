@@ -16,9 +16,6 @@ public class TelaExcluiCliente extends javax.swing.JFrame{
 		// Aplicação abre no centro da tela
 		setLocationRelativeTo(null);
 
-		// Para finalizar a aplicação
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-
 		// Fica Visível
 		setVisible(true);
 
