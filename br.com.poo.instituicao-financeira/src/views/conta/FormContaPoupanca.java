@@ -1,8 +1,9 @@
 package views.conta;
 
-import views.Botao;
-
 import javax.swing.*;
+
+import views.templates.Botao;
+
 import java.awt.*;
 
 public class FormContaPoupanca extends JPanel {

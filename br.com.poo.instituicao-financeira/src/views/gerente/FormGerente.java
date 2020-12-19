@@ -6,9 +6,10 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 
 import javax.swing.*;
-import java.awt.*;
 
-import views.Botao;
+import views.templates.Botao;
+
+import java.awt.*;
 
 public class FormGerente extends JPanel {
 

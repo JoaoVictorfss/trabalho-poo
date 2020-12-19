@@ -2,7 +2,7 @@ package views.funcionario;
 
 import java.awt.BorderLayout;
 
-import views.Painel;
+import views.templates.Painel;
 
 public class TelaCadastroFuncionario extends javax.swing.JFrame {
     public TelaCadastroFuncionario() {

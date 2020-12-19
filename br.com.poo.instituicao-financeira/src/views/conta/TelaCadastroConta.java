@@ -1,7 +1,7 @@
 package views.conta;
 import java.awt.BorderLayout;
 
-import views.Painel;
+import views.templates.Painel;
 
 public class TelaCadastroConta extends javax.swing.JFrame {
     public TelaCadastroConta() {

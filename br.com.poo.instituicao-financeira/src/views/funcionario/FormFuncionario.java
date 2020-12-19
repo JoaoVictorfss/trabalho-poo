@@ -1,8 +1,9 @@
 package views.funcionario;
 
-import views.Botao;
-
 import javax.swing.*;
+
+import views.templates.Botao;
+
 import java.awt.*;
 
 public class FormFuncionario extends JPanel {

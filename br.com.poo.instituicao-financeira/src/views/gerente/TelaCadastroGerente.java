@@ -1,7 +1,7 @@
 package views.gerente;
 import java.awt.BorderLayout;
 
-import views.Painel;
+import views.templates.Painel;
 
 public class TelaCadastroGerente extends javax.swing.JFrame {
     public TelaCadastroGerente() {

@@ -2,7 +2,7 @@ package views.cliente;
 
 import java.awt.BorderLayout;
 
-import views.Painel;
+import views.templates.Painel;
 
 public class TelaCadastroCliente extends javax.swing.JFrame {
 	public TelaCadastroCliente() {

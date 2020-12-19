@@ -3,9 +3,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
     
 import javax.swing.JFrame;
-    
-import views.Menu;
-import views.Painel;
+
+import views.templates.Menu;
+import views.templates.Painel;
 
 public class TelaPrincipalFuncionario extends JFrame {
     public TelaPrincipalFuncionario(){

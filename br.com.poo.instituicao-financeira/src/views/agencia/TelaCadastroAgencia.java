@@ -3,7 +3,7 @@ import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 
-import views.Painel;
+import views.templates.Painel;
 
 public class TelaCadastroAgencia extends JFrame {
     public TelaCadastroAgencia() {

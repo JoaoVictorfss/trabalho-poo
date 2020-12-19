@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import views.Botao;
+import views.templates.Botao;
 
 public class FormAgencia extends JPanel {
 

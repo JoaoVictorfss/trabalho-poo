@@ -5,8 +5,8 @@ import java.awt.Color;
 
 import javax.swing.JFrame;
 
-import views.Menu;
-import views.Painel;
+import views.templates.Menu;
+import views.templates.Painel;
 
 public class TelaPrincipalCliente extends JFrame{
 	public TelaPrincipalCliente(){

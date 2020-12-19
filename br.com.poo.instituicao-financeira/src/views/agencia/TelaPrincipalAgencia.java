@@ -4,9 +4,9 @@ package views.agencia;
     import java.awt.Color;
     
     import javax.swing.JFrame;
-    
-    import views.Menu;
-    import views.Painel;
+
+import views.templates.Menu;
+import views.templates.Painel;
 public class TelaPrincipalAgencia extends JFrame {
     public TelaPrincipalAgencia(){
         organizarLayout();
