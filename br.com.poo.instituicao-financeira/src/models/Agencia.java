@@ -10,7 +10,7 @@ public class Agencia implements Serializable {
 	private Endereco endereco;
 	private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 	private ArrayList<Conta> contas = new ArrayList<Conta>();
-	private Gerente gerente;
+	private Funcionario gerente;
 
 	// constructor
 	public Agencia(int nroAgencia, String nome, Endereco endereco, ArrayList<Cliente> clientes, Gerente gerente,
@@ -23,7 +23,7 @@ public class Agencia implements Serializable {
 		contas.forEach(item -> this.contas.add(item));
 	}
 	
-	public Agencia(String nome, int nroAgencia, Endereco endereco, Gerente gerente) {
+	public Agencia(String nome, int nroAgencia, Endereco endereco, Funcionario gerente) {
 		this.setNome(nome);
 		this.setNroAgencia(nroAgencia);
 		this.setEndereco(endereco);
@@ -64,11 +64,11 @@ public class Agencia implements Serializable {
 		this.endereco = endereco;
 	}
 
-	public Gerente getGerente() {
+	public Funcionario getGerente() {
 		return gerente;
 	}
 
-	public void setGerente(Gerente gerente) {
+	public void setGerente(Funcionario gerente) {
 		this.gerente = gerente;
 	}
 

@@ -173,7 +173,7 @@ public class FormFuncionario extends JPanel {
             if (naoVazio(bonificacao.getText()))
                 this.bonificacao = bonificacao.getText();
             if (this.valido) {
-                cadastraCliente();
+                cadastraFuncionario();
             }
         });
     }
@@ -230,7 +230,7 @@ public class FormFuncionario extends JPanel {
         }
     }
 
-    private void cadastraCliente() {
+    private void cadastraFuncionario() {
         try {
             Endereco enderecoFuncionario = new Endereco(endRua, endNumero, endCep, endUf, endCidade, endPais);
             Gerente gerente = null;
