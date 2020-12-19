@@ -25,7 +25,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 	}
 
 	void organizarLayout() {
-		Painel painelCliente = new Painel("Cadastro de cliente");
+		Painel painelCliente = new Painel("Cadastro de Clientes");
 		add(painelCliente, BorderLayout.NORTH);
 
 		FormCliente form = new FormCliente();

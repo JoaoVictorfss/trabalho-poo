@@ -24,7 +24,7 @@ public class TelaCadastroGerente extends javax.swing.JFrame {
     }
 
     void organizarLayout() {
-        Painel painelGerente = new Painel("Cadastro de gerente");
+        Painel painelGerente = new Painel("Cadastro de Gerente");
         add(painelGerente, BorderLayout.NORTH);
 
         FormGerente form = new FormGerente();

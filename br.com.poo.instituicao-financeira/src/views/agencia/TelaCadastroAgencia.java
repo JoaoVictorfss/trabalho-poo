@@ -9,10 +9,10 @@ public class TelaCadastroAgencia extends JFrame {
     public TelaCadastroAgencia() {
 		organizarLayout();
 
-		setTitle("Cadastro de Agencias");
+		setTitle("Cadastro de Agências");
 
 		// Tamanho da tela
-		setSize(550, 760);
+		setSize(540, 540);
 
 		// Aplicação abre no centro da tela
 		setLocationRelativeTo(null);
@@ -26,11 +26,11 @@ public class TelaCadastroAgencia extends JFrame {
 	}
 
 	void organizarLayout() {
-		Painel painelAgencia = new Painel("Cadastro de Agencias");
+		Painel painelAgencia = new Painel("Cadastro de Agências");
 		add(painelAgencia, BorderLayout.NORTH);
 
-		//FormAgencia form = new FormAgencia();
-		//add(form);
+		FormAgencia form = new FormAgencia();
+		add(form);
 
 	}
 
