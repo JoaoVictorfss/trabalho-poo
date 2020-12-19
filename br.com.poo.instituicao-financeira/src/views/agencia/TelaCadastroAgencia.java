@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 
 import views.templates.Painel;
 
-public class TelaCadastroAgencia extends JFrame {
+public class TelaCadastroAgencia extends javax.swing.JFrame {
     public TelaCadastroAgencia() {
 		organizarLayout();
 

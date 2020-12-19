@@ -17,55 +17,55 @@ public class FormAgencia extends JPanel {
         setBackground(new Color(220, 220, 220));
         setLayout(new FlowLayout(FlowLayout.LEFT, 20, 40));
 
-        JTextField campoNroAgencia = new JTextField();
+        JTextField campoNroAgencia = new JTextField("0800");
         campoNroAgencia.setPreferredSize(new Dimension(150, 30));
         JLabel nroConta = adicionarLabel("N° Agência:");
         add(nroConta);
         add(campoNroAgencia);
 
-        JTextField campoNome = new JTextField();
+        JTextField campoNome = new JTextField("João");
         campoNome.setPreferredSize(new Dimension(120, 30));
         JLabel nome = adicionarLabel("Nome:");
         add(nome);
         add(campoNome);
 
-        JTextField campoPais = new JTextField();
+        JTextField campoPais = new JTextField("Brasil");
         campoPais.setPreferredSize(new Dimension(140, 30));
         JLabel pais = adicionarLabel("País:");
         add(pais);
         add(campoPais);
 
-        JTextField campoUf = new JTextField();
+        JTextField campoUf = new JTextField("MG");
         campoUf.setPreferredSize(new Dimension(150, 30));
         JLabel uf = adicionarLabel("Estado:");
         add(uf);
         add(campoUf);
 
-        JTextField campoCep = new JTextField();
+        JTextField campoCep = new JTextField("38770-000");
         campoCep.setPreferredSize(new Dimension(150, 30));
         JLabel cep = adicionarLabel("CEP:");
         add(cep);
         add(campoCep);
 
-        JTextField campoCidade = new JTextField();
+        JTextField campoCidade = new JTextField("Uberlândia");
         campoCidade.setPreferredSize(new Dimension(150, 30));
         JLabel cidade = adicionarLabel("Cidade:");
         add(cidade);
         add(campoCidade);
 
-        JTextField campoRua = new JTextField();
+        JTextField campoRua = new JTextField("Rondon Pacheco");
         campoRua.setPreferredSize(new Dimension(150, 30));
         JLabel rua = adicionarLabel("Rua:");
         add(rua);
         add(campoRua);
 
-        JTextField campoNumero = new JTextField();
+        JTextField campoNumero = new JTextField("1220");
         campoNumero.setPreferredSize(new Dimension(150, 30));
         JLabel numero = adicionarLabel("Número:");
         add(numero);
         add(campoNumero);
 
-        JTextField campoGerente = new JTextField();
+        JTextField campoGerente = new JTextField("Antônio Carlos");
         campoGerente.setPreferredSize(new Dimension(150, 30));
         JLabel gerente = adicionarLabel("Gerente:");
         add(gerente);

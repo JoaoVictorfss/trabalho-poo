@@ -11,7 +11,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         setTitle("Cadastro de Funcionário");
 
         // Tamanho da tela
-        setSize(550, 720);
+        setSize(550, 800);
 
         // Aplicação abre no centro da tela
         setLocationRelativeTo(null);
@@ -24,7 +24,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     }
 
     void organizarLayout() {
-        Painel painelFuncionario = new Painel("Cadastro de funcionários");
+        Painel painelFuncionario = new Painel("Cadastro de Gerente");
         add(painelFuncionario, BorderLayout.NORTH);
 
         FormFuncionario form = new FormFuncionario();
