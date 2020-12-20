@@ -1,4 +1,4 @@
-package views.conta;
+package views.transacoes;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -8,13 +8,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import models.Conta;
+import models.Transacao;
 
-public class MostraConta extends javax.swing.JFrame {
-	Conta c;
+public class MostraTransacao extends javax.swing.JFrame {
+	Transacao t;
 
-	public MostraConta(Conta c) {
-		this.c = c;
+	public MostraTransacao(Transacao t) {
+		this.t = t;
 
 		mostrar();
 
@@ -30,11 +30,11 @@ public class MostraConta extends javax.swing.JFrame {
 	void mostrar() {
 		JPanel painel = new JPanel();
 
-		JLabel titulo = new JLabel("Dados da conta " + c.getNroConta());
+		JLabel titulo = new JLabel("Dados da transação" + t.getId());
 		titulo.setForeground(Color.white);
 		titulo.setFont(new Font("SansSerif", Font.PLAIN, 26));
 
-		JTextArea textAreal = new JTextArea(c.mostrarDados());
+		JTextArea textAreal = new JTextArea(t.mostrarExtrato());
 		textAreal.setPreferredSize(new Dimension(550, 300));
 		textAreal.setLineWrap(true);
 		textAreal.setWrapStyleWord(true);
@@ -46,5 +46,4 @@ public class MostraConta extends javax.swing.JFrame {
 		painel.add(textAreal);
 		add(painel);
 	}
-
 }

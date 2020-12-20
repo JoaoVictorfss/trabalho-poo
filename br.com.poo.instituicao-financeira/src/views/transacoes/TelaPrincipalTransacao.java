@@ -7,56 +7,62 @@ import java.awt.FlowLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import views.TelaPrincipal;
 import views.templates.Botao;
 import views.templates.Painel;
 
-public class TelaPrincipalTransacao extends JFrame{
-	public TelaPrincipalTransacao () {
-        organizarLayout();
+public class TelaPrincipalTransacao extends JFrame {
+	public TelaPrincipalTransacao() {
+		organizarLayout();
 
-        setTitle("Operações bancárias");
+		setTitle("Operações bancárias");
 
-        setSize(500, 440);
+		setSize(500, 550);
 
-        setLocationRelativeTo(null);
+		setLocationRelativeTo(null);
 
-        setVisible(true);
-    }
+		setVisible(true);
+	}
 
-    private void organizarLayout() {
-        setLayout(new BorderLayout());
-		Painel painel = new Painel("Transações");	
+	private void organizarLayout() {
+		setLayout(new BorderLayout());
+		Painel painel = new Painel("Transações");
 		add(painel, BorderLayout.NORTH);
-		
-        JPanel menu = new JPanel();
+
+		JPanel menu = new JPanel();
 		menu.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 40));
-		
+
 		Botao saque = adicionarBotao("Saque");
 		saque.addActionListener(e -> {
-		  new TelaEfetuarTransacao("Saque");
+			new TelaEfetuarTransacao("Saque");
 		});
-		
-        menu.add(saque);	
-        
+
+		menu.add(saque);
+
 		Botao trans = adicionarBotao("Transferência");
 		trans.addActionListener(e -> {
-			  new TelaEfetuarTransacao("Transferencia");
+			new TelaEfetuarTransacao("Transferencia");
 		});
-        menu.add(trans);
-        
+		menu.add(trans);
+
 		Botao dep = adicionarBotao("Depósito");
 		dep.addActionListener(e -> {
-			  new TelaEfetuarTransacao("Deposito");
+			new TelaEfetuarTransacao("Deposito");
 		});
-        menu.add(dep);
+		menu.add(dep);
 		add(menu);
-    }
-    
+
+		Botao cons = adicionarBotao("Consultar");
+		cons.addActionListener(e -> {
+			new TelaConsultaTransacao();
+		});
+		menu.add(cons);
+		add(menu);
+	}
+
 	private Botao adicionarBotao(String texto) {
 		Botao botao = new Botao(texto);
 		botao.setPreferredSize(new Dimension(400, 50));
 		return botao;
 	}
-	
+
 }

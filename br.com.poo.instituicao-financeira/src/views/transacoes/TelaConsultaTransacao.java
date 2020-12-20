@@ -1,30 +1,32 @@
-package views.conta;
+package views.transacoes;
 
 import java.awt.BorderLayout;
 
 import views.templates.Painel;
 
-public class TelaCadastroContaSal extends javax.swing.JFrame {
-	public TelaCadastroContaSal() {
+public class TelaConsultaTransacao extends javax.swing.JFrame {
+
+	public TelaConsultaTransacao() {
 		organizarLayout();
 
-		setTitle("Cadastro de Conta");
+		setTitle("Consultar Transações");
 
 		// Tamanho da tela
-		setSize(550, 550);
+		setSize(400, 380);
 
 		// Aplicação abre no centro da tela
 		setLocationRelativeTo(null);
 
 		// Fica Visível
 		setVisible(true);
+
 	}
 
 	void organizarLayout() {
-		Painel painelConta = new Painel("Cadastro de Conta");
+		Painel painelConta = new Painel("Consultar Conta");
 		add(painelConta, BorderLayout.NORTH);
 
-		FormContaSalario form = new FormContaSalario(this);
+		FormBuscaTransacao form = new FormBuscaTransacao();
 		add(form);
 	}
 }

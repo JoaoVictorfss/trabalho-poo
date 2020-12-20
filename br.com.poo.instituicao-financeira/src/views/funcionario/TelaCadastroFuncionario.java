@@ -24,7 +24,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         Painel painelFuncionario = new Painel("Cadastro de Gerente");
         add(painelFuncionario, BorderLayout.NORTH);
 
-        FormFuncionario form = new FormFuncionario();
+        FormFuncionario form = new FormFuncionario(this);
         add(form);
     }
 }

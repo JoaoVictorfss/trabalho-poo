@@ -8,20 +8,20 @@ public class ContaCorrente extends Conta {
 	private double limiteChequeEspecial;
 	private double tarifaConta;
 	private String categoria;
-
 	// constructor
 	public ContaCorrente() {
 		super();
 		this.limiteChequeEspecial = 0;
 		this.tarifaConta = 0;
 	}
-	public ContaCorrente(int nroConta, int nroAgencia , String status, Date dataAbertura, String categoria) {
-		this.setNroConta(nroConta);
-		this.setStatus(status);
+	
+	public ContaCorrente(String categoria, int nroConta, Agencia agencia, String status,
+			double limiteChequeEspecial) {
+		super(nroConta, agencia, "conta corrente",status, new Date());
+		this.setLimiteChequeEspecial(limiteChequeEspecial);
 		this.setCategoria(categoria);
-		this.setNroAgencia(nroAgencia);
-		this.setDataAbertura(dataAbertura);
 	}
+
 	public ContaCorrente(String categoria, int nroConta, Agencia agencia, Cliente cliente, String status,
 			double limiteChequeEspecial) {
 		super(nroConta, agencia, cliente, status, new Date());

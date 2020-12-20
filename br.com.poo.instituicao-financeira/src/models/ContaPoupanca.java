@@ -13,13 +13,12 @@ public class ContaPoupanca extends Conta {
 		this.tarifaConta = 0;
 	}
 
-	public ContaPoupanca(int nroConta, int nroAgencia , String status, Date dataAbertura) {
-		this.setNroConta(nroConta);
-		this.setStatus(status);
-		this.setNroAgencia(nroAgencia);
-		this.setDataAbertura(dataAbertura);
+	public ContaPoupanca(double rendimento, int nroConta, Agencia agencia, String status, double tarifaConta) {
+		super(nroConta, agencia, "conta poupança", status, new Date());
+		this.setRendimento(rendimento);
+		this.setTarifaConta(tarifaConta);
 	}
-
+	
 	public ContaPoupanca(double rendimento, int nroConta, Agencia agencia, Cliente cliente, String status, double tarifaConta) {
 		super(nroConta, agencia, cliente, status, new Date());
 		this.setRendimento(rendimento);

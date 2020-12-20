@@ -69,7 +69,7 @@ public class FormTransferencia extends JPanel {
 			if (naoVazio(campoNumero.getText()))
 				this.nroConta = campoNumero.getText();
 			if (naoVazio(campoValor.getText()))
-				this.nroContaDes = campoNumero.getText();
+				this.nroContaDes = campoNumero2.getText();
 			if (naoVazio(campoNumero2.getText()))
 				this.valor = transformaStrDouble(campoValor.getText());
 
@@ -97,6 +97,7 @@ public class FormTransferencia extends JPanel {
 		    	  Transacao transacao = new Transacao(new Date(), conta, agencia, valor);
 		    	  transacao.transferir(contaDes, valor);
 		      }
+		      new Alerta("Sucesso. Transação efetuada");
 		} catch (RuntimeException e) {
 			new Alerta("Erro." + e.getMessage());
 		}

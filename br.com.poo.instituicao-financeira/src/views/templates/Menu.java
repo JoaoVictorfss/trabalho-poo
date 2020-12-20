@@ -15,6 +15,9 @@ import views.cliente.TelaConsultaCliente;
 import views.cliente.TelaPrincipalAtualizaCliente;
 import views.conta.*;
 import views.funcionario.MemoriaFuncionario;
+import views.funcionario.TelaCadastroFuncionario;
+import views.funcionario.TelaConsultaFuncionario;
+import views.funcionario.TelaPrincipalAtualizaFuncionario;
 
 public class Menu extends JPanel {
 	public Menu(String tipoOperacao, String tela) {
@@ -24,8 +27,11 @@ public class Menu extends JPanel {
 		cadastrar.addActionListener(event -> {
 			if (tela.equalsIgnoreCase("cliente"))
 				new TelaCadastroCliente();
+			else if(tela.equalsIgnoreCase("funcionario"))
+				new TelaCadastroFuncionario();
 			else if(tela.equalsIgnoreCase("conta"))
-			new TelaCadastroConta();
+				new TelaCadastroConta();
+			else new TelaCadastroAgencia();
 		});
 		add(cadastrar);
 
@@ -34,7 +40,10 @@ public class Menu extends JPanel {
 			if (tela.equalsIgnoreCase("cliente"))
 				new TelaConsultaCliente();
 			else if(tela.equalsIgnoreCase("conta"))
-			new TelaConsultaConta();
+			   new TelaConsultaConta();
+			else if(tela.equalsIgnoreCase("funcionario"))
+				new TelaConsultaFuncionario();
+			else new TelaConsultaAgencia();
 		});
 		add(consultar);
 
@@ -44,6 +53,10 @@ public class Menu extends JPanel {
 				new TelaPrincipalAtualizaCliente();
 			else if(tela.equalsIgnoreCase("conta"))
 				new TelaPrincipalAtualizaConta();
+			else if(tela.equalsIgnoreCase("funcionario"))
+				new TelaPrincipalAtualizaFuncionario();
+			else new TelaPrincipalAtualizaAgencia();
+
 		});
 		add(atualizar);
 

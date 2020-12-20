@@ -41,6 +41,11 @@ public class TelaExclui extends javax.swing.JFrame{
 			add(form);
 		}
 		
+		else {
+			FormExclui form = new FormExclui("Conta","12");
+			add(form);
+		}
+		
 	}
 
 }

@@ -9,42 +9,41 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import models.Agencia;
-import models.Cliente;
 
 public class MostraAgencia extends javax.swing.JFrame {
-    Agencia c;
+	Agencia c;
 
-    public MostraAgencia(Agencia c) {
-        this.c = c;
-        mostrar();
+	public MostraAgencia(Agencia c) {
+		this.c = c;
+		mostrar();
 
-        setTitle("Consulta de dados");
+		setTitle("Consulta de dados");
 
-        setSize(600, 400);
+		setSize(600, 400);
 
-        setLocationRelativeTo(null);
+		setLocationRelativeTo(null);
 
-        setVisible(true);
-    }
+		setVisible(true);
+	}
 
-    void mostrar() {
-        JPanel painel = new JPanel();
+	void mostrar() {
+		JPanel painel = new JPanel();
 
-        JLabel titulo = new JLabel("Dados do " + c.getNome());
-        titulo.setForeground(Color.white);
-        titulo.setFont(new Font("SansSerif", Font.PLAIN, 26));
+		JLabel titulo = new JLabel("Dados do " + c.getNome());
+		titulo.setForeground(Color.white);
+		titulo.setFont(new Font("SansSerif", Font.PLAIN, 26));
 
-        JTextArea textAreal = new JTextArea(c.mostrarDados());
-        textAreal.setPreferredSize(new Dimension(550, 300));
-        textAreal.setLineWrap(true);
-        textAreal.setWrapStyleWord(true);
-        textAreal.setFont(new Font("Serif", Font.BOLD, 20));
+		JTextArea textAreal = new JTextArea(c.mostrarDados());
+		textAreal.setPreferredSize(new Dimension(550, 300));
+		textAreal.setLineWrap(true);
+		textAreal.setWrapStyleWord(true);
+		textAreal.setFont(new Font("Serif", Font.BOLD, 20));
 
-        painel.setBackground(new Color(229, 197, 25));
+		painel.setBackground(new Color(229, 197, 25));
 
-        painel.add(titulo);
-        painel.add(textAreal);
-        add(painel);
-    }
+		painel.add(titulo);
+		painel.add(textAreal);
+		add(painel);
+	}
 
 }

@@ -6,21 +6,20 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 
-import models.Cliente;
 import models.Conta;
-import views.templates.Alerta; 
+import views.templates.Alerta;
 import views.templates.Botao;
+
 public class TelaBuscaConta extends JPanel {
 	String label = "Atualizar";
 
 	public TelaBuscaConta(boolean telaBusca) {
-		if(telaBusca) this.label = "Buscar";
-		
+		if (telaBusca)
+			this.label = "Buscar";
+
 		setBackground(Color.WHITE);
 		setLayout(new FlowLayout(FlowLayout.LEFT, 20, 40));
 
@@ -60,9 +59,8 @@ public class TelaBuscaConta extends JPanel {
 		if (c != null) {
 			return true;
 		} else {
-			new Alerta("Erro. Cliente inexistente");
+			new Alerta("Erro. Conta inexistente");
 			return false;
 		}
 	}
 }
-

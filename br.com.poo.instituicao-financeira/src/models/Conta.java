@@ -1,6 +1,7 @@
 package models;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -17,11 +18,10 @@ public abstract class Conta implements Serializable {
 	private String tipo;
 
 	public Conta() {
-		this(0, null, null, "I", new Date());
 	}
 
 	public Conta(Agencia agencia) {
-		this(0, agencia, null, "I", new Date());
+		this.setAgencia(agencia);
 	}
 
 	// constructor
@@ -31,6 +31,14 @@ public abstract class Conta implements Serializable {
 		this.setStatus(status);
 		this.setAgencia(agencia);
 		this.setDataAbertura(dataAbertura);
+	}
+	
+	public Conta(int nroConta, Agencia agencia, String tipo, String status, Date dataAbertura) {
+		this.setNroConta(nroConta);
+		this.setStatus(status);
+		this.setAgencia(agencia);
+		this.setDataAbertura(dataAbertura);
+		this.setTipo(tipo);
 	}
 
 	// getters e setters
@@ -81,9 +89,9 @@ public abstract class Conta implements Serializable {
 	}
 
 	public void setStatus(String status) {
-		if (status =="A")
+		if (status.equalsIgnoreCase("A"))
 			this.status = 1;
-		else if (status == "A")
+		else if (status.equalsIgnoreCase("I"))
 			this.status = 3;
 		else
 			this.status = 2;
@@ -108,6 +116,9 @@ public abstract class Conta implements Serializable {
 
 	public boolean transferencia(double valor, Conta contaDestino) {
 		if (valor <= saldoAtual && valor > 0) {
+			if(contaDestino.getNroConta() == this.getNroConta()) {
+				throw new RuntimeException("Impossível fazer transferência para a mesma conta");
+			}
 			saldoAtual -= valor;
 			contaDestino.deposito(valor);
 			return true;
@@ -116,8 +127,7 @@ public abstract class Conta implements Serializable {
 	}
 
 	public void printTransacoes(){
-		transacoes.forEach((n) -> System.out.println(n.toString()));
-		System.out.println("Saldo Atual : " + getSaldoAtual());
+		transacoes.forEach((n) -> System.out.println(n.mostrarExtrato()));
 	}
 
 	public Agencia getAgencia() {
@@ -146,18 +156,24 @@ public abstract class Conta implements Serializable {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+	
+	public  ArrayList<Transacao> getTransacao() {
+		return this.transacoes;
+	}
 
 	public abstract double calculaTarifa();
 	
-	public void mostrarDados() {
-		System.out.println("______________________________________");
-		System.out.println("\nDados da Conta\n");
-		System.out.println("Número: " + this.nroConta);
-		System.out.println("Status: " + this.getStatus());
-		System.out.println("Número da Agência: " + this.getAgencia().getNroAgencia());
-		System.out.println("Quantidade de clientes: " + this.getTotalCliente());
-		System.out.println("Data de abertura: " + this.getDataAbertura());
-		System.out.println("______________________________________");
+	public String mostrarDados() {
+		final SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+		final String data = formato.format(this.getDataAbertura());
+		
+		return "Número: " + this.nroConta
+		+ "\nStatus: " + this.getStatus()
+		+ "\nNúmero da Agência: " + this.getAgencia().getNroAgencia()
+		+ "\nData de abertura: " + data
+		+ "\nTipo: " + this.getTipo()
+		+"\nSaldo Atual: " + this.getSaldoAtual();
+
 	}
 
 }

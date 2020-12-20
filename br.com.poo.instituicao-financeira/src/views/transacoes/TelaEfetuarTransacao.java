@@ -2,7 +2,6 @@ package views.transacoes;
 
 import java.awt.BorderLayout;
 
-import views.funcionario.FormFuncionario;
 import views.templates.Painel;
 
 public class TelaEfetuarTransacao extends javax.swing.JFrame {
@@ -26,8 +25,8 @@ public class TelaEfetuarTransacao extends javax.swing.JFrame {
 		Painel painel = new Painel("Efetuar " + op);
 		add(painel, BorderLayout.NORTH);
 		if (op.equalsIgnoreCase("transferencia")) {
-            FormTransferencia form = new FormTransferencia(this);
-            add(form);
+			FormTransferencia form = new FormTransferencia(this);
+			add(form);
 		} else {
 			FormTransacao form = new FormTransacao(op, this);
 			add(form);

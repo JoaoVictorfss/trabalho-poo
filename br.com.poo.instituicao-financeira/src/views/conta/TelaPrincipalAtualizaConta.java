@@ -12,7 +12,7 @@ public class TelaPrincipalAtualizaConta extends javax.swing.JFrame {
 		setTitle("Atualização de Conta");
 
 		// Tamanho da tela
-		setSize(400, 270);
+		setSize(400, 380);
 
 		// Aplicação abre no centro da tela
 		setLocationRelativeTo(null);

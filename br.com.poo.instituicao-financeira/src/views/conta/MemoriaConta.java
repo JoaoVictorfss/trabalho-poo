@@ -1,26 +1,25 @@
 package views.conta;
 
-
 import controllers.ControladorConta;
 import models.Conta;
 import views.templates.Alerta;
 
 public class MemoriaConta {
-    private ControladorConta dadosContas = new ControladorConta();
-    private static final MemoriaConta instancia = new MemoriaConta();
+	private ControladorConta dadosContas = new ControladorConta();
+	private static final MemoriaConta instancia = new MemoriaConta();
 
-    public static MemoriaConta getInstancia() {
-        return instancia;
-    }
+	public static MemoriaConta getInstancia() {
+		return instancia;
+	}
 
-    public void adicionarConta(Conta c){
-        dadosContas.cadastrar(c);
-    }
-    
-    public void excluirConta(String nro) {
+	public void adicionarConta(Conta c) {
+		dadosContas.cadastrar(c);
+	}
+
+	public void excluirConta(String nro) {
 		dadosContas.excluir(this.transformaNumero(nro));
 	}
-	
+
 	public Conta buscaConta(String nro) {
 		return dadosContas.buscar(this.transformaNumero(nro));
 	}
@@ -28,7 +27,7 @@ public class MemoriaConta {
 	public void salvar() {
 		this.dadosContas.gravarcontas();
 	}
-	
+
 	private int transformaNumero(String nro) {
 		try {
 			int numeroConvertido = Integer.parseInt(nro);
@@ -37,5 +36,5 @@ public class MemoriaConta {
 			new Alerta("Erro ao converter de string para número. Verifique o campo preenchido!");
 			return -1;
 		}
-	} 
+	}
 }

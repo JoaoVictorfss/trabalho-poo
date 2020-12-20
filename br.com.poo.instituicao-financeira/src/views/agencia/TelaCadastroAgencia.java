@@ -1,10 +1,11 @@
 package views.agencia;
+
 import java.awt.BorderLayout;
 
 import views.templates.Painel;
 
 public class TelaCadastroAgencia extends javax.swing.JFrame {
-    public TelaCadastroAgencia() {
+	public TelaCadastroAgencia() {
 		organizarLayout();
 
 		setTitle("Cadastro de Agências");
@@ -24,7 +25,7 @@ public class TelaCadastroAgencia extends javax.swing.JFrame {
 		Painel painelAgencia = new Painel("Cadastro de Agências");
 		add(painelAgencia, BorderLayout.NORTH);
 
-		FormAgencia form = new FormAgencia();
+		FormAgencia form = new FormAgencia(this);
 		add(form);
 	}
 }

@@ -1,35 +1,32 @@
 package views.agencia;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 
 import views.templates.Painel;
 
-public class TelaConsultaAgencia extends javax.swing.JFrame{
-    public TelaConsultaAgencia() {
-        organizarLayout();
+public class TelaConsultaAgencia extends javax.swing.JFrame {
+	public TelaConsultaAgencia() {
+		organizarLayout();
 
-        setTitle("Consultar Agencia");
+		setTitle("Consultar Agencia");
 
-        // Tamanho da tela
-        setSize(400, 350);
+		// Tamanho da tela
+		setSize(400, 350);
 
-        // Aplicação abre no centro da tela
-        setLocationRelativeTo(null);
+		// Aplicação abre no centro da tela
+		setLocationRelativeTo(null);
 
-        // Fica Visível
-        setVisible(true);
+		// Fica Visível
+		setVisible(true);
 
-    }
+	}
 
-    void organizarLayout() {
-        Painel painelAgencia = new Painel("Consultar Agencia");
-        add(painelAgencia, BorderLayout.NORTH);
+	void organizarLayout() {
+		Painel painelAgencia = new Painel("Consultar Agencia");
+		add(painelAgencia, BorderLayout.NORTH);
 
-        TelaBuscaAgencia form = new TelaBuscaAgencia(true);
-        add(form);
-    }
+		TelaBuscaAgencia form = new TelaBuscaAgencia(true);
+		add(form);
+	}
 
 }
-
-

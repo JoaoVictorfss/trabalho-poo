@@ -90,10 +90,10 @@ public class Transacao{
         SimpleDateFormat DateFor = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
         String stringDate = DateFor.format(date);
         return  "\nId : " + getId()
-                + "\nNúmero da Agência : " + agencia.getNroAgencia()
-                + "\nNúmero da Conta de origem : " + contaOr.getNroConta()
-                + "\nTipo de Operação : " + this.tipo
-                + "\ndataTransacao : " + stringDate
+                + "\nNúmero da Agência: " + agencia.getNroAgencia()
+                + "\nNúmero da Conta de origem: " + contaOr.getNroConta()
+                + "\nTipo de Operação: " + this.tipo
+                + "\nData da Transação: " + stringDate
                 + "\nValor : " + this.valor;
     }
 

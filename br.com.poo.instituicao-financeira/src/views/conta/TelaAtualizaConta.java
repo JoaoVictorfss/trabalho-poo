@@ -1,6 +1,6 @@
 package views.conta;
+
 import java.awt.BorderLayout;
-import java.awt.Color;
 
 import models.Conta;
 import views.templates.Painel;
@@ -10,7 +10,7 @@ public class TelaAtualizaConta extends javax.swing.JFrame {
 
 	public TelaAtualizaConta(Conta conta) {
 		this.c = conta;
-		
+
 		organizarLayout();
 
 		setTitle("Atualização de Contas");
@@ -30,7 +30,7 @@ public class TelaAtualizaConta extends javax.swing.JFrame {
 		Painel painelConta = new Painel("Atualização de Conta");
 		add(painelConta, BorderLayout.NORTH);
 
-		FormAtualizaConta form = new FormAtualizaConta(this.c);
+		FormAtualizaConta form = new FormAtualizaConta(this.c, this);
 		add(form);
 	}
 }

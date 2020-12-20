@@ -79,8 +79,4 @@ public class TelaPrincipal extends JFrame {
     	return botao;
     }
 	
-    public static void main(String[] args) {
-        new TelaPrincipal();
-    }
-   
 }

@@ -7,59 +7,61 @@ import java.awt.Font;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 
-import models.Cliente;
+import models.Agencia;
 import models.Conta;
+import views.agencia.MemoriaAgencia;
 import views.templates.Alerta;
 import views.templates.Botao;
 
 import java.util.Date;
 
 public class FormAtualizaConta extends JPanel {
-
 	private Conta conta;
 	private int nroConta;
-    private int agencia;
-    private Date dataCria;
-    private String status;
-    
+	private String agencia;
+	private Date dataCria;
+	private String status;
+	private JFrame telaAnt;
 
 	private boolean valido = true;
 
-	public FormAtualizaConta(Conta c) {
-        this.conta = c;
+	public FormAtualizaConta(Conta c, JFrame telaAtualiza) {
+		this.telaAnt = telaAtualiza;
+		this.conta = c;
+
 		setBackground(Color.WHITE);
 		setLayout(new FlowLayout(FlowLayout.LEFT, 20, 40));
-		JTextField campoNroConta = new JTextField("12");
-        campoNroConta.setPreferredSize(new Dimension(150, 30));
-        JLabel nroConta = adicionarLabel("N° Conta:");
-        add(nroConta);
-        add(campoNroConta);
+		JTextField campoNroConta = new JTextField(Integer.toString(c.getNroConta()));
+		campoNroConta.setPreferredSize(new Dimension(150, 30));
+		JLabel nroConta = adicionarLabel("N° Conta:");
+		add(nroConta);
+		add(campoNroConta);
 
-        JTextField campoAgencia = new JTextField("0800");
-        campoAgencia.setPreferredSize(new Dimension(120, 30));
-        JLabel agencia = adicionarLabel("N° Agência:");
-        add(agencia);
-        add(campoAgencia);
+		JTextField campoAgencia = new JTextField(Integer.toString(c.getAgencia().getNroAgencia()));
+		campoAgencia.setPreferredSize(new Dimension(120, 30));
+		JLabel agencia = adicionarLabel("N° Agência:");
+		add(agencia);
+		add(campoAgencia);
 
-        JTextField campoStatus = new JTextField("A");
-        campoStatus.setPreferredSize(new Dimension(120, 30));
-        JLabel status = adicionarLabel("Status:");
-        add(status);
-        add(campoStatus);
+		JTextField campoStatus = new JTextField(c.getStatus());
+		campoStatus.setPreferredSize(new Dimension(120, 30));
+		JLabel status = adicionarLabel("Status:");
+		add(status);
+		add(campoStatus);
 
-        JTextField campoCategoria = new JTextField("Standard");
-        JLabel categoria = adicionarLabel("Categoria:");
-        campoCategoria.setPreferredSize(new Dimension(170, 30));
-        add(categoria);
-        add(campoCategoria);
+		JTextField campoCategoria = new JTextField(c.getTipo());
+		JLabel categoria = adicionarLabel("Categoria:");
+		campoCategoria.setPreferredSize(new Dimension(170, 30));
+		add(categoria);
+		add(campoCategoria);
 
-        JTextField campoDataCria = new JTextField("2020/12/20");
+		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+		JTextField campoDataCria = new JTextField(formato.format(c.getDataAbertura()));
 		campoDataCria.setPreferredSize(new Dimension(110, 30));
 		JLabel dataCria = adicionarLabel("Data de Criação:");
 		add(dataCria);
@@ -76,14 +78,17 @@ public class FormAtualizaConta extends JPanel {
 			if (naoVazio(campoNroConta.getText()))
 				this.nroConta = transformaNumero(campoNroConta.getText());
 			if (naoVazio(campoAgencia.getText()))
-				this.agencia =  transformaNumero(campoAgencia.getText());
+				this.agencia = campoAgencia.getText();
 			if (naoVazio(campoStatus.getText()))
 				this.status = campoStatus.getText();
-            if (naoVazio(campoDataCria.getText()))
+			if (naoVazio(campoDataCria.getText()))
 				transformaData(campoDataCria.getText());
-            
-            if (this.valido) {
+
+			if (this.valido) {
 				atualizarConta();
+			} else {
+				new Alerta("Dados incorretos. Tente novamente!");
+				this.telaAnt.dispose();
 			}
 		});
 	}
@@ -97,12 +102,17 @@ public class FormAtualizaConta extends JPanel {
 
 	@SuppressWarnings("unused")
 	private void atualizarConta() {
-		try {			
+		try {
+			Agencia ag = MemoriaAgencia.getInstancia().buscaAgencias(agencia);
+
+			if (ag == null)
+				throw new RuntimeException("Agencia não encontrada.");
+
 			conta.setNroConta(this.nroConta);
-			conta.setNroAgencia(this.agencia);
+			conta.setAgencia(ag);
 			conta.setDataAbertura(this.dataCria);
 			conta.setStatus(status);
-            
+
 			new Alerta("Sucesso. Dados Atualizados!");
 		} catch (RuntimeException e) {
 			new Alerta("Erro." + e.getMessage());
@@ -113,7 +123,7 @@ public class FormAtualizaConta extends JPanel {
 	private boolean naoVazio(String campo) {
 		if (!campo.isEmpty()) {
 			this.valido = this.valido && true;
-			
+
 			return true;
 		} else {
 			this.valido = false;

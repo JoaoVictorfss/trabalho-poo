@@ -9,10 +9,8 @@ import java.text.SimpleDateFormat;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 
 import models.Cliente;
 import models.Conta;
@@ -36,7 +34,7 @@ public class FormAtualizaCliente extends JPanel {
 	private String endCidade;
 	private String endRua;
 	private int endNumero;
-	
+
 	private JFrame telaAnt;
 	private String nroConta;
 
@@ -44,8 +42,8 @@ public class FormAtualizaCliente extends JPanel {
 
 	public FormAtualizaCliente(Cliente c, JFrame telaAtualiza) {
 		this.telaAnt = telaAtualiza;
-        this.cliente = c;
-        
+		this.cliente = c;
+
 		setBackground(Color.WHITE);
 		setLayout(new FlowLayout(FlowLayout.LEFT, 20, 40));
 
@@ -55,7 +53,7 @@ public class FormAtualizaCliente extends JPanel {
 		add(nome);
 		add(campoNome);
 
-		JTextField campoCpf = new JTextField("60792520076");
+		JTextField campoCpf = new JTextField(cliente.getCpf());
 		campoCpf.setPreferredSize(new Dimension(150, 30));
 		JLabel cpf = adicionarLabel("CPF:");
 		add(cpf);
@@ -121,7 +119,7 @@ public class FormAtualizaCliente extends JPanel {
 		JLabel conta = adicionarLabel("Nro Conta:");
 		add(conta);
 		add(campoNroConta);
-		
+
 		Botao botao = new Botao("Atualizar");
 		botao.setPreferredSize(new Dimension(140, 40));
 		botao.setBackground(new Color(183, 158, 20));
@@ -154,10 +152,10 @@ public class FormAtualizaCliente extends JPanel {
 				this.estadoCiv = campoEstadoCiv.getText();
 			if (naoVazio(campoNroConta.getText()))
 				this.nroConta = campoNroConta.getText();
-					
+
 			if (this.valido) {
 				atualizarCliente();
-			}else{
+			} else {
 				new Alerta("Dados incorretos. Tente novamente!");
 				this.telaAnt.dispose();
 			}
@@ -174,7 +172,7 @@ public class FormAtualizaCliente extends JPanel {
 
 	@SuppressWarnings("unused")
 	private void atualizarCliente() {
-		try {			
+		try {
 			cliente.setNome(this.nomeCliente);
 			cliente.setCpf(this.cpfCliente);
 			cliente.setDataNasc(this.dataNasc);
@@ -187,20 +185,22 @@ public class FormAtualizaCliente extends JPanel {
 			cliente.getEndereco().setCidade(this.endCidade);
 			cliente.getEndereco().setRua(this.endRua);
 			cliente.getEndereco().setNumero(this.endNumero);
-			
-			Conta contaCliente = MemoriaConta.getInstancia().buscaConta(nroConta);			
-			if(contaCliente != null) {
+
+			Conta contaCliente = MemoriaConta.getInstancia().buscaConta(nroConta);
+			if (contaCliente != null) {
 				cliente.getContas().forEach(c -> {
-					if(!(c.getNroConta() == contaCliente.getNroConta())){
+					if (!(c.getNroConta() == contaCliente.getNroConta())) {
 						cliente.getContas().add(contaCliente);
-						contaCliente.getClientes().add(cliente);
+						contaCliente.setCliente(cliente);
+						contaCliente.getAgencia().setCliente(cliente);
+						;
 					}
 				});
-			
-			}else {
+
+			} else {
 				throw new RuntimeException("Você precisa cadastrar a conta primeiro");
 			}
-            
+
 			new Alerta("Sucesso. Dados Atualizados!");
 		} catch (RuntimeException e) {
 			new Alerta("Erro." + e.getMessage());
@@ -211,7 +211,7 @@ public class FormAtualizaCliente extends JPanel {
 	private boolean naoVazio(String campo) {
 		if (!campo.isEmpty()) {
 			this.valido = this.valido && true;
-			
+
 			return true;
 		} else {
 			this.valido = false;

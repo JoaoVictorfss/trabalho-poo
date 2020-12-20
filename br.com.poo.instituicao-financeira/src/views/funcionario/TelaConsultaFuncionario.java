@@ -4,32 +4,30 @@ import java.awt.BorderLayout;
 
 import views.templates.Painel;
 
-public class TelaConsultaFuncionario extends javax.swing.JFrame{
-    public TelaConsultaFuncionario() {
-        organizarLayout();
+public class TelaConsultaFuncionario extends javax.swing.JFrame {
+	public TelaConsultaFuncionario() {
+		organizarLayout();
 
-        setTitle("Consultar Funcionario");
+		setTitle("Consultar Funcionario");
 
-        // Tamanho da tela
-        setSize(400, 270);
+		// Tamanho da tela
+		setSize(400, 270);
 
-        // Aplicação abre no centro da tela
-        setLocationRelativeTo(null);
+		// Aplicação abre no centro da tela
+		setLocationRelativeTo(null);
 
-        // Fica Visível
-        setVisible(true);
+		// Fica Visível
+		setVisible(true);
 
-    }
+	}
 
-    void organizarLayout() {
-        Painel painelFuncionario = new Painel("Consultar Funcionario");
-        add(painelFuncionario, BorderLayout.NORTH);
+	void organizarLayout() {
+		Painel painelFuncionario = new Painel("Consultar Funcionario");
+		add(painelFuncionario, BorderLayout.NORTH);
 
-        TelaBuscaFuncionario form = new TelaBuscaFuncionario(true);
+		TelaBuscaFuncionario form = new TelaBuscaFuncionario(true);
 
-        add(form);
-    }
+		add(form);
+	}
 
 }
-
-

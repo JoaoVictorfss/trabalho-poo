@@ -9,10 +9,8 @@ import java.text.SimpleDateFormat;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 
 import models.Cliente;
 import models.Endereco;

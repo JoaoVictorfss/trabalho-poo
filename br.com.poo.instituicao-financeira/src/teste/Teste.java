@@ -1,3 +1,4 @@
+/*package teste;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -38,10 +39,10 @@ import models.Gerente;
  * 
  * @date 14/12/2020
  * 
- */
+ 
 
 public class Teste {
-	public static void main(String[] args) throws ParseException {
+	public static void te(String[] args) throws ParseException {
 		Endereco enderecoJoao = new Endereco("Rua Maria", 200, "3817001", "MG", "Perdizes", "Brasil");
 		Endereco enderecoAgencia = new Endereco("Centro", 400, "3817000", "MG", "Perdizes", "Brasil");
 		Endereco enderecoGerente = new Endereco("Rua Imidia", 89, "3817002", "MG", "Perdizes", "Brasil");
@@ -118,4 +119,4 @@ public class Teste {
 
 	}
 
-}
+}*/

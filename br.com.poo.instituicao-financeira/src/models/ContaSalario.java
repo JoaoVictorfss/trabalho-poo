@@ -18,13 +18,13 @@ public class ContaSalario extends Conta {
 		this.setSalMinimo(salMinimo);
 		setTarifaConta(salMinimo);
 	}
-
-	public ContaSalario(int nroConta, int nroAgencia , String status, Date dataAbertura) {
-		this.setNroConta(nroConta);
-		this.setStatus(status);
-		this.setNroAgencia(nroAgencia);
-		this.setDataAbertura(dataAbertura);
+	
+	public ContaSalario(int nroConta, Agencia agencia, String status, double salMinimo, double tarifa) {
+		super(nroConta, agencia, "conta salário", status, new Date());
+		this.setSalMinimo(salMinimo);
+		this.setTarifaConta(tarifa);
 	}
+
 
 	public ContaSalario(int nroConta, Agencia agencia, Cliente cliente, String status, double salMinimo) {
 		super(nroConta, agencia, cliente, status, new Date());

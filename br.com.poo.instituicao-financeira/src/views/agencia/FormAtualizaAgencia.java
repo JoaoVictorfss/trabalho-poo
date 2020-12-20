@@ -81,7 +81,7 @@ public class FormAtualizaAgencia extends JPanel {
         add(numero);
         add(campoNumero);
 
-        JTextField campoGerente = new JTextField("52094901653");
+        JTextField campoGerente = new JTextField(c.getGerente().getCpf());
         campoGerente.setPreferredSize(new Dimension(150, 30));
         JLabel gerente = adicionarLabel("CPF Gerente:");
         add(gerente);
