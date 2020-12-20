@@ -92,7 +92,6 @@ public abstract class Conta implements Serializable {
 	public boolean saque(double valor) {
 		if (valor <= saldoAtual && valor > 0) {
 			saldoAtual -= valor;
-			transacoes.add(new Transacao(new Date(), "saque", valor, this.agencia));
 			return true;
 		} else
 			throw new RuntimeException("Valor inválido para saque!");
@@ -101,7 +100,6 @@ public abstract class Conta implements Serializable {
 	public boolean deposito(double valor) {
 		if (valor > 0) {
 			saldoAtual += valor;
-			transacoes.add(new Transacao(new Date(), "deposito", valor, this.agencia));
 			return true;
 		} else {
 			throw new RuntimeException("Valor do depósito não pode ser um valor negativo!");
@@ -111,7 +109,7 @@ public abstract class Conta implements Serializable {
 	public boolean transferencia(double valor, Conta contaDestino) {
 		if (valor <= saldoAtual && valor > 0) {
 			saldoAtual -= valor;
-			transacoes.add(new Transacao(new Date(), "transferencia", valor, this.agencia, contaDestino));
+			contaDestino.deposito(valor);
 			return true;
 		} else
 			throw new RuntimeException("Valor inválido para transferência!");
@@ -128,6 +126,10 @@ public abstract class Conta implements Serializable {
 
 	public void setAgencia(Agencia agencia) {
 		this.agencia = agencia;
+	}
+	
+	public void adicionaTransacao(Transacao t) {
+		this.transacoes.add(t);
 	}
 
 	public void setNroAgencia(int agencia) {
@@ -146,5 +148,16 @@ public abstract class Conta implements Serializable {
 	}
 
 	public abstract double calculaTarifa();
+	
+	public void mostrarDados() {
+		System.out.println("______________________________________");
+		System.out.println("\nDados da Conta\n");
+		System.out.println("Número: " + this.nroConta);
+		System.out.println("Status: " + this.getStatus());
+		System.out.println("Número da Agência: " + this.getAgencia().getNroAgencia());
+		System.out.println("Quantidade de clientes: " + this.getTotalCliente());
+		System.out.println("Data de abertura: " + this.getDataAbertura());
+		System.out.println("______________________________________");
+	}
 
 }

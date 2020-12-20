@@ -2,9 +2,11 @@ package views.funcionario;
 
 import javax.swing.*;
 
+import models.Conta;
 import models.Endereco;
 import models.Funcionario;
 import models.Gerente;
+import views.conta.MemoriaConta;
 import views.templates.Botao;
 import views.templates.Alerta;
 
@@ -13,7 +15,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class FormFuncionario extends JPanel {
+public class FormAtualizaFuncionario extends JPanel {
 
     private String nomeFuncionario;
     private String cpfFuncionario;
@@ -27,18 +29,21 @@ public class FormFuncionario extends JPanel {
     private int endNumero;
     private String estadoCiv;
     private Date dataAd;
-    private boolean possuiCurso = true;
-    private String nomeCurso;
     private double salario;
     private double bonificacao;
 
+    private JFrame telaAnt;
+    private Funcionario funcionario;
+
     private boolean valido = true;
 
-    public FormFuncionario() {
-		setBackground(Color.WHITE);
+    public FormAtualizaFuncionario(Funcionario c, JFrame telaAtualiza) {
+        this.telaAnt = telaAtualiza;
+        this.funcionario = c;
+        setBackground(Color.WHITE);
         setLayout(new FlowLayout(FlowLayout.LEFT, 20, 40));
 
-        JTextField campoNome = new JTextField("Antonio Carlos");
+        JTextField campoNome = new JTextField(funcionario.getNome());
         JLabel nome = adicionarLabel("Nome:");
         campoNome.setPreferredSize(new Dimension(170, 30));
         add(nome);
@@ -50,78 +55,67 @@ public class FormFuncionario extends JPanel {
         add(cpf);
         add(campoCpf);
 
-        JTextField campoDataNasc = new JTextField("1964/06/12");
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        JTextField campoDataNasc = new JTextField(formato.format(funcionario.getDataNasc()));
         campoDataNasc.setPreferredSize(new Dimension(120, 30));
         JLabel dataNasc = adicionarLabel("Nascimento:");
         add(dataNasc);
         add(campoDataNasc);
 
-        JTextField campoSexo = new JTextField("M");
+        JTextField campoSexo = new JTextField(funcionario.getSexo());
         campoSexo.setPreferredSize(new Dimension(150, 30));
         JLabel sexo = adicionarLabel("Sexo:");
         add(sexo);
         add(campoSexo);
 
-        JTextField campoPais = new JTextField("Brasil");
+        JTextField campoPais = new JTextField(funcionario.getEndereco().getPais());
         campoPais.setPreferredSize(new Dimension(150, 30));
         JLabel pais = adicionarLabel("País:");
         add(pais);
         add(campoPais);
 
-        JTextField campoUf = new JTextField("MG");
+        JTextField campoUf = new JTextField(funcionario.getEndereco().getUf());
         campoUf.setPreferredSize(new Dimension(150, 30));
         JLabel uf = adicionarLabel("Estado:");
         add(uf);
         add(campoUf);
 
-        JTextField campoCep = new JTextField("38408-118");
+        JTextField campoCep = new JTextField(funcionario.getEndereco().getCep());
         campoCep.setPreferredSize(new Dimension(150, 30));
         JLabel cep = adicionarLabel("CEP:");
         add(cep);
         add(campoCep);
 
-        JTextField campoCidade = new JTextField("Uberlândia");
+        JTextField campoCidade = new JTextField(funcionario.getEndereco().getCidade());
         campoCidade.setPreferredSize(new Dimension(150, 30));
         JLabel cidade = adicionarLabel("Cidade:");
         add(cidade);
         add(campoCidade);
 
-        JTextField campoRua = new JTextField("Av. Rondon Pacheco");
+        JTextField campoRua = new JTextField(funcionario.getEndereco().getRua());
         campoRua.setPreferredSize(new Dimension(150, 30));
         JLabel rua = adicionarLabel("Rua:");
         add(rua);
         add(campoRua);
 
-        JTextField campoNumero = new JTextField("1500");
+        JTextField campoNumero = new JTextField(Integer.toString(funcionario.getEndereco().getNumero()));
         campoNumero.setPreferredSize(new Dimension(150, 30));
         JLabel numero = adicionarLabel("Número:");
         add(numero);
         add(campoNumero);
 
-        JTextField campoEstadoCiv = new JTextField("Casado");
+        JTextField campoEstadoCiv = new JTextField(funcionario.getEstadoCivil());
         campoEstadoCiv.setPreferredSize(new Dimension(90, 30));
         JLabel civil = adicionarLabel("Estado Civil:");
         add(civil);
         add(campoEstadoCiv);
 
-        JTextField campoDataAd = new JTextField("2010/06/12");
+
+        JTextField campoDataAd = new JTextField(formato.format(funcionario.getDataAd()));
         campoDataAd.setPreferredSize(new Dimension(110, 30));
         JLabel dataAd = adicionarLabel("Data Admissão:");
         add(dataAd);
         add(campoDataAd);
-
-        JCheckBox possuiCurso = new JCheckBox();
-        possuiCurso.setSelected(true);
-        possuiCurso.setPreferredSize(new Dimension(20, 20));
-        JLabel curso = adicionarLabel("Possui Curso:");
-        add(curso);
-        add(possuiCurso);
-
-        JTextField nomeCurso = new JTextField("Adiministração");
-        nomeCurso.setPreferredSize(new Dimension(160, 30));
-        JLabel cursoNome = adicionarLabel("Nome do Curso:");
-        add(cursoNome);
-        add(nomeCurso);
 
         JTextField salario = new JTextField("12000");
         salario.setPreferredSize(new Dimension(90, 30));
@@ -135,7 +129,7 @@ public class FormFuncionario extends JPanel {
         add(bonus);
         add(bonificacao);
 
-        Botao botao = new Botao("Cadastrar");
+        Botao botao = new Botao("Atualizar");
         botao.setPreferredSize(new Dimension(140, 40));
         botao.setBackground(new Color(183, 158, 20));
 
@@ -167,17 +161,17 @@ public class FormFuncionario extends JPanel {
                 this.estadoCiv = campoEstadoCiv.getText();
             if (naoVazio(campoDataAd.getText()))
                 transformaData(campoDataAd.getText(), "Ad");
-            this.possuiCurso = possuiCurso.isSelected();
-            if (naoVazio(nomeCurso.getText()))
-                this.nomeCurso = nomeCurso.getText();
             if (naoVazio(salario.getText()))
-                this.salario = transformaStrDouble(salario.getText());
+            	this.salario = transformaStrDouble(salario.getText());
             if (naoVazio(bonificacao.getText()))
                 this.bonificacao = transformaStrDouble(bonificacao.getText());
             
             if (this.valido) {
-                cadastraFuncionario();
-            }
+                atualizaFuncionario();
+            }else{
+				new Alerta("Dados incorretos. Tente novamente!");
+				this.telaAnt.dispose();
+			}
         });
     }
 
@@ -197,7 +191,16 @@ public class FormFuncionario extends JPanel {
             new Alerta("Erro ao converter de string para data. Verifique se o campo está no formato válido!");
         }
     }
-    
+
+    private void transformChar(String sexo){
+        // Creating array of string length
+        char[] charSexo = new char[sexo.length()];
+
+        // Copy character by character into array
+        charSexo[0] = sexo.charAt(0);
+        this.sexo = charSexo[0];
+    }
+
     private double transformaStrDouble(String n) {
         try {
             double numeroConvertido = Double.parseDouble(n);
@@ -210,16 +213,7 @@ public class FormFuncionario extends JPanel {
             return -1;
         }
     }
-
-    private void transformChar(String sexo){
-        // Creating array of string length
-        char[] charSexo = new char[sexo.length()];
-
-        // Copy character by character into array
-            charSexo[0] = sexo.charAt(0);
-            this.sexo = charSexo[0];
-    }
-
+    
     // Converte string para número
     private int transformaNumero(String nro) {
         try {
@@ -247,23 +241,27 @@ public class FormFuncionario extends JPanel {
     }
 
     @SuppressWarnings("unused")
-	private void cadastraFuncionario() {
+    private void atualizaFuncionario() {
         try {
-            Endereco enderecoFuncionario = new Endereco(endRua, endNumero, endCep, endUf, endCidade, endPais);
-            Gerente gerente = null;
-
-            gerente = new Gerente(nomeFuncionario, cpfFuncionario, enderecoFuncionario, estadoCiv, dataNasc, dataAd, sexo, possuiCurso, nomeCurso);
-            Gerente.setBonificacao(bonificacao);
-            Funcionario.salBase = salario;
+            funcionario.setNome(this.nomeFuncionario);           
+            funcionario.setCpf(this.cpfFuncionario);
+            funcionario.setDataAd(this.dataAd);
+            funcionario.setDataNasc(this.dataNasc);
+            funcionario.setSexo(this.sexo);
+            funcionario.setEstadoCivil(this.estadoCiv);
+            funcionario.getEndereco().setCep(this.endCep);
+            funcionario.getEndereco().setRua(this.endRua);
+            funcionario.getEndereco().setCidade(this.endCidade);
+            funcionario.getEndereco().setUf(this.endUf);
+            funcionario.getEndereco().setNumero(this.endNumero);
+            funcionario.getEndereco().setPais(this.endPais);
             
-            if (gerente == null) {
-            	 new Alerta("Erro. Dados incorretos! Verique todos e tente novamente");
-            } else {
-                MemoriaFuncionario.getInstancia().adicionarFuncionario(gerente);
-                new Alerta("Sucesso. Dados cadastrados!");
-            }
+            Funcionario.salBase = this.salario;
+            Gerente.setBonificacao(this.bonificacao);
+            
+            new Alerta("Sucesso! Funcionário atualizado com sucesso.");
         } catch (RuntimeException e) {
-        	 new Alerta("Erro." + e.getMessage());
+            new Alerta("Erro." + e.getMessage());
         }
     }
 

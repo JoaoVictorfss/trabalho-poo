@@ -87,5 +87,18 @@ public class Agencia implements Serializable {
 	public void setConta(Conta conta) {
 		this.contas.add(conta);
 	}
+	
+	public String mostrarDados() {
+		final String endereco = this.getEndereco().getCidade() + ", " + this.getEndereco().getRua() + ", "
+				+ this.getEndereco().getNumero() + " - " + this.getEndereco().getUf() + ", " + this.getEndereco().getCep() + "("
+				+ this.getEndereco().getPais() + ").\n";
+
+
+		return "Nome:" + this.getNome()
+				+ ".\n" + "N° Agencia: " + this.getNroAgencia()
+				+ ".\n" + "Quantidade de conta(s):  " + this.getContas().size()
+				+ ".\n" + "Endereço: " + endereco
+				+ "Nome Gerente: " + this.gerente.getNome() + ".\n";
+	}
 
 }

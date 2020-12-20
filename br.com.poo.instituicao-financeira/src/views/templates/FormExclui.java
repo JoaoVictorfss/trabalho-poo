@@ -11,17 +11,20 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import views.agencia.MemoriaAgencia;
 import views.cliente.MemoriaCliente;
 import views.funcionario.MemoriaFuncionario;
 import views.conta.MemoriaConta;
 
 public class FormExclui extends JPanel {
+	String labelCampo = "Cpf: ";
 
 	public FormExclui(String tipo, String textoLabel) {
+		if(tipo.equalsIgnoreCase("Conta") || tipo.equalsIgnoreCase("Agencia")) this.labelCampo = "Número";
 		setBackground(Color.WHITE);
 		setLayout(new FlowLayout(FlowLayout.LEFT, 20, 40));
 
-		JLabel label = new JLabel("Cpf:");
+		JLabel label = new JLabel(labelCampo);
 		label.setFont(new Font("Courier", Font.BOLD, 16));
 		add(label);
 
@@ -49,9 +52,9 @@ public class FormExclui extends JPanel {
 						MemoriaConta.getInstancia().excluirConta(campo.getText());
 					}
 					else {
-						//agência
+						MemoriaAgencia.getInstancia().exluirAgencia(campo.getText());
 					}
-					new Alerta("Sucesso. " + tipo + " excluído!");
+					new Alerta("Sucesso. " + tipo + " excluído(a)!");
 				} catch (RuntimeException e) {
 					new Alerta("Erro." + e.getMessage());
 				}

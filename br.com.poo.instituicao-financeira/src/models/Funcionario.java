@@ -1,5 +1,6 @@
 package models;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Funcionario extends Pessoa {
@@ -54,4 +55,22 @@ public class Funcionario extends Pessoa {
 		return Funcionario.salBase;
 	}
 
+	public String mostrarDados() {
+		final String endereco = this.getEndereco().getCidade() + ", " + this.getEndereco().getRua() + ", "
+				+ this.getEndereco().getNumero() + " - " + this.getEndereco().getUf() + ", " + this.getEndereco().getCep() + "("
+				+ this.getEndereco().getPais() + ").\n";
+
+		final SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+		final String dataNasc = formato.format(this.getDataNasc());
+		final String dataAd = formato.format(this.getDataAd());
+
+		return "Nome:" + this.getNome() + ".\n"
+				+ "CPF: " + this.getCpf() + ".\n"
+				+ "Endereço: " + endereco
+				+ "Estado Civil: " + this.getEstadoCivil() + ".\n"
+				+ "Data de Nascimento: " + dataNasc + ".\n"
+				+ "Cargo: " + this.getCargo() + ".\n"
+				+ "Data Admissão: " + dataAd + ".\n"
+				+ "salário: " + this.calcSal() + ".";
+	}
 }

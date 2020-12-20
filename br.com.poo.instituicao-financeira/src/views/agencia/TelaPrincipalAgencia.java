@@ -1,12 +1,11 @@
 package views.agencia;
 
-    import java.awt.BorderLayout;
-    import java.awt.Color;
-    
-    import javax.swing.JFrame;
-
+import java.awt.BorderLayout;
+import java.awt.Color;
+import javax.swing.JFrame;
 import views.templates.Menu;
 import views.templates.Painel;
+
 public class TelaPrincipalAgencia extends JFrame {
     public TelaPrincipalAgencia(){
         organizarLayout();
@@ -31,9 +30,5 @@ public class TelaPrincipalAgencia extends JFrame {
         
         Menu menu = new Menu("Salvar agencia(s)", "agencia");
         add(menu, BorderLayout.CENTER);
-    }
-    
-    public static void main(String[] args) {
-        new TelaPrincipalAgencia();
     }
 }

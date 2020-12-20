@@ -14,19 +14,6 @@ public class ControladorCliente implements controller {
 	private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 	private final String arquivo = "clientes.bin";
 
-	private void mostrarDados(Cliente cliente) {
-		System.out.println("______________________________________");
-		System.out.println("\nDados do cliente\n");
-		System.out.println("Nome: " + cliente.getNome());
-		System.out.println("CPF: " + cliente.getCpf());
-		System.out.println("Estado Civil: " + cliente.getEstadoCivil());
-		System.out.println("Data de Nascimento: " + cliente.getDataNasc());
-		System.out.println("Escolaridade: " + cliente.getEscolaridade());
-		// System.out.println("Agência de número: " +
-		// cliente.getAgencia().getNroAgencia());
-		System.out.println("______________________________________");
-	}
-
 	// Cadastra cliente na lista, não aceita clientes duplicados
 	public void cadastrar(Cliente c) {
 		Cliente existente = this.buscar(c.getCpf());
@@ -43,7 +30,7 @@ public class ControladorCliente implements controller {
 		if (clientes.isEmpty()) {
 			System.out.println("Sem registros!");
 		} else {
-			clientes.forEach(c -> this.mostrarDados(c));
+			clientes.forEach(c -> c.mostrarDados());
 		}
 	}
 

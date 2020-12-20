@@ -11,9 +11,12 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import views.agencia.TelaPrincipalAgencia;
 import views.cliente.TelaPrincipalCliente;
 import views.conta.TelaPrincipalConta;
 import views.templates.Painel;
+import views.transacoes.TelaPrincipalTransacao;
+import views.funcionario.TelaPrincipalFuncionario;
 
 public class TelaPrincipal extends JFrame {
 	public TelaPrincipal() {
@@ -22,7 +25,7 @@ public class TelaPrincipal extends JFrame {
 		setTitle("Instituição financeira");
 
 		// Tamanho da tela
-		setSize(500, 520);
+		setSize(500, 590);
 
 		setLocationRelativeTo(null);
 
@@ -51,12 +54,16 @@ public class TelaPrincipal extends JFrame {
 		opcoes.add(clientes);
 		
 		JButton funcionarios = adicionarBotao("Funcionários");
-		funcionarios.addActionListener(event -> {});
+		funcionarios.addActionListener(event -> { new TelaPrincipalFuncionario();});
 		opcoes.add(funcionarios);
 		
 		JButton agencias = adicionarBotao("Agências");
-		agencias.addActionListener(event -> {});
+		agencias.addActionListener(event -> { new TelaPrincipalAgencia();});
 		opcoes.add(agencias);
+		
+		JButton operacoes = adicionarBotao("Transações");
+		operacoes.addActionListener(event -> { new TelaPrincipalTransacao();});
+		opcoes.add(operacoes);
 		
 		add(opcoes);	
 	}

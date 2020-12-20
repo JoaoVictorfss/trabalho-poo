@@ -4,18 +4,16 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.util.Date;
 
 import javax.swing.*;
 
 import controllers.ControladorFuncionario;
 import models.*;
-import views.cliente.MemoriaCliente;
 import views.funcionario.MemoriaFuncionario;
 import views.templates.Alerta;
 import views.templates.Botao;
 
-public class FormAgencia extends JPanel {
+public class FormAtualizaAgencia extends JPanel {
     private int nroAgencia;
     private String nome;
     private String endPais;
@@ -26,55 +24,58 @@ public class FormAgencia extends JPanel {
     private int endNumero;
     private String cpfGerente;
 
+    private Agencia agencia;
+    private JFrame telaAnt;
+
     private boolean valido = true;
 
-    public FormAgencia() {
-		setBackground(Color.WHITE);
+    public FormAtualizaAgencia(Agencia c, JFrame telaAtualiza) {
+        setBackground(Color.WHITE);
         setLayout(new FlowLayout(FlowLayout.LEFT, 20, 40));
 
-        JTextField campoNroAgencia = new JTextField("0800");
+        JTextField campoNroAgencia = new JTextField(Integer.toString(c.getNroAgencia()));
         campoNroAgencia.setPreferredSize(new Dimension(150, 30));
         JLabel nroConta = adicionarLabel("N° Agência:");
         add(nroConta);
         add(campoNroAgencia);
 
-        JTextField campoNome = new JTextField("Bradesco");
+        JTextField campoNome = new JTextField(c.getNome());
         campoNome.setPreferredSize(new Dimension(120, 30));
         JLabel nome = adicionarLabel("Nome:");
         add(nome);
         add(campoNome);
 
-        JTextField campoPais = new JTextField("Brasil");
+        JTextField campoPais = new JTextField(c.getEndereco().getPais());
         campoPais.setPreferredSize(new Dimension(140, 30));
         JLabel pais = adicionarLabel("País:");
         add(pais);
         add(campoPais);
 
-        JTextField campoUf = new JTextField("MG");
+        JTextField campoUf = new JTextField(c.getEndereco().getUf());
         campoUf.setPreferredSize(new Dimension(150, 30));
         JLabel uf = adicionarLabel("Estado:");
         add(uf);
         add(campoUf);
 
-        JTextField campoCep = new JTextField("38770-000");
+        JTextField campoCep = new JTextField(c.getEndereco().getCep());
         campoCep.setPreferredSize(new Dimension(150, 30));
         JLabel cep = adicionarLabel("CEP:");
         add(cep);
         add(campoCep);
 
-        JTextField campoCidade = new JTextField("Uberlândia");
+        JTextField campoCidade = new JTextField(c.getEndereco().getCidade());
         campoCidade.setPreferredSize(new Dimension(150, 30));
         JLabel cidade = adicionarLabel("Cidade:");
         add(cidade);
         add(campoCidade);
 
-        JTextField campoRua = new JTextField("Rondon Pacheco");
+        JTextField campoRua = new JTextField(c.getEndereco().getRua());
         campoRua.setPreferredSize(new Dimension(150, 30));
         JLabel rua = adicionarLabel("Rua:");
         add(rua);
         add(campoRua);
 
-        JTextField campoNumero = new JTextField("1220");
+        JTextField campoNumero = new JTextField(Integer.toString(c.getEndereco().getNumero()));
         campoNumero.setPreferredSize(new Dimension(150, 30));
         JLabel numero = adicionarLabel("Número:");
         add(numero);
@@ -86,7 +87,7 @@ public class FormAgencia extends JPanel {
         add(gerente);
         add(campoGerente);
 
-        Botao botao = new Botao("Cadastrar");
+        Botao botao = new Botao("Atualizar");
         botao.setPreferredSize(new Dimension(140, 40));
         botao.setBackground(new Color(183, 158, 20));
 
@@ -114,7 +115,7 @@ public class FormAgencia extends JPanel {
                 this.cpfGerente = campoGerente.getText();
 
             if (this.valido) {
-                cadastraAgencia();
+                atualizaAgencia();
             }
         });
     }
@@ -134,25 +135,25 @@ public class FormAgencia extends JPanel {
 
 
     @SuppressWarnings("unused")
-	private void cadastraAgencia() {
+    private void atualizaAgencia() {
         try {
-            Endereco enderecoAgencia = new Endereco(endRua, endNumero, endCep, endUf, endCidade, endPais);
-            Agencia agencia = null;
-            Funcionario gerente = MemoriaFuncionario.getInstancia().buscaFuncionario(cpfGerente);
+            Funcionario gerente = MemoriaFuncionario.getInstancia().buscaFuncionario(this.cpfGerente);
             if (gerente == null) {
                 throw new RuntimeException("Gerente inexistente!");
             }
+            agencia.setGerente(gerente);
+            agencia.setNroAgencia(this.nroAgencia);
+            agencia.setNome(this.nome);
+            agencia.getEndereco().setCep(this.endCep);
+            agencia.getEndereco().setRua(this.endRua);
+            agencia.getEndereco().setCidade(this.endCidade);
+            agencia.getEndereco().setUf(this.endUf);
+            agencia.getEndereco().setNumero(this.endNumero);
+            agencia.getEndereco().setPais(this.endPais);
 
-            agencia = new Agencia(nome, nroAgencia, enderecoAgencia, gerente);
-
-            if (agencia == null) {
-               new Alerta("Erro. Dados incorretos! Verique todos e tente novamente");
-            } else {
-                MemoriaAgencia.getInstancia().adicionarAgencia(agencia);
-                new Alerta("Sucesso. Dados cadastrados!");
-            }
+            new Alerta("Sucesso! Agência atualizada com sucesso.");
         } catch (RuntimeException e) {
-        	 new Alerta("Erro." + e.getMessage());
+            new Alerta("Erro." + e.getMessage());
         }
     }
 

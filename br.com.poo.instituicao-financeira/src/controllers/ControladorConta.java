@@ -14,17 +14,6 @@ public class ControladorConta implements controller {
 	private ArrayList<Conta> contas = new ArrayList<Conta>();
 	private final String arquivo = "contas.bin";
 
-	private void mostrarDados(Conta conta) {
-		System.out.println("______________________________________");
-		System.out.println("\nDados do Conta\n");
-		System.out.println("Número: " + conta.getNroConta());
-		System.out.println("Status: " + conta.getStatus());
-		System.out.println("Número da Agencia: " + conta.getAgencia().getNroAgencia());
-		System.out.println("Quantidade de clientes: " + conta.getTotalCliente());
-		System.out.println("Data de abertura: " + conta.getDataAbertura());
-		System.out.println("______________________________________");
-	}
-
 	// Cadastra conta na lista, não aceita contas duplicadas
 	public void cadastrar(Conta c) {
 		Conta existente = this.buscar(c.getNroConta());
@@ -34,7 +23,7 @@ public class ControladorConta implements controller {
 		}
 
 		else {
-			throw new RuntimeException("Erro. Conta duplicado");
+			throw new RuntimeException("Erro. Conta duplicada");
 		}
 
 	}
@@ -44,7 +33,7 @@ public class ControladorConta implements controller {
 		if (contas.isEmpty()) {
 			System.out.println("Sem registros!");
 		} else {
-			contas.forEach(c -> this.mostrarDados(c));
+			contas.forEach(c -> c.mostrarDados());
 		}
 	}
 
@@ -90,10 +79,9 @@ public class ControladorConta implements controller {
 			if (salvo)
 				System.out.println("Sucesso. As contas foram salvas com sucesso!");
 			else
-				System.out.println("Erro. Ocorreu um erro ao salvar os contas, tente novamente!");
+				throw new RuntimeException("Erro. Ocorreu um erro ao salvar as contas, tente novamente!");
 		} else
-			System.out.println("Erro. Sem registros para salvar!");
-
+			throw new RuntimeException("Erro. Sem registros para salvar!");
 	}
 
 }

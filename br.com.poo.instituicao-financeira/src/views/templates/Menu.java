@@ -6,6 +6,9 @@ import java.awt.FlowLayout;
 import javax.swing.JPanel;
 
 import views.agencia.MemoriaAgencia;
+import views.agencia.TelaCadastroAgencia;
+import views.agencia.TelaConsultaAgencia;
+import views.agencia.TelaPrincipalAtualizaAgencia;
 import views.cliente.MemoriaCliente;
 import views.cliente.TelaCadastroCliente;
 import views.cliente.TelaConsultaCliente;

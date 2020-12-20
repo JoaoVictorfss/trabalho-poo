@@ -58,18 +58,18 @@ public class Teste {
 		Agencia one = new Agencia("one 123", 12, enderecoAgencia, gerente);
 
 		Cliente joao = new Cliente("Joao", one, "60792520076", enderecoJoao, "casado", "cursando superior", new Date());
-		Cliente maria = new Cliente("maria", one, "69582822058", enderecoJoao, "casada", "Doutorado", new Date());
+		Cliente maria = new Cliente("maria", one, "69582822058", enderecoJoao, "casado", "Doutorado", new Date());
 		
 		one.setCliente(joao);
 		one.setCliente(maria);
 		
-		ContaPoupanca contaCasal = new ContaPoupanca(0, 11, one, joao, 'A', 8);
+		ContaPoupanca contaCasal = new ContaPoupanca(0, 11, one, joao, "A", 8);
 		contaCasal.setCliente(maria);
 		maria.setConta(contaCasal);
 		joao.setConta(contaCasal);
 		
 		
-		ContaCorrente mario = new ContaCorrente("premium", 13, one, joao, 'A', 800);
+		ContaCorrente mario = new ContaCorrente("premium", 13, one, joao, "A", 800);
 		System.out.println(mario.calculaTarifa());
 
 		contaCasal.setRendimento(0.8);

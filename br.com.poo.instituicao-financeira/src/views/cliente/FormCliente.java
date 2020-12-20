@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -15,6 +16,7 @@ import javax.swing.SwingUtilities;
 
 import models.Cliente;
 import models.Endereco;
+import views.templates.Alerta;
 import views.templates.Botao;
 
 import java.util.Date;
@@ -29,13 +31,15 @@ public class FormCliente extends JPanel {
 	private String endCidade;
 	private String endRua;
 	private int endNumero;
-	private int nroConta;
 	private String escolaridade;
 	private String estadoCiv;
 
+	private JFrame telaAnt;
 	private boolean valido = true;
 
-	public FormCliente() {
+	public FormCliente(JFrame telaCadastro) {
+		this.telaAnt = telaCadastro;
+
 		setBackground(Color.WHITE);
 		setLayout(new FlowLayout(FlowLayout.LEFT, 20, 40));
 
@@ -93,12 +97,6 @@ public class FormCliente extends JPanel {
 		add(numero);
 		add(campoNumero);
 
-		JTextField campoNroConta = new JTextField("10");
-		campoNroConta.setPreferredSize(new Dimension(90, 30));
-		JLabel conta = adicionarLabel("Nro Conta:");
-		add(conta);
-		add(campoNroConta);
-
 		JTextField campoEscolaridade = new JTextField("cursando");
 		campoEscolaridade.setPreferredSize(new Dimension(90, 30));
 		JLabel escolaridade = adicionarLabel("Escolaridade:");
@@ -138,8 +136,6 @@ public class FormCliente extends JPanel {
 				this.endRua = campoRua.getText();
 			if (naoVazio(campoNumero.getText()))
 				this.endNumero = transformaNumero(campoNumero.getText());
-			if (naoVazio(campoNroConta.getText()))
-				this.nroConta = transformaNumero(campoNroConta.getText());
 			if (naoVazio(campoEscolaridade.getText()))
 				this.escolaridade = campoEscolaridade.getText();
 			if (naoVazio(campoEstadoCiv.getText()))
@@ -147,7 +143,11 @@ public class FormCliente extends JPanel {
 
 			if (this.valido) {
 				cadastraCliente();
+			} else {
+				new Alerta("Dados incorretos. Tente novamente!");
+				this.telaAnt.dispose();
 			}
+
 		});
 	}
 
@@ -158,35 +158,23 @@ public class FormCliente extends JPanel {
 		return label;
 	}
 
-	private boolean verificaConta() {
-		return false;
-	}
-
 	@SuppressWarnings("unused")
 	private void cadastraCliente() {
 		try {
 			Endereco enderecoCliente = new Endereco(endRua, endNumero, endCep, endUf, endCidade, endPais);
 			Cliente cliente = null;
 
-			// Verificar se a conta existe pelo número e adicionar
-
 			cliente = new Cliente(nomeCliente, cpfCliente, enderecoCliente, estadoCiv, escolaridade, dataNasc);
 
 			if (cliente == null) {
-				this.mostrarAlerta("Erro. Dados incorretos! Verique todos e tente novamente");
+				new Alerta("Erro. Dados incorretos! Verique todos e tente novamente");
 			} else {
 				MemoriaCliente.getInstancia().adicionarCliente(cliente);
-				this.mostrarAlerta("Sucesso. Dados cadastrados!");
+				new Alerta("Sucesso. Dados cadastrados!");
 			}
 		} catch (RuntimeException e) {
-			this.mostrarAlerta("Erro." + e.getMessage());
+			new Alerta("Erro." + e.getMessage());
 		}
-	}
-
-	private void mostrarAlerta(String mensagem) {
-		SwingUtilities.invokeLater(() -> {
-			JOptionPane.showMessageDialog(this, mensagem);
-		});
 	}
 
 	// Verifica se o campo está naoVazio
@@ -211,7 +199,7 @@ public class FormCliente extends JPanel {
 			this.valido = this.valido && true;
 		} catch (ParseException e) {
 			this.valido = false;
-			this.mostrarAlerta("Erro ao converter de string para data. Verifique se o campo está no formato válido!");
+			new Alerta("Erro ao converter de string para data. Verifique se o campo está no formato válido!");
 		}
 	}
 
@@ -224,7 +212,7 @@ public class FormCliente extends JPanel {
 			return numeroConvertido;
 		} catch (NumberFormatException e) {
 			this.valido = false;
-			this.mostrarAlerta("Erro ao converter de string para número. Verifique o campo preenchido!");
+			new Alerta("Erro ao converter de string para número. Verifique o campo preenchido!");
 			return -1;
 		}
 	}

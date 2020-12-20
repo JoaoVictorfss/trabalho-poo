@@ -21,7 +21,7 @@ public class MemoriaAgencia {
 		dadosAgencias.excluir(this.transformaNumero(nro));
 	}
 	
-	public Agencia buscaCliente(String nro) {
+	public Agencia buscaAgencias(String nro) {
 		return dadosAgencias.buscar(this.transformaNumero(nro));
 	}
 

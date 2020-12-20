@@ -1,8 +1,5 @@
 package views.agencia;
 import java.awt.BorderLayout;
-import java.awt.Color;
-
-import javax.swing.JFrame;
 
 import views.templates.Painel;
 
@@ -18,9 +15,6 @@ public class TelaCadastroAgencia extends javax.swing.JFrame {
 		// Aplicação abre no centro da tela
 		setLocationRelativeTo(null);
 
-		// Para finalizar a aplicação
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-
 		// Fica Visível
 		setVisible(true);
 
@@ -32,9 +26,5 @@ public class TelaCadastroAgencia extends javax.swing.JFrame {
 
 		FormAgencia form = new FormAgencia();
 		add(form);
-	}
-
-	public static void main(String[] args) {
-		new TelaCadastroAgencia();
 	}
 }

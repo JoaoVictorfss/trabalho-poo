@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -14,6 +15,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import models.Cliente;
+import models.Conta;
+import views.conta.MemoriaConta;
 import views.templates.Alerta;
 import views.templates.Botao;
 
@@ -33,10 +36,14 @@ public class FormAtualizaCliente extends JPanel {
 	private String endCidade;
 	private String endRua;
 	private int endNumero;
+	
+	private JFrame telaAnt;
+	private String nroConta;
 
 	private boolean valido = true;
 
-	public FormAtualizaCliente(Cliente c) {
+	public FormAtualizaCliente(Cliente c, JFrame telaAtualiza) {
+		this.telaAnt = telaAtualiza;
         this.cliente = c;
         
 		setBackground(Color.WHITE);
@@ -109,6 +116,12 @@ public class FormAtualizaCliente extends JPanel {
 		add(civil);
 		add(campoEstadoCiv);
 
+		JTextField campoNroConta = new JTextField();
+		campoNroConta.setPreferredSize(new Dimension(90, 30));
+		JLabel conta = adicionarLabel("Nro Conta:");
+		add(conta);
+		add(campoNroConta);
+		
 		Botao botao = new Botao("Atualizar");
 		botao.setPreferredSize(new Dimension(140, 40));
 		botao.setBackground(new Color(183, 158, 20));
@@ -139,9 +152,16 @@ public class FormAtualizaCliente extends JPanel {
 				this.escolaridade = campoEscolaridade.getText();
 			if (naoVazio(campoEstadoCiv.getText()))
 				this.estadoCiv = campoEstadoCiv.getText();
+			if (naoVazio(campoNroConta.getText()))
+				this.nroConta = campoNroConta.getText();
+					
 			if (this.valido) {
 				atualizarCliente();
+			}else{
+				new Alerta("Dados incorretos. Tente novamente!");
+				this.telaAnt.dispose();
 			}
+
 		});
 	}
 
@@ -167,6 +187,19 @@ public class FormAtualizaCliente extends JPanel {
 			cliente.getEndereco().setCidade(this.endCidade);
 			cliente.getEndereco().setRua(this.endRua);
 			cliente.getEndereco().setNumero(this.endNumero);
+			
+			Conta contaCliente = MemoriaConta.getInstancia().buscaConta(nroConta);			
+			if(contaCliente != null) {
+				cliente.getContas().forEach(c -> {
+					if(!(c.getNroConta() == contaCliente.getNroConta())){
+						cliente.getContas().add(contaCliente);
+						contaCliente.getClientes().add(cliente);
+					}
+				});
+			
+			}else {
+				throw new RuntimeException("Você precisa cadastrar a conta primeiro");
+			}
             
 			new Alerta("Sucesso. Dados Atualizados!");
 		} catch (RuntimeException e) {
