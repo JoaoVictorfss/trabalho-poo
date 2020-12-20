@@ -23,7 +23,7 @@ public class TelaConsultaCliente extends javax.swing.JFrame{
 	}
 
 	void organizarLayout() {
-		Painel painelCliente = new Painel("Cosultar Cliente");
+		Painel painelCliente = new Painel("Consultar Cliente");
 		add(painelCliente, BorderLayout.NORTH);
 
 		TelaBuscaCliente form = new TelaBuscaCliente(true);

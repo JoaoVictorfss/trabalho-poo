@@ -1,6 +1,5 @@
 package views.templates;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
@@ -51,7 +50,7 @@ public class Menu extends JPanel {
 					MemoriaCliente.getInstancia().salvar();
 				new Alerta("Sucesso. Cliente(s) salvo(s)");
 			} catch (RuntimeException e) {
-				new Alerta("Erro." + e.getMessage());
+				new Alerta(e.getMessage());
 			}
 		});
 		add(op);
