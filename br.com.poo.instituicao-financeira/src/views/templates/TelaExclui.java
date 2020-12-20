@@ -32,7 +32,12 @@ public class TelaExclui extends javax.swing.JFrame{
 		}
 		
 		else if(tipo.equalsIgnoreCase("Funcionarios")) {
-			FormExclui form = new FormExclui("Funcionario","60792520076");
+			FormExclui form = new FormExclui("Funcionario","52094901653");
+			add(form);
+		}
+		
+		else if(tipo.equalsIgnoreCase("Agencias")) {
+			FormExclui form = new FormExclui("Agencia","0800");
 			add(form);
 		}
 		

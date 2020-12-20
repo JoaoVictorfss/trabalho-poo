@@ -140,7 +140,7 @@ public class FormAgencia extends JPanel {
             Agencia agencia = null;
             Funcionario gerente = MemoriaFuncionario.getInstancia().buscaFuncionario(cpfGerente);
             if (gerente == null) {
-                new Alerta("Gerente inexistente!");
+                throw new RuntimeException("Gerente inexistente!");
             }
 
             agencia = new Agencia(nome, nroAgencia, enderecoAgencia, gerente);
