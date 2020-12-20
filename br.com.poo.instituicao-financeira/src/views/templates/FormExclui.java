@@ -13,6 +13,7 @@ import javax.swing.SwingUtilities;
 
 import views.cliente.MemoriaCliente;
 import views.funcionario.MemoriaFuncionario;
+import views.conta.MemoriaConta;
 
 public class FormExclui extends JPanel {
 
@@ -45,7 +46,7 @@ public class FormExclui extends JPanel {
 						MemoriaFuncionario.getInstancia().exluirFuncionario(campo.getText());
 					}
 					else if(tipo.equalsIgnoreCase("Conta")) {
-						//
+						MemoriaConta.getInstancia().excluirConta(campo.getText());
 					}
 					else {
 						//agência

@@ -1,6 +1,7 @@
 package models;
 
 import java.util.Date;
+import models.Agencia;
 
 public class ContaCorrente extends Conta {
 	private static final long serialVersionUID = 1L;
@@ -14,8 +15,14 @@ public class ContaCorrente extends Conta {
 		this.limiteChequeEspecial = 0;
 		this.tarifaConta = 0;
 	}
-
-	public ContaCorrente(String categoria, int nroConta, Agencia agencia, Cliente cliente, char status,
+	public ContaCorrente(int nroConta, int nroAgencia , String status, Date dataAbertura, String categoria) {
+		this.setNroConta(nroConta);
+		this.setStatus(status);
+		this.setCategoria(categoria);
+		this.setNroAgencia(nroAgencia);
+		this.setDataAbertura(dataAbertura);
+	}
+	public ContaCorrente(String categoria, int nroConta, Agencia agencia, Cliente cliente, String status,
 			double limiteChequeEspecial) {
 		super(nroConta, agencia, cliente, status, new Date());
 		this.setLimiteChequeEspecial(limiteChequeEspecial);

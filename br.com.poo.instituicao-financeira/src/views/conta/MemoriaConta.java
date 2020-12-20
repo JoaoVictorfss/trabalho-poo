@@ -13,15 +13,15 @@ public class MemoriaConta {
         return instancia;
     }
 
-    public void adicionarAgencia(Conta c){
+    public void adicionarConta(Conta c){
         dadosContas.cadastrar(c);
     }
     
-    public void exluirAgencia(String nro) {
+    public void excluirConta(String nro) {
 		dadosContas.excluir(this.transformaNumero(nro));
 	}
 	
-	public Conta buscaCliente(String nro) {
+	public Conta buscaConta(String nro) {
 		return dadosContas.buscar(this.transformaNumero(nro));
 	}
 

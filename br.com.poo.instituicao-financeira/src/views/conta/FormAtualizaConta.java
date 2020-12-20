@@ -1,27 +1,41 @@
 package views.conta;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
-import models.ContaSalario;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+
+import models.Cliente;
+import models.Conta;
+import views.templates.Alerta;
 import views.templates.Botao;
 
-import java.awt.*;
-
 import java.util.Date;
-import java.text.SimpleDateFormat;
-import java.text.ParseException;
 
-public class FormContaSalario extends JPanel {
+public class FormAtualizaConta extends JPanel {
 
-    private int nroConta;
+	private Conta conta;
+	private int nroConta;
     private int agencia;
     private Date dataCria;
     private String status;
     
-    private boolean valido = true;
 
-    public FormContaSalario() {
-		JTextField campoNroConta = new JTextField("14");
+	private boolean valido = true;
+
+	public FormAtualizaConta(Conta c) {
+        this.conta = c;
+		setBackground(Color.WHITE);
+		setLayout(new FlowLayout(FlowLayout.LEFT, 20, 40));
+		JTextField campoNroConta = new JTextField("12");
         campoNroConta.setPreferredSize(new Dimension(150, 30));
         JLabel nroConta = adicionarLabel("N° Conta:");
         add(nroConta);
@@ -33,17 +47,17 @@ public class FormContaSalario extends JPanel {
         add(agencia);
         add(campoAgencia);
 
-        /*JTextField campoCliente = new JTextField("60792520076");
-        campoCliente.setPreferredSize(new Dimension(150, 30));
-        JLabel cliente = adicionarLabel("CPF Cliente:");
-        add(cliente);
-        add(campoCliente);*/
-
         JTextField campoStatus = new JTextField("A");
         campoStatus.setPreferredSize(new Dimension(120, 30));
         JLabel status = adicionarLabel("Status:");
         add(status);
         add(campoStatus);
+
+        JTextField campoCategoria = new JTextField("Standard");
+        JLabel categoria = adicionarLabel("Categoria:");
+        campoCategoria.setPreferredSize(new Dimension(170, 30));
+        add(categoria);
+        add(campoCategoria);
 
         JTextField campoDataCria = new JTextField("2020/12/20");
 		campoDataCria.setPreferredSize(new Dimension(110, 30));
@@ -51,13 +65,13 @@ public class FormContaSalario extends JPanel {
 		add(dataCria);
 		add(campoDataCria);
 
-        Botao botao = new Botao("Cadastrar");
-        botao.setPreferredSize(new Dimension(140, 40));
-        botao.setBackground(new Color(183, 158, 20));
+		Botao botao = new Botao("Atualizar");
+		botao.setPreferredSize(new Dimension(140, 40));
+		botao.setBackground(new Color(183, 158, 20));
 
-        add(botao);
+		add(botao);
 
-        botao.addActionListener(event -> {
+		botao.addActionListener(event -> {
 
 			if (naoVazio(campoNroConta.getText()))
 				this.nroConta = transformaNumero(campoNroConta.getText());
@@ -69,46 +83,45 @@ public class FormContaSalario extends JPanel {
 				transformaData(campoDataCria.getText());
             
             if (this.valido) {
-				cadastraConta();
+				atualizarConta();
 			}
 		});
-    }
+	}
 
-    @SuppressWarnings("unused")
-	private void cadastraConta() {
-		try {
-            ContaSalario conta = null;
+	private JLabel adicionarLabel(String labelText) {
+		JLabel label = new JLabel(labelText);
 
-			conta = new ContaSalario(nroConta, agencia, status, dataCria);
+		label.setFont(new Font("Courier", Font.BOLD, 16));
+		return label;
+	}
 
-			if (conta == null) {
-				this.mostrarAlerta("Erro. Dados incorretos! Verique todos e tente novamente");
-			} else {
-				MemoriaConta.getInstancia().adicionarConta(conta);
-				this.mostrarAlerta("Sucesso. Dados cadastrados!");
-			}
+	@SuppressWarnings("unused")
+	private void atualizarConta() {
+		try {			
+			conta.setNroConta(this.nroConta);
+			conta.setNroAgencia(this.agencia);
+			conta.setDataAbertura(this.dataCria);
+			conta.setStatus(status);
+            
+			new Alerta("Sucesso. Dados Atualizados!");
 		} catch (RuntimeException e) {
-			this.mostrarAlerta("Erro." + e.getMessage());
+			new Alerta("Erro." + e.getMessage());
 		}
-    }
-    
-    private JLabel adicionarLabel(String labelText) {
-        JLabel label = new JLabel(labelText);
-        label.setFont(new Font("Courier", Font.BOLD, 16));
-        return label;
-    }
-    // Verifica se o campo está naoVazio
+	}
+
+	// Verifica se o campo não está Vazio
 	private boolean naoVazio(String campo) {
 		if (!campo.isEmpty()) {
 			this.valido = this.valido && true;
+			
 			return true;
 		} else {
 			this.valido = false;
 			return false;
 		}
-    }
-    
-    // Converte string para data
+	}
+
+	// Converte string para data
 	private void transformaData(String data) {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 
@@ -119,11 +132,12 @@ public class FormContaSalario extends JPanel {
 			this.valido = this.valido && true;
 		} catch (ParseException e) {
 			this.valido = false;
-			this.mostrarAlerta("Erro ao converter de string para data. Verifique se o campo está no formato válido!");
+			new Alerta("Erro ao converter de string para data. Verifique se o campo está no formato válido!");
 		}
-    }
+	}
 
-    private int transformaNumero(String nro) {
+	// Converte string para número
+	private int transformaNumero(String nro) {
 		try {
 			int numeroConvertido = Integer.parseInt(nro);
 
@@ -131,13 +145,9 @@ public class FormContaSalario extends JPanel {
 			return numeroConvertido;
 		} catch (NumberFormatException e) {
 			this.valido = false;
-			this.mostrarAlerta("Erro ao converter de string para número. Verifique o campo preenchido!");
+			new Alerta("Erro ao converter de string para número. Verifique o campo preenchido!");
 			return -1;
 		}
-    }
-    private void mostrarAlerta(String mensagem) {
-		SwingUtilities.invokeLater(() -> {
-			JOptionPane.showMessageDialog(this, mensagem);
-		});
 	}
+
 }

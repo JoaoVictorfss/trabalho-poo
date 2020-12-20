@@ -14,17 +14,18 @@ public abstract class Conta implements Serializable {
 	private double saldoAtual;
 	private Date dataAbertura;
 	private int totalCliente;
+	private String tipo;
 
 	public Conta() {
-		this(0, null, null, 'I', new Date());
+		this(0, null, null, "I", new Date());
 	}
 
 	public Conta(Agencia agencia) {
-		this(0, agencia, null, 'I', new Date());
+		this(0, agencia, null, "I", new Date());
 	}
 
 	// constructor
-	public Conta(int nroConta, Agencia agencia, Cliente cliente, char status, Date dataAbertura) {
+	public Conta(int nroConta, Agencia agencia, Cliente cliente, String status, Date dataAbertura) {
 		this.setNroConta(nroConta);
 		this.setCliente(cliente);
 		this.setStatus(status);
@@ -79,10 +80,10 @@ public abstract class Conta implements Serializable {
 			return "Analise";
 	}
 
-	public void setStatus(char status) {
-		if (status == 'A')
+	public void setStatus(String status) {
+		if (status =="A")
 			this.status = 1;
-		else if (status == 'N')
+		else if (status == "A")
 			this.status = 3;
 		else
 			this.status = 2;
@@ -129,8 +130,19 @@ public abstract class Conta implements Serializable {
 		this.agencia = agencia;
 	}
 
+	public void setNroAgencia(int agencia) {
+		this.agencia.setNroAgencia(agencia);
+	}
+
 	public int getTotalCliente() {
 		return this.totalCliente;
+	}
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public abstract double calculaTarifa();
