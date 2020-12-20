@@ -1,6 +1,8 @@
 package views.cliente;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+
 import views.templates.Painel;
 
 public class TelaPrincipalAtualizaCliente extends javax.swing.JFrame {

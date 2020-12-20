@@ -21,7 +21,7 @@ public class TelaBuscaCliente extends JPanel {
 	public TelaBuscaCliente(boolean telaBusca) {
 		if(telaBusca) this.label = "Buscar";
 		
-		setBackground(new Color(220, 220, 220));
+		setBackground(Color.WHITE);
 		setLayout(new FlowLayout(FlowLayout.LEFT, 20, 40));
 
 		JLabel cpf = new JLabel("Cpf:");
@@ -34,7 +34,7 @@ public class TelaBuscaCliente extends JPanel {
 
 		Botao botao = new Botao(label);
 		botao.setPreferredSize(new Dimension(150, 30));
-		botao.setBackground(Color.BLUE);
+		botao.setBackground(new Color(183, 158, 20));
 
 		add(botao);
 

@@ -14,7 +14,7 @@ import java.awt.*;
 public class FormGerente extends JPanel {
 
     public FormGerente() {
-        setBackground(new Color(220, 220, 220));
+		setBackground(Color.WHITE);
         setLayout(new FlowLayout(FlowLayout.LEFT, 20, 40));
 
         JTextField campoNome = new JTextField();

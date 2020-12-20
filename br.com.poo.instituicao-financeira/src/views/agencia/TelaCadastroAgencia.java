@@ -1,5 +1,6 @@
 package views.agencia;
 import java.awt.BorderLayout;
+import java.awt.Color;
 
 import javax.swing.JFrame;
 
@@ -31,7 +32,6 @@ public class TelaCadastroAgencia extends javax.swing.JFrame {
 
 		FormAgencia form = new FormAgencia();
 		add(form);
-
 	}
 
 	public static void main(String[] args) {

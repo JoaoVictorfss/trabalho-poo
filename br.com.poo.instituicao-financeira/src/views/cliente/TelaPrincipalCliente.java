@@ -21,9 +21,6 @@ public class TelaPrincipalCliente extends JFrame {
 		// Aplicação abre no centro da tela
 		setLocationRelativeTo(null);
 
-		// Para finalizar a aplicação
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-
 		// Fica Visível
 		setVisible(true);
 	}
@@ -38,8 +35,4 @@ public class TelaPrincipalCliente extends JFrame {
 		add(menu, BorderLayout.CENTER);
 	}
 	
-    public static void main(String[] args) {
-        new TelaPrincipalCliente();
-    }
-
 }

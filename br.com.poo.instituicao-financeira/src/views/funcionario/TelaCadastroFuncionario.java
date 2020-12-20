@@ -1,6 +1,7 @@
 package views.funcionario;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 
 import views.templates.Painel;
 

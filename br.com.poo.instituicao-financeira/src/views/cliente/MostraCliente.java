@@ -34,7 +34,7 @@ public class MostraCliente extends javax.swing.JFrame {
 		JPanel painel = new JPanel();
 
 		JLabel titulo = new JLabel("Dados do " + c.getNome());
-		titulo.setForeground(new Color(28, 28, 28));
+		titulo.setForeground(Color.white);
 		titulo.setFont(new Font("SansSerif", Font.PLAIN, 26));
 
 		final String endereco = c.getEndereco().getCidade() + ", " + c.getEndereco().getRua() + ", "
@@ -54,7 +54,7 @@ public class MostraCliente extends javax.swing.JFrame {
 		textAreal.setWrapStyleWord(true);
 		textAreal.setFont(new Font("Serif", Font.BOLD, 20));
 
-		painel.setBackground(new Color(173, 216, 230));
+		painel.setBackground(new Color(229, 197, 25));
 
 		painel.add(titulo);
 		painel.add(textAreal);

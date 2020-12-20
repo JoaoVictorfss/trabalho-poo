@@ -28,7 +28,7 @@ public class FormAgencia extends JPanel {
     private boolean valido = true;
 
     public FormAgencia() {
-        setBackground(new Color(220, 220, 220));
+		setBackground(Color.WHITE);
         setLayout(new FlowLayout(FlowLayout.LEFT, 20, 40));
 
         JTextField campoNroAgencia = new JTextField("0800");
@@ -87,7 +87,7 @@ public class FormAgencia extends JPanel {
 
         Botao botao = new Botao("Cadastrar");
         botao.setPreferredSize(new Dimension(140, 40));
-        botao.setBackground(Color.BLUE);
+        botao.setBackground(new Color(183, 158, 20));
 
         add(botao);
 
