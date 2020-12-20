@@ -5,10 +5,12 @@ import java.awt.FlowLayout;
 
 import javax.swing.JPanel;
 
+import views.agencia.MemoriaAgencia;
 import views.cliente.MemoriaCliente;
 import views.cliente.TelaCadastroCliente;
 import views.cliente.TelaConsultaCliente;
 import views.cliente.TelaPrincipalAtualizaCliente;
+import views.conta.MemoriaConta;
 import views.funcionario.MemoriaFuncionario;
 
 public class Menu extends JPanel {
@@ -57,11 +59,9 @@ public class Menu extends JPanel {
 				else if(tela.equalsIgnoreCase("funcionario"))
 					MemoriaFuncionario.getInstancia().salvar();
 				else if(tela.equalsIgnoreCase("conta"))
-					return;
-						//MemoriaConta.getInstancia().salvar();
-				else return;
-					//MemoriaAgencia.getInstancia().salvar();				
-					new Alerta("Sucesso. " + tela + "(s)" + " salvo(s)");
+					MemoriaConta.getInstancia().salvar();
+				else MemoriaAgencia.getInstancia().salvar();				
+				new Alerta("Sucesso. " + tela + "(s)" + " salvo(s)");
 			} catch (RuntimeException e) {
 				new Alerta(e.getMessage());
 			}
