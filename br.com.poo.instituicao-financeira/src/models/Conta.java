@@ -91,7 +91,6 @@ public abstract class Conta implements Serializable {
 	public boolean saque(double valor) {
 		if (valor <= saldoAtual && valor > 0) {
 			saldoAtual -= valor;
-			transacoes.add(new Transacao(new Date(), "saque", valor, this.agencia));
 			return true;
 		} else
 			throw new RuntimeException("Valor inválido para saque!");
@@ -100,7 +99,6 @@ public abstract class Conta implements Serializable {
 	public boolean deposito(double valor) {
 		if (valor > 0) {
 			saldoAtual += valor;
-			transacoes.add(new Transacao(new Date(), "deposito", valor, this.agencia));
 			return true;
 		} else {
 			throw new RuntimeException("Valor do depósito não pode ser um valor negativo!");
@@ -110,7 +108,7 @@ public abstract class Conta implements Serializable {
 	public boolean transferencia(double valor, Conta contaDestino) {
 		if (valor <= saldoAtual && valor > 0) {
 			saldoAtual -= valor;
-			transacoes.add(new Transacao(new Date(), "transferencia", valor, this.agencia));
+			contaDestino.deposito(valor);
 			return true;
 		} else
 			throw new RuntimeException("Valor inválido para transferência!");
@@ -127,6 +125,10 @@ public abstract class Conta implements Serializable {
 
 	public void setAgencia(Agencia agencia) {
 		this.agencia = agencia;
+	}
+	
+	public void adicionaTransacao(Transacao t) {
+		this.transacoes.add(t);
 	}
 
 	public int getTotalCliente() {

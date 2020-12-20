@@ -3,52 +3,99 @@ package models;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Transacao {
-    private static int id;
-    private Date dataTransacao;
-    private String tipoTransacao;
-    private double valorTransacao;
+class Transacao{
+    private static int idTrans = 0;
+    private int id;
     private Agencia agencia;
+    private double valor;
+    private Date dataTransacao;
+    private String tipo;
+    private Conta contaOr;
 
-    public Transacao(Date dataTransacao, String tipoTransacao, double valorTransacao, Agencia agencia) {
-        this.dataTransacao = dataTransacao;
-        this.tipoTransacao = tipoTransacao;
-        this.valorTransacao = valorTransacao;
-        this.agencia = agencia;
-        Transacao.id++;
+    Transacao(Date dataTransacao, Conta contaOr, String tipo, Agencia agencia, double valor) {
+        setdataTransacao(dataTransacao);
+        setAgencia(agencia);
+        setValor(valor);
+        this.id = Transacao.idTrans;
+        this.tipo = tipo;
+        this.contaOr = contaOr;
+        idTrans++;
     }
 
-    public String toString() {
-        Date date = getDataTransacao();
-        SimpleDateFormat DateFor = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
-        String stringDate = DateFor.format(date);
-        return "\nExtrato"
-                + "\nId : " + getId()
-                + "\nAgência : " + getAgencia().getNroAgencia()
-                + "\nTipo de Operação : " + getTipoTransacao()
-                + "\nData : " + stringDate
-                + "\nValor : " + getValorTransacao()
-                + "\n______________________________________";
+    public void sacar(double valor) {
+        if (contaOr.saque(valor)) {
+            setdataTransacao(new Date());
+            setValor(valor);
+            this.tipo = "Saque";
+            contaOr.adicionaTransacao(this);
+        }
+    }
+
+
+	public void depositar(double valor) {
+        if (contaOr.deposito(valor)) {
+            setdataTransacao(new Date());
+            setValor(valor);
+            this.tipo = "Deposito";
+            contaOr.adicionaTransacao(this);
+        }
+    }
+
+    public void transferir(Conta contaDes, double valor) {
+        if (contaOr.transferencia(valor, contaDes)) {
+            setdataTransacao(new Date());
+            setValor(valor);
+            this.tipo = "Transferencia";
+            contaOr.adicionaTransacao(this);
+            contaDes.adicionaTransacao(this);
+        }
+    }
+
+    
+	public String getTipo() {
+		return tipo;
+	}
+	
+    public long getId() {
+        return this.id;
+    }
+
+    public Date getdataTransacao() {
+        return this.dataTransacao;
+    }
+
+    public void setdataTransacao(Date dataTransacao) {
+        this.dataTransacao = dataTransacao;
     }
 
     public Agencia getAgencia() {
-        return agencia;
+        return this.agencia;
     }
 
-    public int getId() {
-        return Transacao.id;
+    public void setAgencia(Agencia agencia) {
+        this.agencia = agencia;
     }
 
-    public Date getDataTransacao() {
-        return dataTransacao;
+    public double getValor() {
+        return this.valor;
     }
 
-    public String getTipoTransacao() {
-        return tipoTransacao;
+    public void setValor(double valor) {
+        if (valor >= 0)
+            this.valor = valor;
+        else throw new RuntimeException("Valor de transação inválido");
     }
 
-    public double getValorTransacao() {
-        return valorTransacao;
+    public String mostrarExtrato() {
+        Date date = getdataTransacao();
+        SimpleDateFormat DateFor = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+        String stringDate = DateFor.format(date);
+        return  "\nId : " + getId()
+                + "\nNúmero da Agência : " + agencia.getNroAgencia()
+                + "\nNúmero da Conta de origem : " + contaOr.getNroConta()
+                + "\nTipo de Operação : " + this.tipo
+                + "\ndataTransacao : " + stringDate
+                + "\nValor : " + this.valor;
     }
 
 }
