@@ -3,7 +3,7 @@ package models;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-class Transacao{
+public class Transacao{
     private static int idTrans = 0;
     private int id;
     private Agencia agencia;
@@ -12,12 +12,11 @@ class Transacao{
     private String tipo;
     private Conta contaOr;
 
-    Transacao(Date dataTransacao, Conta contaOr, String tipo, Agencia agencia, double valor) {
+    public Transacao(Date dataTransacao, Conta contaOr, Agencia agencia, double valor) {
         setdataTransacao(dataTransacao);
         setAgencia(agencia);
         setValor(valor);
         this.id = Transacao.idTrans;
-        this.tipo = tipo;
         this.contaOr = contaOr;
         idTrans++;
     }

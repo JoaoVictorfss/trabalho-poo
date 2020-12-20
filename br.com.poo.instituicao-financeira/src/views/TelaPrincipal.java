@@ -16,6 +16,7 @@ import views.cliente.TelaPrincipalCliente;
 import views.conta.TelaPrincipalConta;
 import views.funcionario.TelaPrincipalFuncionario;
 import views.templates.Painel;
+import views.transacoes.TelaPrincipalTransacao;
 
 public class TelaPrincipal extends JFrame {
 	public TelaPrincipal() {
@@ -24,7 +25,7 @@ public class TelaPrincipal extends JFrame {
 		setTitle("Instituição financeira");
 
 		// Tamanho da tela
-		setSize(500, 520);
+		setSize(500, 590);
 
 		setLocationRelativeTo(null);
 
@@ -59,6 +60,10 @@ public class TelaPrincipal extends JFrame {
 		JButton agencias = adicionarBotao("Agências");
 		agencias.addActionListener(event -> { new TelaPrincipalAgencia();});
 		opcoes.add(agencias);
+		
+		JButton operacoes = adicionarBotao("Transações");
+		operacoes.addActionListener(event -> { new TelaPrincipalTransacao();});
+		opcoes.add(operacoes);
 		
 		add(opcoes);	
 	}

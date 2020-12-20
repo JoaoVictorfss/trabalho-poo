@@ -174,6 +174,7 @@ public class FormFuncionario extends JPanel {
                 this.salario = transformaStrDouble(salario.getText());
             if (naoVazio(bonificacao.getText()))
                 this.bonificacao = transformaStrDouble(bonificacao.getText());
+            
             if (this.valido) {
                 cadastraFuncionario();
             }
