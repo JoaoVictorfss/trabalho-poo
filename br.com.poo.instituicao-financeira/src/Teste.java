@@ -58,7 +58,7 @@ public class Teste {
 		Agencia one = new Agencia("one 123", 12, enderecoAgencia, gerente);
 
 		Cliente joao = new Cliente("Joao", one, "60792520076", enderecoJoao, "casado", "cursando superior", new Date());
-		Cliente maria = new Cliente("maria", one, "69582822058", enderecoJoao, "casada", "Doutorado", new Date());
+		Cliente maria = new Cliente("maria", one, "69582822058", enderecoJoao, "casado", "Doutorado", new Date());
 		
 		one.setCliente(joao);
 		one.setCliente(maria);

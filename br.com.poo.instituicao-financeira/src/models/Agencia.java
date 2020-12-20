@@ -87,5 +87,25 @@ public class Agencia implements Serializable {
 	public void setConta(Conta conta) {
 		this.contas.add(conta);
 	}
+	
+	public void mostrarDados() {
+		System.out.println("______________________________________");
+		System.out.println("\nDados da Agência\n");
+		System.out.println("Nome: " + this.nome);
+		System.out.println("Número: " + this.nroAgencia);
+		System.out.println("Nome do gerente: " + this.gerente.getNome());
+		System.out.print("Endereço: ");
+		System.out.print(this.endereco.getCep() + ", ");
+		System.out.print("rua: " + this.endereco.getRua() + ", ");
+		System.out.print("número: " + this.endereco.getNumero() + " - ");
+		System.out.print(this.endereco.getUf() + ", ");
+		System.out.println(this.endereco.getCidade() + ".");
+		if (!clientes.isEmpty()) {
+			System.out.println("\nClientes: ");
+			clientes.forEach(c -> System.out.println(c.getNome()));
+		}
+		System.out.println("______________________________________");
+
+	}
 
 }

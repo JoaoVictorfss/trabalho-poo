@@ -14,18 +14,6 @@ public class ControladorEndereco implements controller {
 	private ArrayList<Endereco> enderecos = new ArrayList<Endereco>();
 	private final String arquivo = "enderecos.bin";
 
-	private void mostrarDados(Endereco endereco) {
-		System.out.println("______________________________________");
-		System.out.println("\nDados do endereco\n");
-		System.out.println("CEP: " + endereco.getCep());
-		System.out.println("País: " + endereco.getPais());
-		System.out.println("Cidade: " + endereco.getCidade());
-		System.out.println("Estado: " + endereco.getUf());
-		System.out.println("Rua: " + endereco.getRua());
-		System.out.println("Número: " + endereco.getNumero());
-		System.out.println("______________________________________\n");
-	}
-
 	// Cadastra endereço na lista, não aceita endereços duplicados
 	public void cadastrar(Endereco c) {
 		Endereco existente = this.buscar(c.getCep());
@@ -44,7 +32,7 @@ public class ControladorEndereco implements controller {
 		if (enderecos.isEmpty()) {
 			System.out.println("Sem registros!");
 		} else {
-			enderecos.forEach(c -> this.mostrarDados(c));
+			enderecos.forEach(c -> c.mostrarDados());
 		}
 	}
 

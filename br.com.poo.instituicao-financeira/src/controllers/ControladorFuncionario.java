@@ -14,18 +14,6 @@ public class ControladorFuncionario implements controller {
 	private ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>();
 	private final String arquivo = "funcionarios.bin";
 
-	private void mostrarDados(Funcionario funcionario) {
-		System.out.println("______________________________________");
-		System.out.println("\nDados do Funcionário\n");
-		System.out.println("Nome: " + funcionario.getNome());
-		System.out.println("CPF: " + funcionario.getCpf());
-		System.out.println("Estado Civil: " + funcionario.getEstadoCivil());
-		System.out.println("Data de Admissão: " + funcionario.getDataAd());
-		System.out.println("Sexo: " + funcionario.getSexo());
-		System.out.println("Cargo: " + funcionario.getCargo());
-		System.out.println("______________________________________");
-	}
-
 	// Cadastra funcionário na lista, não aceita funcionários duplicados
 	public void cadastrar(Funcionario f) {
 		Funcionario existente = this.buscar(f.getCpf());
@@ -44,7 +32,7 @@ public class ControladorFuncionario implements controller {
 		if (funcionarios.isEmpty()) {
 			System.out.println("Sem registros!");
 		} else {
-			funcionarios.forEach(f -> this.mostrarDados(f));
+			funcionarios.forEach(f -> f.mostrarDados());
 		}
 	}
 
@@ -90,9 +78,9 @@ public class ControladorFuncionario implements controller {
 			if (salvo)
 				System.out.println("Sucesso. Funcionários salvos com sucesso!");
 			else
-				System.out.println("Erro. Ocorreu um erro ao salvar os funcionarios, tente novamente!");
+				throw new RuntimeException("Erro. Ocorreu um erro ao salvar os funcionários, tente novamente!");
 		} else
-			System.out.println("Erro. Sem registros para salvar!");
+			throw new RuntimeException("Erro. Sem registros para salvar!");
 	}
 
 }

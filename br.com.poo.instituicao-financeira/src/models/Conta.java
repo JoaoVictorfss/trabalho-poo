@@ -134,5 +134,16 @@ public abstract class Conta implements Serializable {
 	}
 
 	public abstract double calculaTarifa();
+	
+	public void mostrarDados() {
+		System.out.println("______________________________________");
+		System.out.println("\nDados do Conta\n");
+		System.out.println("Número: " + this.nroConta);
+		System.out.println("Status: " + this.getStatus());
+		System.out.println("Número da Agencia: " + this.getAgencia().getNroAgencia());
+		System.out.println("Quantidade de clientes: " + this.getTotalCliente());
+		System.out.println("Data de abertura: " + this.getDataAbertura());
+		System.out.println("______________________________________");
+	}
 
 }

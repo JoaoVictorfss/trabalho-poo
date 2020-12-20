@@ -72,5 +72,17 @@ public class Endereco implements Serializable {
 	public void setPais(String pais) {
 		this.pais = pais;
 	}
+	
+	public void mostrarDados() {
+		System.out.println("______________________________________");
+		System.out.println("\nDados do endereco\n");
+		System.out.println("CEP: " + this.getCep());
+		System.out.println("País: " + this.getPais());
+		System.out.println("Cidade: " + this.getCidade());
+		System.out.println("Estado: " + this.getUf());
+		System.out.println("Rua: " + this.getRua());
+		System.out.println("Número: " + this.getNumero());
+		System.out.println("______________________________________\n");
+	}
 
 }

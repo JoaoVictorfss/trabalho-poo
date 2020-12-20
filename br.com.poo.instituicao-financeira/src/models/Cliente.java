@@ -64,4 +64,15 @@ public class Cliente extends Pessoa {
 	public void setAgencia(Agencia agencia) {
 		this.agencia = agencia;
 	}
+	
+	public void mostrarDados() {
+		System.out.println("______________________________________");
+		System.out.println("\nDados do cliente\n");
+		System.out.println("Nome: " + this.getNome());
+		System.out.println("CPF: " + this.getCpf());
+		System.out.println("Estado Civil: " + this.getEstadoCivil());
+		System.out.println("Data de Nascimento: " + this.getDataNasc());
+		System.out.println("Escolaridade: " + this.getEscolaridade());
+		System.out.println("______________________________________");
+	}
 }

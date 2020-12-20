@@ -54,4 +54,15 @@ public class Funcionario extends Pessoa {
 		return Funcionario.salBase;
 	}
 
+	public void mostrarDados() {
+		System.out.println("______________________________________");
+		System.out.println("\nDados do Funcionário\n");
+		System.out.println("Nome: " + this.getNome());
+		System.out.println("CPF: " + this.getCpf());
+		System.out.println("Estado Civil: " + this.getEstadoCivil());
+		System.out.println("Data de Admissão: " + this.getDataAd());
+		System.out.println("Sexo: " + this.getSexo());
+		System.out.println("Cargo: " + this.getCargo());
+		System.out.println("______________________________________");
+	}
 }
