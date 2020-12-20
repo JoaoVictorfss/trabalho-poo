@@ -21,7 +21,7 @@ public class MemoriaConta {
 		dadosContas.excluir(this.transformaNumero(nro));
 	}
 	
-	public Conta buscaCliente(String nro) {
+	public Conta buscaConta(String nro) {
 		return dadosContas.buscar(this.transformaNumero(nro));
 	}
 

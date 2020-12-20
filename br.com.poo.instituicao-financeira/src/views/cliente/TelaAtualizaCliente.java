@@ -31,7 +31,7 @@ public class TelaAtualizaCliente extends javax.swing.JFrame {
 		Painel painelCliente = new Painel("Atualização de Cliente");
 		add(painelCliente, BorderLayout.NORTH);
 
-		FormAtualizaCliente form = new FormAtualizaCliente(this.c);
+		FormAtualizaCliente form = new FormAtualizaCliente(this.c, this);
 		add(form);
 	}
 }
