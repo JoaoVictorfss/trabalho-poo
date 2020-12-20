@@ -29,10 +29,8 @@ public class FormAtualizaFuncionario extends JPanel {
     private int endNumero;
     private String estadoCiv;
     private Date dataAd;
-    private boolean possuiCurso = true;
-    private String nomeCurso;
-    private String salario;
-    private String bonificacao;
+    private double salario;
+    private double bonificacao;
 
     private JFrame telaAnt;
     private Funcionario funcionario;
@@ -119,22 +117,9 @@ public class FormAtualizaFuncionario extends JPanel {
         add(dataAd);
         add(campoDataAd);
 
-        JCheckBox possuiCurso = new JCheckBox();
-        possuiCurso.setSelected(true);
-        possuiCurso.setPreferredSize(new Dimension(20, 20));
-        JLabel curso = adicionarLabel("Possui Curso:");
-        add(curso);
-        add(possuiCurso);
-
-        JTextField nomeCurso = new JTextField("Adiministração");
-        nomeCurso.setPreferredSize(new Dimension(160, 30));
-        JLabel cursoNome = adicionarLabel("Nome do Curso:");
-        add(cursoNome);
-        add(nomeCurso);
-
         JTextField salario = new JTextField("12000");
         salario.setPreferredSize(new Dimension(90, 30));
-        JLabel salBase = adicionarLabel("Salário:");
+        JLabel salBase = adicionarLabel("Salário Base:");
         add(salBase);
         add(salario);
 
@@ -176,16 +161,17 @@ public class FormAtualizaFuncionario extends JPanel {
                 this.estadoCiv = campoEstadoCiv.getText();
             if (naoVazio(campoDataAd.getText()))
                 transformaData(campoDataAd.getText(), "Ad");
-            this.possuiCurso = possuiCurso.isSelected();
-            if (naoVazio(nomeCurso.getText()))
-                this.nomeCurso = nomeCurso.getText();
             if (naoVazio(salario.getText()))
-                this.salario = salario.getText();
+            	this.salario = transformaStrDouble(salario.getText());
             if (naoVazio(bonificacao.getText()))
-                this.bonificacao = bonificacao.getText();
+                this.bonificacao = transformaStrDouble(bonificacao.getText());
+            
             if (this.valido) {
                 atualizaFuncionario();
-            }
+            }else{
+				new Alerta("Dados incorretos. Tente novamente!");
+				this.telaAnt.dispose();
+			}
         });
     }
 
@@ -215,6 +201,19 @@ public class FormAtualizaFuncionario extends JPanel {
         this.sexo = charSexo[0];
     }
 
+    private double transformaStrDouble(String n) {
+        try {
+            double numeroConvertido = Double.parseDouble(n);
+
+            this.valido = this.valido && true;
+            return numeroConvertido;
+        } catch (NumberFormatException e) {
+            this.valido = false;
+            new Alerta("Erro ao converter de string para Double. Verifique o campo preenchido!");
+            return -1;
+        }
+    }
+    
     // Converte string para número
     private int transformaNumero(String nro) {
         try {
@@ -244,19 +243,23 @@ public class FormAtualizaFuncionario extends JPanel {
     @SuppressWarnings("unused")
     private void atualizaFuncionario() {
         try {
-            Endereco enderecoFuncionario = new Endereco(endRua, endNumero, endCep, endUf, endCidade, endPais);
-            Gerente gerente = null;
-
-            // Verificar se a funcionario existe pelo número e adicionar
-            gerente = new Gerente(nomeFuncionario, cpfFuncionario, enderecoFuncionario, estadoCiv, dataNasc, dataAd, sexo, possuiCurso, nomeCurso);
-
-            if (gerente == null) {
-                new Alerta("Erro. Dados incorretos! Verique todos e tente novamente");
-            } else {
-
-                MemoriaFuncionario.getInstancia().adicionarFuncionario(gerente);
-                new Alerta("Sucesso. Dados cadastrados!");
-            }
+            funcionario.setNome(this.nomeFuncionario);           
+            funcionario.setCpf(this.cpfFuncionario);
+            funcionario.setDataAd(this.dataAd);
+            funcionario.setDataNasc(this.dataNasc);
+            funcionario.setSexo(this.sexo);
+            funcionario.setEstadoCivil(this.estadoCiv);
+            funcionario.getEndereco().setCep(this.endCep);
+            funcionario.getEndereco().setRua(this.endRua);
+            funcionario.getEndereco().setCidade(this.endCidade);
+            funcionario.getEndereco().setUf(this.endUf);
+            funcionario.getEndereco().setNumero(this.endNumero);
+            funcionario.getEndereco().setPais(this.endPais);
+            
+            Funcionario.salBase = this.salario;
+            Gerente.setBonificacao(this.bonificacao);
+            
+            new Alerta("Sucesso! Funcionário cadastrado com sucesso.");
         } catch (RuntimeException e) {
             new Alerta("Erro." + e.getMessage());
         }

@@ -71,6 +71,6 @@ public class Funcionario extends Pessoa {
 				+ "Data de Nascimento: " + dataNasc + ".\n"
 				+ "Cargo: " + this.getCargo() + ".\n"
 				+ "Data Admissão: " + dataAd + ".\n"
-				+ "Cargo: " + getCargo() + ".";
+				+ "salário: " + this.calcSal() + ".";
 	}
 }

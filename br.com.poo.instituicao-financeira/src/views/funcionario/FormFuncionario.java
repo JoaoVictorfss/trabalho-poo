@@ -3,6 +3,7 @@ package views.funcionario;
 import javax.swing.*;
 
 import models.Endereco;
+import models.Funcionario;
 import models.Gerente;
 import views.templates.Botao;
 import views.templates.Alerta;
@@ -28,8 +29,8 @@ public class FormFuncionario extends JPanel {
     private Date dataAd;
     private boolean possuiCurso = true;
     private String nomeCurso;
-    private String salario;
-    private String bonificacao;
+    private double salario;
+    private double bonificacao;
 
     private boolean valido = true;
 
@@ -49,7 +50,7 @@ public class FormFuncionario extends JPanel {
         add(cpf);
         add(campoCpf);
 
-        JTextField campoDataNasc = new JTextField("23/12/1964");
+        JTextField campoDataNasc = new JTextField("1964/06/12");
         campoDataNasc.setPreferredSize(new Dimension(120, 30));
         JLabel dataNasc = adicionarLabel("Nascimento:");
         add(dataNasc);
@@ -103,7 +104,7 @@ public class FormFuncionario extends JPanel {
         add(civil);
         add(campoEstadoCiv);
 
-        JTextField campoDataAd = new JTextField("19/06/2020");
+        JTextField campoDataAd = new JTextField("2010/06/12");
         campoDataAd.setPreferredSize(new Dimension(110, 30));
         JLabel dataAd = adicionarLabel("Data Admissão:");
         add(dataAd);
@@ -124,7 +125,7 @@ public class FormFuncionario extends JPanel {
 
         JTextField salario = new JTextField("12000");
         salario.setPreferredSize(new Dimension(90, 30));
-        JLabel salBase = adicionarLabel("Salário:");
+        JLabel salBase = adicionarLabel("Salário Base:");
         add(salBase);
         add(salario);
 
@@ -170,9 +171,9 @@ public class FormFuncionario extends JPanel {
             if (naoVazio(nomeCurso.getText()))
                 this.nomeCurso = nomeCurso.getText();
             if (naoVazio(salario.getText()))
-                this.salario = salario.getText();
+                this.salario = transformaStrDouble(salario.getText());
             if (naoVazio(bonificacao.getText()))
-                this.bonificacao = bonificacao.getText();
+                this.bonificacao = transformaStrDouble(bonificacao.getText());
             if (this.valido) {
                 cadastraFuncionario();
             }
@@ -193,6 +194,19 @@ public class FormFuncionario extends JPanel {
         } catch (ParseException e) {
             this.valido = false;
             new Alerta("Erro ao converter de string para data. Verifique se o campo está no formato válido!");
+        }
+    }
+    
+    private double transformaStrDouble(String n) {
+        try {
+            double numeroConvertido = Double.parseDouble(n);
+
+            this.valido = this.valido && true;
+            return numeroConvertido;
+        } catch (NumberFormatException e) {
+            this.valido = false;
+            new Alerta("Erro ao converter de string para Double. Verifique o campo preenchido!");
+            return -1;
         }
     }
 
@@ -237,10 +251,10 @@ public class FormFuncionario extends JPanel {
             Endereco enderecoFuncionario = new Endereco(endRua, endNumero, endCep, endUf, endCidade, endPais);
             Gerente gerente = null;
 
-            // Verificar se a conta existe pelo número e adicionar
-
             gerente = new Gerente(nomeFuncionario, cpfFuncionario, enderecoFuncionario, estadoCiv, dataNasc, dataAd, sexo, possuiCurso, nomeCurso);
-
+            Gerente.setBonificacao(bonificacao);
+            Funcionario.salBase = salario;
+            
             if (gerente == null) {
             	 new Alerta("Erro. Dados incorretos! Verique todos e tente novamente");
             } else {

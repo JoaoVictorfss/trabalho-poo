@@ -144,7 +144,7 @@ public class FormCliente extends JPanel {
 			if (this.valido) {
 				cadastraCliente();
 			} else {
-				new Alerta("Verifique se todos os campos foram preenchido. Tente novamente!");
+				new Alerta("Dados incorretos. Tente novamente!");
 				this.telaAnt.dispose();
 			}
 

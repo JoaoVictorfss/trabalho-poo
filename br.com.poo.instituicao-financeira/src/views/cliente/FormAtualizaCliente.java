@@ -158,7 +158,7 @@ public class FormAtualizaCliente extends JPanel {
 			if (this.valido) {
 				atualizarCliente();
 			}else{
-				new Alerta("Verifique se todos os campos foram preenchido. Tente novamente!");
+				new Alerta("Dados incorretos. Tente novamente!");
 				this.telaAnt.dispose();
 			}
 
