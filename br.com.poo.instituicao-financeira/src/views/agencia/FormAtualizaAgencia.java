@@ -137,21 +137,21 @@ public class FormAtualizaAgencia extends JPanel {
     @SuppressWarnings("unused")
     private void atualizaAgencia() {
         try {
-            Endereco enderecoAgencia = new Endereco(endRua, endNumero, endCep, endUf, endCidade, endPais);
-            Agencia agencia = null;
-            Funcionario gerente = MemoriaFuncionario.getInstancia().buscaFuncionario(cpfGerente);
+            Funcionario gerente = MemoriaFuncionario.getInstancia().buscaFuncionario(this.cpfGerente);
             if (gerente == null) {
                 new Alerta("Gerente inexistente!");
             }
+            agencia.setGerente(gerente);
+            agencia.setNroAgencia(this.nroAgencia);
+            agencia.setNome(this.nome);
+            agencia.getEndereco().setCep(this.endCep);
+            agencia.getEndereco().setRua(this.endRua);
+            agencia.getEndereco().setCidade(this.endCidade);
+            agencia.getEndereco().setUf(this.endUf);
+            agencia.getEndereco().setNumero(this.endNumero);
+            agencia.getEndereco().setPais(this.endPais);
 
-            agencia = new Agencia(nome, nroAgencia, enderecoAgencia, gerente);
-
-            if (agencia == null) {
-                new Alerta("Erro. Dados incorretos! Verique todos e tente novamente");
-            } else {
-                MemoriaAgencia.getInstancia().adicionarAgencia(agencia);
-                new Alerta("Sucesso. Dados cadastrados!");
-            }
+            new Alerta("Sucesso! Agência atualizada com sucesso.");
         } catch (RuntimeException e) {
             new Alerta("Erro." + e.getMessage());
         }

@@ -259,7 +259,7 @@ public class FormAtualizaFuncionario extends JPanel {
             Funcionario.salBase = this.salario;
             Gerente.setBonificacao(this.bonificacao);
             
-            new Alerta("Sucesso! Funcionário cadastrado com sucesso.");
+            new Alerta("Sucesso! Funcionário atualizado com sucesso.");
         } catch (RuntimeException e) {
             new Alerta("Erro." + e.getMessage());
         }
