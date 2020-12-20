@@ -1,30 +1,33 @@
 package views.funcionario;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 
 import views.templates.Painel;
 
-public class TelaCadastroFuncionario extends javax.swing.JFrame {
-    public TelaCadastroFuncionario() {
+public class TelaPrincipalAtualizaFuncionario extends javax.swing.JFrame {
+
+    public TelaPrincipalAtualizaFuncionario() {
         organizarLayout();
 
-        setTitle("Cadastro de Funcionário");
+        setTitle("Atualização de Funcionario");
 
         // Tamanho da tela
-        setSize(550, 800);
+        setSize(400, 270);
 
         // Aplicação abre no centro da tela
         setLocationRelativeTo(null);
 
         // Fica Visível
         setVisible(true);
+
     }
 
     void organizarLayout() {
-        Painel painelFuncionario = new Painel("Cadastro de Gerente");
+        Painel painelFuncionario = new Painel("Atualização de Funcionario");
         add(painelFuncionario, BorderLayout.NORTH);
 
-        FormFuncionario form = new FormFuncionario();
+        TelaBuscaFuncionario form = new TelaBuscaFuncionario(false);
         add(form);
     }
 }

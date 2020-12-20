@@ -1,5 +1,6 @@
 package models;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Funcionario extends Pessoa {
@@ -54,15 +55,22 @@ public class Funcionario extends Pessoa {
 		return Funcionario.salBase;
 	}
 
-	public void mostrarDados() {
-		System.out.println("______________________________________");
-		System.out.println("\nDados do Funcionário\n");
-		System.out.println("Nome: " + this.getNome());
-		System.out.println("CPF: " + this.getCpf());
-		System.out.println("Estado Civil: " + this.getEstadoCivil());
-		System.out.println("Data de Admissão: " + this.getDataAd());
-		System.out.println("Sexo: " + this.getSexo());
-		System.out.println("Cargo: " + this.getCargo());
-		System.out.println("______________________________________");
+	public String mostrarDados() {
+		final String endereco = this.getEndereco().getCidade() + ", " + this.getEndereco().getRua() + ", "
+				+ this.getEndereco().getNumero() + " - " + this.getEndereco().getUf() + ", " + this.getEndereco().getCep() + "("
+				+ this.getEndereco().getPais() + ").\n";
+
+		final SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+		final String dataNasc = formato.format(this.getDataNasc());
+		final String dataAd = formato.format(this.getDataAd());
+
+		return "Nome:" + this.getNome() + ".\n"
+				+ "CPF: " + this.getCpf() + ".\n"
+				+ "Endereço: " + endereco
+				+ "Estado Civil: " + this.getEstadoCivil() + ".\n"
+				+ "Data de Nascimento: " + dataNasc + ".\n"
+				+ "Cargo: " + this.getCargo() + ".\n"
+				+ "Data Admissão: " + dataAd + ".\n"
+				+ "Cargo: " + getCargo() + ".";
 	}
 }

@@ -11,7 +11,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import views.agencia.TelaPrincipalAgencia;
 import views.cliente.TelaPrincipalCliente;
+import views.conta.TelaPrincipalConta;
+import views.funcionario.TelaPrincipalFuncionario;
 import views.templates.Painel;
 
 public class TelaPrincipal extends JFrame {
@@ -42,7 +45,7 @@ public class TelaPrincipal extends JFrame {
 		opcoes.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 40));// 20 como valor na vertical e 40 na horizontal
         
 		JButton contas = adicionarBotao("Contas");
-		contas.addActionListener(event -> {});
+		contas.addActionListener(event -> { new TelaPrincipalConta();});
 		opcoes.add(contas);
 		
 		JButton clientes = adicionarBotao("Clientes");
@@ -50,11 +53,11 @@ public class TelaPrincipal extends JFrame {
 		opcoes.add(clientes);
 		
 		JButton funcionarios = adicionarBotao("Funcionários");
-		funcionarios.addActionListener(event -> {});
+		funcionarios.addActionListener(event -> { new TelaPrincipalFuncionario();});
 		opcoes.add(funcionarios);
 		
 		JButton agencias = adicionarBotao("Agências");
-		agencias.addActionListener(event -> {});
+		agencias.addActionListener(event -> { new TelaPrincipalAgencia();});
 		opcoes.add(agencias);
 		
 		add(opcoes);	

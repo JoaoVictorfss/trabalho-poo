@@ -19,7 +19,7 @@ public class MemoriaFuncionario {
 		dadosFuncionario.excluir(cpf);
 	}
 	
-	public Funcionario buscaCliente(String cpf) {
+	public Funcionario buscaFuncionario(String cpf) {
 		return dadosFuncionario.buscar(cpf);
 	}
 
