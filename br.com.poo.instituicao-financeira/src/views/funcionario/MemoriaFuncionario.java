@@ -13,7 +13,17 @@ public class MemoriaFuncionario {
 
     public void adicionarFuncionario(Funcionario c){
         dadosFuncionario.cadastrar(c);
-        dadosFuncionario.listar();
     }
+    
+	public void exluirFuncionario(String cpf) {
+		dadosFuncionario.excluir(cpf);
+	}
+	
+	public Funcionario buscaCliente(String cpf) {
+		return dadosFuncionario.buscar(cpf);
+	}
 
+	public void salvar() {
+		this.dadosFuncionario.gravarFuncionarios();
+	}
 }

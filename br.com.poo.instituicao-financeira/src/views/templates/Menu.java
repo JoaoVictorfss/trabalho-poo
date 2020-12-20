@@ -9,6 +9,7 @@ import views.cliente.MemoriaCliente;
 import views.cliente.TelaCadastroCliente;
 import views.cliente.TelaConsultaCliente;
 import views.cliente.TelaPrincipalAtualizaCliente;
+import views.funcionario.MemoriaFuncionario;
 
 public class Menu extends JPanel {
 	public Menu(String tipoOperacao, String tela) {
@@ -39,6 +40,12 @@ public class Menu extends JPanel {
 		excluir.addActionListener(event -> {
 			if (tela.equalsIgnoreCase("cliente"))
 				new TelaExclui("Clientes");
+			else if(tela.equalsIgnoreCase("funcionario"))
+				new TelaExclui("Funcionarios");
+			else if(tela.equalsIgnoreCase("conta"))
+				new TelaExclui("Contas");
+			else
+				new TelaExclui("Agencias");
 		});
 		add(excluir);
 
@@ -48,8 +55,7 @@ public class Menu extends JPanel {
 				if (tela.equalsIgnoreCase("cliente"))
 					MemoriaCliente.getInstancia().salvar();
 				else if(tela.equalsIgnoreCase("funcionario"))
-					return;
-					//MemoriaFuncionario.getInstancia().salvar();
+					MemoriaFuncionario.getInstancia().salvar();
 				else if(tela.equalsIgnoreCase("conta"))
 					return;
 						//MemoriaConta.getInstancia().salvar();

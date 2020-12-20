@@ -27,7 +27,5 @@ public class MemoriaCliente {
 	public void salvar() {
 		this.dadosClientes.gravarClientes();
 	}
-	public void listar() {
-		dadosClientes.listar();
-	}
+	
 }

@@ -42,7 +42,7 @@ public class FormExclui extends JPanel {
 						MemoriaCliente.getInstancia().exluirCliente(campo.getText());
 					}
 					else if(tipo.equalsIgnoreCase("Funcionario") || tipo.equalsIgnoreCase("Gerente") ) {
-						//MemoriaFuncionario.getInstancia().exluirClientecampo.getText()();
+						MemoriaFuncionario.getInstancia().exluirFuncionario(campo.getText());
 					}
 					else if(tipo.equalsIgnoreCase("Conta")) {
 						//

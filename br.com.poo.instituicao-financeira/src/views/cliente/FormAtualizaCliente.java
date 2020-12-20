@@ -168,7 +168,6 @@ public class FormAtualizaCliente extends JPanel {
 			cliente.getEndereco().setRua(this.endRua);
 			cliente.getEndereco().setNumero(this.endNumero);
             
-			MemoriaCliente.getInstancia().listar();
 			new Alerta("Sucesso. Dados Atualizados!");
 		} catch (RuntimeException e) {
 			new Alerta("Erro." + e.getMessage());
