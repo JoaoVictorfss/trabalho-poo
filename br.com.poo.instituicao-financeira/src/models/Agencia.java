@@ -88,24 +88,17 @@ public class Agencia implements Serializable {
 		this.contas.add(conta);
 	}
 	
-	public void mostrarDados() {
-		System.out.println("______________________________________");
-		System.out.println("\nDados da Agência\n");
-		System.out.println("Nome: " + this.nome);
-		System.out.println("Número: " + this.nroAgencia);
-		System.out.println("Nome do gerente: " + this.gerente.getNome());
-		System.out.print("Endereço: ");
-		System.out.print(this.endereco.getCep() + ", ");
-		System.out.print("rua: " + this.endereco.getRua() + ", ");
-		System.out.print("número: " + this.endereco.getNumero() + " - ");
-		System.out.print(this.endereco.getUf() + ", ");
-		System.out.println(this.endereco.getCidade() + ".");
-		if (!clientes.isEmpty()) {
-			System.out.println("\nClientes: ");
-			clientes.forEach(c -> System.out.println(c.getNome()));
-		}
-		System.out.println("______________________________________");
+	public String mostrarDados() {
+		final String endereco = this.getEndereco().getCidade() + ", " + this.getEndereco().getRua() + ", "
+				+ this.getEndereco().getNumero() + " - " + this.getEndereco().getUf() + ", " + this.getEndereco().getCep() + "("
+				+ this.getEndereco().getPais() + ").\n";
 
+
+		return "Nome:" + this.getNome()
+				+ ".\n" + "N° Agencia: " + this.getNroAgencia()
+				+ ".\n" + "Quantidade de conta(s):  " + this.getContas().size()
+				+ ".\n" + "Endereço: " + endereco
+				+ "Nome Gerente: " + this.gerente.getNome() + ".\n";
 	}
 
 }
