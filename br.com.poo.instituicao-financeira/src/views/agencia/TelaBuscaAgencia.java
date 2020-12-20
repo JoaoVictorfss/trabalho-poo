@@ -12,7 +12,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import models.Agencia;
-import models.Cliente;
 import views.templates.Alerta;
 import views.templates.Botao;
 

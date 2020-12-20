@@ -11,6 +11,7 @@ import javax.swing.*;
 import controllers.ControladorFuncionario;
 import models.*;
 import views.cliente.MemoriaCliente;
+import views.funcionario.MemoriaFuncionario;
 import views.templates.Alerta;
 import views.templates.Botao;
 
@@ -137,11 +138,9 @@ public class FormAgencia extends JPanel {
         try {
             Endereco enderecoAgencia = new Endereco(endRua, endNumero, endCep, endUf, endCidade, endPais);
             Agencia agencia = null;
-            Funcionario gerente = null;
-            ControladorFuncionario dadosGerente = new ControladorFuncionario();
-            gerente = dadosGerente.buscar(cpfGerente);
+            Funcionario gerente = MemoriaFuncionario.getInstancia().buscaFuncionario(cpfGerente);
             if (gerente == null) {
-            	 new Alerta("Gerente inexistente!");
+                new Alerta("Gerente inexistente!");
             }
 
             agencia = new Agencia(nome, nroAgencia, enderecoAgencia, gerente);

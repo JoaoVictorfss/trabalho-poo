@@ -17,7 +17,7 @@ public class TelaAtualizaAgencia extends javax.swing.JFrame {
         setTitle("Atualização de Agencia");
 
         // Tamanho da tela
-        setSize(550, 760);
+        setSize(540, 600);
 
         // Aplicação abre no centro da tela
         setLocationRelativeTo(null);

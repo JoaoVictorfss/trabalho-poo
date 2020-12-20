@@ -1,21 +1,16 @@
 package views.agencia;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import javax.swing.JFrame;
-
-import views.cliente.TelaBuscaCliente;
-import views.templates.Menu;
 import views.templates.Painel;
 
-public class TelaPrincipalAtualizaAgencia extends JFrame {
+public class TelaPrincipalAtualizaAgencia extends javax.swing.JFrame {
     public TelaPrincipalAtualizaAgencia(){
         organizarLayout();
 
         setTitle("Atualizacao de Agencias");
 
         //Tamanho da tela
-        setSize(500, 600);
+        setSize(400, 350);
 
         //Aplicação abre no centro da tela
         setLocationRelativeTo(null);
@@ -27,7 +22,7 @@ public class TelaPrincipalAtualizaAgencia extends JFrame {
     private void organizarLayout() {
         setLayout(new BorderLayout());
 
-        Painel painelAgencia = new Painel("Atualizacao de agencias");
+        Painel painelAgencia = new Painel("Atualizacao de Agencias");
         add(painelAgencia, BorderLayout.NORTH);
 
         TelaBuscaAgencia form = new TelaBuscaAgencia(false);
