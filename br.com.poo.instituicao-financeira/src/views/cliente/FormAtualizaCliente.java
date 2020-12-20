@@ -154,8 +154,7 @@ public class FormAtualizaCliente extends JPanel {
 				this.estadoCiv = campoEstadoCiv.getText();
 			if (naoVazio(campoNroConta.getText()))
 				this.nroConta = campoNroConta.getText();
-			
-			
+					
 			if (this.valido) {
 				atualizarCliente();
 			}else{
@@ -194,6 +193,7 @@ public class FormAtualizaCliente extends JPanel {
 				cliente.getContas().forEach(c -> {
 					if(!(c.getNroConta() == contaCliente.getNroConta())){
 						cliente.getContas().add(contaCliente);
+						contaCliente.getClientes().add(cliente);
 					}
 				});
 			
