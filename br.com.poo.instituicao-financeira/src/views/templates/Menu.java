@@ -6,6 +6,9 @@ import java.awt.FlowLayout;
 import javax.swing.JPanel;
 
 import views.agencia.MemoriaAgencia;
+import views.agencia.TelaCadastroAgencia;
+import views.agencia.TelaConsultaAgencia;
+import views.agencia.TelaPrincipalAtualizaAgencia;
 import views.cliente.MemoriaCliente;
 import views.cliente.TelaCadastroCliente;
 import views.cliente.TelaConsultaCliente;
@@ -23,6 +26,8 @@ public class Menu extends JPanel {
 				new TelaCadastroCliente();
 			if (tela.equalsIgnoreCase("funcionario"))
 				new TelaCadastroFuncionario();
+			if (tela.equalsIgnoreCase("agencia"))
+				new TelaCadastroAgencia();
 		});
 		add(cadastrar);
 
@@ -32,6 +37,8 @@ public class Menu extends JPanel {
 				new TelaConsultaCliente();
 			if (tela.equalsIgnoreCase("funcionario"))
 				new TelaConsultaFuncionario();
+			if (tela.equalsIgnoreCase("agencia"))
+				new TelaConsultaAgencia();
 
 		});
 		add(consultar);
@@ -42,6 +49,8 @@ public class Menu extends JPanel {
 				new TelaPrincipalAtualizaCliente();
 			if (tela.equalsIgnoreCase("funcionario"))
 				new TelaPrincipalAtualizaFuncionario();
+			if (tela.equalsIgnoreCase("agencia"))
+				new TelaPrincipalAtualizaAgencia();
 		});
 		add(atualizar);
 

@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import views.agencia.TelaPrincipalAgencia;
+import views.agencia.TelaPrincipalAtualizaAgencia;
 import views.cliente.TelaPrincipalCliente;
 import views.conta.TelaPrincipalConta;
 import views.funcionario.TelaPrincipalFuncionario;
