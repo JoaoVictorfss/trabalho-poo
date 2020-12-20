@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 import views.cliente.MemoriaCliente;
 import views.cliente.TelaCadastroCliente;
 import views.cliente.TelaConsultaCliente;
-import views.cliente.TelaExcluiCliente;
 import views.cliente.TelaPrincipalAtualizaCliente;
 
 public class Menu extends JPanel {
@@ -39,7 +38,7 @@ public class Menu extends JPanel {
 		Botao excluir = adicionarBotao("Excluir");
 		excluir.addActionListener(event -> {
 			if (tela.equalsIgnoreCase("cliente"))
-				new TelaExcluiCliente();
+				new TelaExclui("Clientes");
 		});
 		add(excluir);
 
@@ -48,7 +47,15 @@ public class Menu extends JPanel {
 			try {
 				if (tela.equalsIgnoreCase("cliente"))
 					MemoriaCliente.getInstancia().salvar();
-				new Alerta("Sucesso. Cliente(s) salvo(s)");
+				else if(tela.equalsIgnoreCase("funcionario"))
+					return;
+					//MemoriaFuncionario.getInstancia().salvar();
+				else if(tela.equalsIgnoreCase("conta"))
+					return;
+						//MemoriaConta.getInstancia().salvar();
+				else return;
+					//MemoriaAgencia.getInstancia().salvar();				
+					new Alerta("Sucesso. " + tela + "(s)" + " salvo(s)");
 			} catch (RuntimeException e) {
 				new Alerta(e.getMessage());
 			}
