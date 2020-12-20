@@ -110,7 +110,7 @@ public abstract class Conta implements Serializable {
 	public boolean transferencia(double valor, Conta contaDestino) {
 		if (valor <= saldoAtual && valor > 0) {
 			saldoAtual -= valor;
-			transacoes.add(new Transacao(new Date(), "transferencia", valor, this.agencia, contaDestino));
+			transacoes.add(new Transacao(new Date(), "transferencia", valor, this.agencia));
 			return true;
 		} else
 			throw new RuntimeException("Valor inválido para transferência!");
@@ -137,10 +137,10 @@ public abstract class Conta implements Serializable {
 	
 	public void mostrarDados() {
 		System.out.println("______________________________________");
-		System.out.println("\nDados do Conta\n");
+		System.out.println("\nDados da Conta\n");
 		System.out.println("Número: " + this.nroConta);
 		System.out.println("Status: " + this.getStatus());
-		System.out.println("Número da Agencia: " + this.getAgencia().getNroAgencia());
+		System.out.println("Número da Agência: " + this.getAgencia().getNroAgencia());
 		System.out.println("Quantidade de clientes: " + this.getTotalCliente());
 		System.out.println("Data de abertura: " + this.getDataAbertura());
 		System.out.println("______________________________________");

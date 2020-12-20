@@ -1,5 +1,6 @@
 package models;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -65,14 +66,17 @@ public class Cliente extends Pessoa {
 		this.agencia = agencia;
 	}
 	
-	public void mostrarDados() {
-		System.out.println("______________________________________");
-		System.out.println("\nDados do cliente\n");
-		System.out.println("Nome: " + this.getNome());
-		System.out.println("CPF: " + this.getCpf());
-		System.out.println("Estado Civil: " + this.getEstadoCivil());
-		System.out.println("Data de Nascimento: " + this.getDataNasc());
-		System.out.println("Escolaridade: " + this.getEscolaridade());
-		System.out.println("______________________________________");
+	public String mostrarDados() {
+
+		final String endereco = this.getEndereco().getCidade() + ", " + this.getEndereco().getRua() + ", "
+				+ this.getEndereco().getNumero() + " - " + this.getEndereco().getUf() + ", " + this.getEndereco().getCep() + "("
+				+ this.getEndereco().getPais() + ").\n";
+		
+		final SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+		final String dataNasc = formato.format(this.getDataNasc());
+
+		return "Nome:" + this.getNome() + ".\n" + "CPF: " + this.getCpf() + ".\n" + "Quantidade de conta(s):  "
+				+ this.getContas().size() + ".\n" + "Endereço: " + endereco + "Estado Civil: " + this.getEstadoCivil() + ".\n"
+				+ "Data de Nascimento: " +dataNasc + ".\n" + "Escolaridade: " + this.getEscolaridade() + ".\n";
 	}
 }
