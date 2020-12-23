@@ -6,7 +6,7 @@
   <img src="http://img.shields.io/static/v1?label=status&message=em%20desenvolvimento&color=GREEN&style=plastic"/>
 </p>
 
-> Status do Projeto: Em desenvolvimento :warning:
+> Status do Projeto: Concluído :heavy_check_mark:
 
 ### Tópicos 
 
