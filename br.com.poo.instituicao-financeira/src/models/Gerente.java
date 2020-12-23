@@ -56,4 +56,34 @@ public class Gerente extends Funcionario {
 		final int anos = anoAtual - anoEntrada;
 		return Gerente.salBase + Gerente.getBonificacao() * anos;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((nomeCurso == null) ? 0 : nomeCurso.hashCode());
+		result = prime * result + (possuiCurso ? 1231 : 1237);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Gerente other = (Gerente) obj;
+		if (nomeCurso == null) {
+			if (other.nomeCurso != null)
+				return false;
+		} else if (!nomeCurso.equals(other.nomeCurso))
+			return false;
+		if (possuiCurso != other.possuiCurso)
+			return false;
+		return true;
+	}
+	
+	
 }

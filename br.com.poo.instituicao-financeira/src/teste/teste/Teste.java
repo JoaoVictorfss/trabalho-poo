@@ -1,4 +1,4 @@
-/*package teste;
+package teste;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -38,7 +38,7 @@ import models.Gerente;
  * @author Brunno Fabrício Moraes Viegas
  * 
  * @date 14/12/2020
- * 
+ */
  
 
 public class Teste {
@@ -119,4 +119,4 @@ public class Teste {
 
 	}
 
-}*/
+}

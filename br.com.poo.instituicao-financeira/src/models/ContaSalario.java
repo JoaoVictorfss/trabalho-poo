@@ -57,4 +57,34 @@ public class ContaSalario extends Conta {
 		this.tarifaConta = salario/1000;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		long temp;
+		temp = Double.doubleToLongBits(salMinimo);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(tarifaConta);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ContaSalario other = (ContaSalario) obj;
+		if (Double.doubleToLongBits(salMinimo) != Double.doubleToLongBits(other.salMinimo))
+			return false;
+		if (Double.doubleToLongBits(tarifaConta) != Double.doubleToLongBits(other.tarifaConta))
+			return false;
+		return true;
+	}
+	
+	
+
 }

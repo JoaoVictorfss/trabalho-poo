@@ -54,6 +54,42 @@ public class Funcionario extends Pessoa {
 	public double calcSal() {
 		return Funcionario.salBase;
 	}
+	
+	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((DataAd == null) ? 0 : DataAd.hashCode());
+		result = prime * result + ((cargo == null) ? 0 : cargo.hashCode());
+		result = prime * result + sexo;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Funcionario other = (Funcionario) obj;
+		if (DataAd == null) {
+			if (other.DataAd != null)
+				return false;
+		} else if (!DataAd.equals(other.DataAd))
+			return false;
+		if (cargo == null) {
+			if (other.cargo != null)
+				return false;
+		} else if (!cargo.equals(other.cargo))
+			return false;
+		if (sexo != other.sexo)
+			return false;
+		return true;
+	}
 
 	public String mostrarDados() {
 		final String endereco = this.getEndereco().getCidade() + ", " + this.getEndereco().getRua() + ", "

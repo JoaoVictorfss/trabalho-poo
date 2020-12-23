@@ -68,6 +68,42 @@ public class ContaCorrente extends Conta {
 		} else
 			this.categoria = "NA";
 	}
+	
+	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((categoria == null) ? 0 : categoria.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(limiteChequeEspecial);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(tarifaConta);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ContaCorrente other = (ContaCorrente) obj;
+		if (categoria == null) {
+			if (other.categoria != null)
+				return false;
+		} else if (!categoria.equals(other.categoria))
+			return false;
+		if (Double.doubleToLongBits(limiteChequeEspecial) != Double.doubleToLongBits(other.limiteChequeEspecial))
+			return false;
+		if (Double.doubleToLongBits(tarifaConta) != Double.doubleToLongBits(other.tarifaConta))
+			return false;
+		return true;
+	}
 
 	// Cálculo de tarifa
 	@Override

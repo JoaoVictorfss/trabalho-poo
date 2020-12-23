@@ -163,6 +163,70 @@ public abstract class Conta implements Serializable {
 
 	public abstract double calculaTarifa();
 	
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((agencia == null) ? 0 : agencia.hashCode());
+		result = prime * result + ((clientes == null) ? 0 : clientes.hashCode());
+		result = prime * result + ((dataAbertura == null) ? 0 : dataAbertura.hashCode());
+		result = prime * result + nroConta;
+		long temp;
+		temp = Double.doubleToLongBits(saldoAtual);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + status;
+		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
+		result = prime * result + totalCliente;
+		result = prime * result + ((transacoes == null) ? 0 : transacoes.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Conta other = (Conta) obj;
+		if (agencia == null) {
+			if (other.agencia != null)
+				return false;
+		} else if (!agencia.equals(other.agencia))
+			return false;
+		if (clientes == null) {
+			if (other.clientes != null)
+				return false;
+		} else if (!clientes.equals(other.clientes))
+			return false;
+		if (dataAbertura == null) {
+			if (other.dataAbertura != null)
+				return false;
+		} else if (!dataAbertura.equals(other.dataAbertura))
+			return false;
+		if (nroConta != other.nroConta)
+			return false;
+		if (Double.doubleToLongBits(saldoAtual) != Double.doubleToLongBits(other.saldoAtual))
+			return false;
+		if (status != other.status)
+			return false;
+		if (tipo == null) {
+			if (other.tipo != null)
+				return false;
+		} else if (!tipo.equals(other.tipo))
+			return false;
+		if (totalCliente != other.totalCliente)
+			return false;
+		if (transacoes == null) {
+			if (other.transacoes != null)
+				return false;
+		} else if (!transacoes.equals(other.transacoes))
+			return false;
+		return true;
+	}
+
 	public String mostrarDados() {
 		final SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 		final String data = formato.format(this.getDataAbertura());

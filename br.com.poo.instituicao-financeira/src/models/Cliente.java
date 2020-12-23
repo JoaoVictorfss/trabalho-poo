@@ -66,6 +66,45 @@ public class Cliente extends Pessoa {
 		this.agencia = agencia;
 	}
 	
+	
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((agencia == null) ? 0 : agencia.hashCode());
+		result = prime * result + ((contas == null) ? 0 : contas.hashCode());
+		result = prime * result + ((escolaridade == null) ? 0 : escolaridade.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cliente other = (Cliente) obj;
+		if (agencia == null) {
+			if (other.agencia != null)
+				return false;
+		} else if (!agencia.equals(other.agencia))
+			return false;
+		if (contas == null) {
+			if (other.contas != null)
+				return false;
+		} else if (!contas.equals(other.contas))
+			return false;
+		if (escolaridade == null) {
+			if (other.escolaridade != null)
+				return false;
+		} else if (!escolaridade.equals(other.escolaridade))
+			return false;
+		return true;
+	}
+
 	public String mostrarDados() {
 
 		final String endereco = this.getEndereco().getCidade() + ", " + this.getEndereco().getRua() + ", "
